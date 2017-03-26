@@ -1,3 +1,7 @@
+package View;
+
+import View.hexgrid;
+
 /**
  * Created by Lazaro on 3/22/2017.
  */

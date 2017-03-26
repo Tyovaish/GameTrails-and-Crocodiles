@@ -1,3 +1,7 @@
+package View;
+
+import View.dashboard;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Map {
     TilePlacementManager tilePlacementManager;
     HashMap<Location,Tile> map;
+
     public boolean insertTile(Tile tile,Location location) {
 
         return true;

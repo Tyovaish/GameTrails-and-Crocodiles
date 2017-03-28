@@ -17,5 +17,8 @@ public class TileEdge {
    public boolean equals(FeatureType feature){
        return this.feature.getClass().equals(feature.getClass());
     }
+    public void setFeatureType(FeatureType feature){
+       this.feature=feature;
+    }
 
 }

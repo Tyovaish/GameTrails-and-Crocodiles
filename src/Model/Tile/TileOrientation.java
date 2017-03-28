@@ -8,4 +8,7 @@ public class TileOrientation {
     public void rotate(int degrees){
         this.degrees+=degrees;
     }
+    public void reset(){
+        degrees=0;
+    }
 }

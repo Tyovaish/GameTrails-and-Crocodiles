@@ -22,39 +22,39 @@ public abstract class Tile {
     }
 
     public Location getSouthWest(Location location) {
-        if (location.y % 2 == 0)
-            return new Location(location.x, location.y + 1);
+        if (location.getY() % 2 == 0)
+            return new Location(location.getX(), location.getY() + 1);
         else
-            return new Location(location.x+1, location.y + 1);
+            return new Location(location.getX()+1, location.getY() + 1);
     }
 
     public Location getNorthWest(Location location) {
-        if (location.y % 2 == 0)
-            return new Location(location.x-1, location.y + 1);
+        if (location.getY() % 2 == 0)
+            return new Location(location.getX()-1, location.getY() + 1);
         else
-            return new Location(location.x, location.y+ 1);
+            return new Location(location.getX(), location.getY()+ 1);
     }
 
     public Location getNorth(Location location) {
-        return new Location(location.x - 1, location.y);
+        return new Location(location.getX() - 1, location.getY());
     }
 
     public Location getNorthEast(Location location) {
-        if (location.y % 2 == 0)
-            return new Location(location.x-1, location.y - 1);
+        if (location.getY() % 2 == 0)
+            return new Location(location.getX()-1, location.getY() - 1);
         else
-            return new Location(location.x, location.y - 1);
+            return new Location(location.getX(), location.getY() - 1);
     }
 
     public Location getSouth(Location location) {
-        return new Location( location.x + 1, location.y);
+        return new Location( location.getX() + 1, location.getY());
     }
 
     public Location getSouthEast(Location location) {
-        if (location.y % 2 == 0)
-            return new Location(location.x, location.y - 1);
+        if (location.getY() % 2 == 0)
+            return new Location(location.getX(), location.getY() - 1);
         else
-            return new Location(location.x + 1, location.y - 1);
+            return new Location(location.getX() + 1, location.getY() - 1);
     }
 
     public boolean checkEdgeCompatabilty(int tileEdgePositionToCheck, FeatureType otherTilesFeature){

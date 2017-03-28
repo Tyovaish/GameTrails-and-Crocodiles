@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class RemoveCommand implements Command {
     TilePlacementManager tilePlacementManager;
    Location location;
-   RemoveCommand(){
-       location=new Location(0,0);
+   public RemoveCommand(TilePlacementManager tilePlacementManager){
+       this.tilePlacementManager=tilePlacementManager;
    }
     public void execute(){
         tilePlacementManager.execute(this);
@@ -22,5 +22,8 @@ public class RemoveCommand implements Command {
     public void setLocation(int x,int y){
         location.setX(x);
         location.setY(y);
+    }
+    public void setLocation(Location location){
+        this.location=location;
     }
 }

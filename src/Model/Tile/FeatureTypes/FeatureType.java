@@ -10,7 +10,9 @@ public abstract class FeatureType {
             this.featureType= type;
         }
 
+
         public String getType(){
             return this.featureType;
         }
+
 }

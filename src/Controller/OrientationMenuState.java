@@ -24,8 +24,5 @@ public class OrientationMenuState implements State {
     public State forward(){
         return nextState;
     }
-    public void execute(){
-
-    }
 }
 

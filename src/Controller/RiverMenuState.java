@@ -31,7 +31,4 @@ public class RiverMenuState implements State {
     public State forward(){
         return nextState;
     }
-    public void execute(){
-
-    }
 }

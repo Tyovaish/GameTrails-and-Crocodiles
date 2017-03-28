@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Controller implements State{
 ArrayList<State> menuStates;
 TilePlacementCommand tilePlacementCommand;
-TileTypeCommand groundTileTypeCommand;
+TileTypeCommand tileTypeCommand;
 RemoveCommand removeCommand;
 State currentState;
 int tempState;
@@ -58,9 +58,7 @@ public State forward(){
     return null;
 }
 public void execute(){
-    if(currentState!=this) {
-        currentState.execute();
-    }
+    tileTypeCommand.execute();
 }
 public void onLeftClick(int x,int y){
 

@@ -35,8 +35,5 @@ public class FeatureTypeMenuState implements State {
         }
         return this;
     }
-    public void execute(){
-
-    }
 
 }

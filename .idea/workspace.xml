@@ -2,58 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2c66956-4f65-471e-8f82-81895cb9d258" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Controller/OrientationMenuState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/FeatureType.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/River/NormalRiver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/River/River.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/River/SourceRiver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/Sea/Sea.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/Terrain/Desert.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/Terrain/Mountain.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/Terrain/Pasture.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/Terrain/Rock.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/Terrain/Terrain.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/FeatureTypes/Terrain/Woods.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/TileOrientation.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/Tile/TileBuilder.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Controller/Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Controller/FeatureTypeMenuState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Controller/GroundTileMenuState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/FeatureType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/River/NormalRiver.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/River/River.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/River/SourceRiver.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/Sea.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/Terrain/Desert.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/Terrain/Mountain.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/Terrain/Pasture.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/Terrain/Rock.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/Terrain/Terrain.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/FeatureTypes/Terrain/Woods.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Location.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/Orientation.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/TilePlacementManager.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Controller/RiverMenuState.class" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Controller/RiverMenuState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Map.class" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Map.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/GroundTile.class" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/GroundTile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/SeaTile.class" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/SeaTile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/Tile.class" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/Tile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/TileEdge.class" afterPath="$PROJECT_DIR$/out/production/GameTrailsAndCrocodiles/Model/Tile/TileEdge.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Commands/Command.java" afterPath="$PROJECT_DIR$/src/Controller/Commands/Command.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Commands/RemoveCommand.java" afterPath="$PROJECT_DIR$/src/Controller/Commands/RemoveCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Commands/TilePlacementCommand.java" afterPath="$PROJECT_DIR$/src/Controller/Commands/TilePlacementCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Commands/TileTypeCommand.java" afterPath="$PROJECT_DIR$/src/Controller/Commands/TileTypeCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Controller.java" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/FeatureTypeMenuState.java" afterPath="$PROJECT_DIR$/src/Controller/FeatureTypeMenuState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/OrientationMenuState.java" afterPath="$PROJECT_DIR$/src/Controller/OrientationMenuState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/RiverMenuState.java" afterPath="$PROJECT_DIR$/src/Controller/RiverMenuState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/State.java" afterPath="$PROJECT_DIR$/src/Controller/State.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Location.java" afterPath="$PROJECT_DIR$/src/Model/Location.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Map.java" afterPath="$PROJECT_DIR$/src/Model/Map.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Tile/GroundTile.java" afterPath="$PROJECT_DIR$/src/Model/Tile/GroundTile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Tile/SeaTile.java" afterPath="$PROJECT_DIR$/src/Model/Tile/SeaTile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/TilePlacementManager.java" afterPath="$PROJECT_DIR$/src/Model/TilePlacementManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Tile/Tile.java" afterPath="$PROJECT_DIR$/src/Model/Tile/Tile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Tile/TileOrientation.java" afterPath="$PROJECT_DIR$/src/Model/Tile/TileOrientation.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,15 +25,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="60" column="30" lean-forward="false" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+            <state relative-caret-position="2489">
+              <caret line="78" column="1" lean-forward="false" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1339#1340#0" expanded="true" />
-                <element signature="e#1372#1373#0" expanded="true" />
+                <element signature="e#1688#1689#0" expanded="true" />
+                <element signature="e#1721#1722#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,27 +42,25 @@
       <file leaf-file-name="RemoveCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/Commands/RemoveCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+            <state relative-caret-position="781">
+              <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#384#385#0" expanded="true" />
-                <element signature="e#424#425#0" expanded="true" />
-                <element signature="e#451#452#0" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
+                <element signature="e#432#433#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#717#718#0" expanded="true" />
+                <element signature="e#755#756#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TilePlacementManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/TilePlacementManager.java">
+      <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Commands/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="198">
+              <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,14 +68,35 @@
       <file leaf-file-name="TilePlacementCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/Commands/TilePlacementCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state relative-caret-position="616">
+              <caret line="27" column="3" lean-forward="false" selection-start-line="27" selection-start-column="3" selection-end-line="29" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#347#348#0" expanded="true" />
-                <element signature="e#397#398#0" expanded="true" />
-                <element signature="e#554#555#0" expanded="true" />
-                <element signature="e#593#594#0" expanded="true" />
+                <element signature="e#663#664#0" expanded="true" />
+                <element signature="e#694#695#0" expanded="true" />
+                <element signature="e#743#744#0" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+                <element signature="e#836#837#0" expanded="true" />
+                <element signature="e#875#876#0" expanded="true" />
+                <element signature="e#921#922#0" expanded="true" />
+                <element signature="e#955#956#0" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
+                <element signature="e#1064#1065#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TileOrientation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Tile/TileOrientation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+              <folding>
+                <element signature="e#147#148#0" expanded="true" />
+                <element signature="e#184#185#0" expanded="true" />
+                <element signature="e#209#210#0" expanded="true" />
+                <element signature="e#234#235#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,12 +105,18 @@
       <file leaf-file-name="TileTypeCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/Commands/TileTypeCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+            <state relative-caret-position="649">
+              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#407#408#0" expanded="true" />
-                <element signature="e#457#458#0" expanded="true" />
+                <element signature="e#679#680#0" expanded="true" />
+                <element signature="e#713#714#0" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#818#819#0" expanded="true" />
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#889#890#0" expanded="true" />
+                <element signature="e#943#944#0" expanded="true" />
+                <element signature="e#979#980#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,8 +137,8 @@
       <file leaf-file-name="FeatureTypeMenuState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/FeatureTypeMenuState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="732">
-              <caret line="36" column="5" lean-forward="false" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+            <state relative-caret-position="366">
+              <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -175,21 +156,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Commands/Command.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RiverMenuState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RiverMenuState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/RiverMenuState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="812">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="548">
+              <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -205,6 +176,14 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>.y</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>.getY()</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -249,23 +228,23 @@
         <option value="$PROJECT_DIR$/src/Model/FeatureTypes/Sea.java" />
         <option value="$PROJECT_DIR$/src/Controller/GroundTileMenuState.java" />
         <option value="$PROJECT_DIR$/src/Model/Tile/Orientation.java" />
-        <option value="$PROJECT_DIR$/src/Model/Tile/TileOrientation.java" />
-        <option value="$PROJECT_DIR$/src/Model/Tile/SeaTile.java" />
-        <option value="$PROJECT_DIR$/src/Model/Tile/Tile.java" />
-        <option value="$PROJECT_DIR$/src/Model/Tile/GroundTile.java" />
         <option value="$PROJECT_DIR$/src/Model/Map.java" />
         <option value="$PROJECT_DIR$/src/Controller/RemoveTileMenuState.java" />
         <option value="$PROJECT_DIR$/src/Controller/Commands/Command.java" />
-        <option value="$PROJECT_DIR$/src/Controller/Commands/TileTypeCommand.java" />
         <option value="$PROJECT_DIR$/src/Model/Location.java" />
-        <option value="$PROJECT_DIR$/src/Controller/Commands/RemoveCommand.java" />
-        <option value="$PROJECT_DIR$/src/Controller/Commands/TilePlacementCommand.java" />
-        <option value="$PROJECT_DIR$/src/Controller/FeatureTypeMenuState.java" />
         <option value="$PROJECT_DIR$/src/Controller/OrientationMenuState.java" />
         <option value="$PROJECT_DIR$/src/Controller/RiverMenuState.java" />
         <option value="$PROJECT_DIR$/src/Controller/State.java" />
-        <option value="$PROJECT_DIR$/src/Controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/Model/TilePlacementManager.java" />
+        <option value="$PROJECT_DIR$/src/Model/Tile/Tile.java" />
+        <option value="$PROJECT_DIR$/src/Model/Tile/SeaTile.java" />
+        <option value="$PROJECT_DIR$/src/Model/Tile/GroundTile.java" />
+        <option value="$PROJECT_DIR$/src/Controller/FeatureTypeMenuState.java" />
+        <option value="$PROJECT_DIR$/src/Model/Tile/TileOrientation.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Commands/TileTypeCommand.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Commands/TilePlacementCommand.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Commands/RemoveCommand.java" />
       </list>
     </option>
   </component>
@@ -816,7 +795,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3257329" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32508144" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1023,17 +1002,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tile/TileOrientation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding>
-            <element signature="e#147#148#0" expanded="false" />
-            <element signature="e#184#185#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Tile/TileEdge.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1047,16 +1015,6 @@
         <state relative-caret-position="165">
           <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tile/SeaTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1089,26 +1047,6 @@
         <state relative-caret-position="165">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tile/Tile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tile/GroundTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#304#305#0" expanded="true" />
-            <element signature="e#331#332#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1153,50 +1091,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Commands/RemoveCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/TilePlacementManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#384#385#0" expanded="true" />
-            <element signature="e#424#425#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Commands/Command.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Tile/GroundTile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Commands/TilePlacementCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="396">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#347#348#0" expanded="true" />
-            <element signature="e#397#398#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Commands/TileTypeCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Tile/SeaTile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        <state relative-caret-position="528">
+          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#407#408#0" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#289#290#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Tile/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1392#1393#0" expanded="true" />
+            <element signature="e#1466#1467#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1209,32 +1145,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/Controller/RiverMenuState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="60" column="30" lean-forward="false" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1339#1340#0" expanded="true" />
-            <element signature="e#1372#1373#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/TilePlacementManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/FeatureTypeMenuState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="732">
-          <caret line="36" column="5" lean-forward="false" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        <state relative-caret-position="548">
+          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1251,12 +1165,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/RiverMenuState.java">
+    <entry file="file://$PROJECT_DIR$/src/Controller/FeatureTypeMenuState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="366">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Tile/TileOrientation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#147#148#0" expanded="true" />
+            <element signature="e#184#185#0" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Commands/TileTypeCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#818#819#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+            <element signature="e#943#944#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Commands/TilePlacementCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="27" column="3" lean-forward="false" selection-start-line="27" selection-start-column="3" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#694#695#0" expanded="true" />
+            <element signature="e#743#744#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#836#837#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#955#956#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1064#1065#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Commands/RemoveCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="781">
+          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#717#718#0" expanded="true" />
+            <element signature="e#755#756#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Commands/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2489">
+          <caret line="78" column="1" lean-forward="false" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1688#1689#0" expanded="true" />
+            <element signature="e#1721#1722#0" expanded="true" />
           </folding>
         </state>
       </provider>

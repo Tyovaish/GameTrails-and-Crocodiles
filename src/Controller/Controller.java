@@ -3,6 +3,8 @@ package Controller;
 import Controller.Commands.RemoveCommand;
 import Controller.Commands.TilePlacementCommand;
 import Controller.Commands.TileTypeCommand;
+import Model.Location;
+import Model.TilePlacementManager;
 
 import java.util.ArrayList;
 
@@ -10,6 +12,7 @@ import java.util.ArrayList;
  * Created by Trevor on 3/26/2017.
  */
 public class Controller implements State{
+TilePlacementManager tilePlacementManager;
 ArrayList<State> menuStates;
 TilePlacementCommand tilePlacementCommand;
 TileTypeCommand tileTypeCommand;
@@ -17,6 +20,10 @@ RemoveCommand removeCommand;
 State currentState;
 int tempState;
 Controller(){
+    tilePlacementManager=new TilePlacementManager();
+    tileTypeCommand=new TileTypeCommand(tilePlacementManager);
+    removeCommand=new RemoveCommand(tilePlacementManager);
+    tilePlacementCommand=new TilePlacementCommand(tilePlacementManager);
     menuStates.add(new FeatureTypeMenuState());
     currentState=menuStates.get(0);
     tempState=0;
@@ -61,10 +68,14 @@ public void execute(){
     tileTypeCommand.execute();
 }
 public void onLeftClick(int x,int y){
+    execute();
 
+    tilePlacementCommand.setLocation(new Location(x,y));
+    tilePlacementCommand.execute();
 }
 public void onRightClick(int x, int y){
-
+    removeCommand.setLocation(new Location(x,y));
+    removeCommand.execute();
 }
 
 }

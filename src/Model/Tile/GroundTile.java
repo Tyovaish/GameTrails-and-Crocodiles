@@ -10,7 +10,9 @@ import java.util.ArrayList;
 public class GroundTile extends Tile {
     FeatureType feature;
     ArrayList<TileEdge> tileEdges;
-
+    GroundTile(FeatureType feature,ArrayList<TileEdge> tileEdges){
+        super(feature,tileEdges);
+    }
     public FeatureType getFeatureAtTileEdge(int tileEdgePosition) {
         return null;
     }

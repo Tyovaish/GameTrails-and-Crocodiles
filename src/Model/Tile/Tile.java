@@ -1,12 +1,13 @@
 package Model.Tile;
 
+
+
 import Model.Location;
 import Model.Tile.FeatureTypes.FeatureType;
 
 import java.util.ArrayList;
-/**
- * Created by Trevor on 3/25/2017.
- */
+
+
 public abstract class Tile {
     FeatureType feature;
     ArrayList<TileEdge> tileEdges;

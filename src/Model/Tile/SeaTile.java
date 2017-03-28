@@ -1,11 +1,13 @@
 package Model.Tile;
 
-import Model.FeatureTypes.FeatureType;
+
+import Model.Tile.FeatureTypes.FeatureType;
+import Model.Tile.FeatureTypes.Sea.Sea;
 
 /**
  * Created by Trevor on 3/26/2017.
  */
-public class SeaTile extends Tile {
+public class SeaTile extends Tile{
     Sea sea;
     public FeatureType getFeatureAtTileEdge(int tileEdgePosition) {
         return sea;

@@ -1,6 +1,7 @@
 package Controller;
 
-import Model.FeatureTypes.River.River;
+
+import Model.Tile.FeatureTypes.River.River;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class RiverMenuState implements State {
     ArrayList<ArrayList<River>> riverList;
     State previousState;
+    State nextState;
     int tempState;
     public void nextState(){
         tempState++;
@@ -27,7 +29,7 @@ public class RiverMenuState implements State {
         return previousState;
     }
     public State forward(){
-        return this;
+        return nextState;
     }
     public void execute(){
 

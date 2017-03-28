@@ -1,5 +1,9 @@
 package Controller;
 
+import Controller.Commands.RemoveCommand;
+import Controller.Commands.TilePlacementCommand;
+import Controller.Commands.TileTypeCommand;
+
 import java.util.ArrayList;
 
 /**
@@ -7,9 +11,9 @@ import java.util.ArrayList;
  */
 public class Controller implements State{
 ArrayList<State> menuStates;
-//TilePlacementCommand tilePlacementCommand;
-//SeaTileTypeCommand  seaTileTypeCommand;
-//GroundTileTypeCommand groundTileTypeCommand;
+TilePlacementCommand tilePlacementCommand;
+TileTypeCommand groundTileTypeCommand;
+RemoveCommand removeCommand;
 State currentState;
 int tempState;
 Controller(){
@@ -57,6 +61,12 @@ public void execute(){
     if(currentState!=this) {
         currentState.execute();
     }
+}
+public void onLeftClick(int x,int y){
+
+}
+public void onRightClick(int x, int y){
+
 }
 
 }

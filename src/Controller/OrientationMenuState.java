@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.FeatureTypes.River.River;
 import Model.Tile.TileOrientation;
 import javafx.geometry.Orientation;
 
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 public class OrientationMenuState implements State {
     TileOrientation orientation;
     State previousState;
-    int tempState;
+    State nextState;
     public void nextState(){
         orientation.rotate(60);
     }
@@ -23,7 +22,7 @@ public class OrientationMenuState implements State {
         return previousState;
     }
     public State forward(){
-        return this;
+        return nextState;
     }
     public void execute(){
 

@@ -1,6 +1,6 @@
 package Model.Tile;
 
-import Model.FeatureTypes.FeatureType;
+import Model.Tile.FeatureTypes.FeatureType;
 
 import java.util.ArrayList;
 

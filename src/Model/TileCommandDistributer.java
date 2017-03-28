@@ -15,7 +15,7 @@ public class TileCommandDistributer {
         this.tilePlacementManager = tilePlacementManager;
     }
 
-    public Tile execute(TileTypeCommand command){ currentTile = tileBuilder.execute(command); }
+    public void execute(TileTypeCommand command){ currentTile = tileBuilder.execute(command); }
     public void execute(TilePlacementCommand command){ tilePlacementManager.execute(currentTile, command); }
 
     public TileBuilder getTileBuilder() { return tileBuilder; }

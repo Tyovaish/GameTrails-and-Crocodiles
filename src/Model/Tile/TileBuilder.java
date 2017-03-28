@@ -41,7 +41,7 @@ public class TileBuilder {
       return tileToBeCreated;
    }
 
-   public Tile execute(TileTypeCommand command){}
+   public Tile execute(TileTypeCommand command){ return new Tile();}
 
 
 }

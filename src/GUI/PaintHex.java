@@ -54,14 +54,14 @@ public class PaintHex extends JPanel{
 
 
     }
-    public void fillHex(int i, int j, int rot, Graphics2D g2) {
+    public void fillHex(int i, int j, int rot, Graphics2D g2, String type) {
         int vert;
         int horiz = radius +(j*((width/4*3)));
         if(j % 2 == 0)
             vert = radius +(i * height);
         else
             vert = 10 + ((i+1) * (height));
-        File img = new File("./GameTrails-and-Crocodiles/src/GUI/B.PNG");
+        File img = new File("./GameTrails-and-Crocodiles/src/GUI/" + type);
         BufferedImage bi = null;
         try{
              bi = ImageIO.read(img);
@@ -73,7 +73,7 @@ public class PaintHex extends JPanel{
 
             g2.rotate(Math.toRadians(rot*60) , horiz , vert);
             g2.setClip(setHex(horiz,vert));
-            g2.drawImage(bi.getScaledInstance(200,200,0),horiz- radius,vert- radius,null);
+            g2.drawImage(bi.getScaledInstance(200,300,0),horiz- radius,vert-130,null);
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(10));
             g2.draw(setHex(horiz,vert));

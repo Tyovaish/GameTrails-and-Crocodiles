@@ -1,5 +1,7 @@
 package GUI;
 
+import Model.Tile.FeatureTypes.FeatureType;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -63,7 +65,7 @@ public class Display extends JPanel implements KeyListener, MouseListener{
         for (int i=0;i<BSIZE;i++) {
             for (int j=0;j<BSIZE;j++) {
                 AffineTransform old = g2.getTransform();
-                hex.fillHex(i,j,board[i][j],g2);
+                hex.fillHex(i,j,board[i][j],g2, "b.jpg");
                 g2.setTransform(old);
             }
         }
@@ -99,11 +101,27 @@ public class Display extends JPanel implements KeyListener, MouseListener{
     @Override
     public void keyPressed(KeyEvent e) {
 
-        if( e.isControlDown() && e.getKeyCode() == KeyEvent.VK_R) {
+        if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_R) {
             rotateCounterClockWise();
         }
-        else if(e.getKeyCode() == KeyEvent.VK_R){
+        if (e.getKeyCode() == KeyEvent.VK_R) {
             rotateClockWise();
+        }
+
+        if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            dash.incrementIndex();
+            if (dash.getIndex() == 6)
+                dash.setIndex(0);
+
+            dash.setTileType(dash.getSelectedType(dash.getIndex()));
+
+        } if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_LEFT) {
+            dash.incrementIndex();
+            if (dash.getIndex() < 0)
+                dash.setIndex(5);
+
+            dash.setTileType(dash.getSelectedType(dash.getIndex()));
+
         }
     }
     @Override
@@ -120,7 +138,7 @@ public class Display extends JPanel implements KeyListener, MouseListener{
             rot = 0;
         else
             rot += 1;
-        dash.rot = rot;
+        dash.setRotation(rot);
     }
 
     private void rotateCounterClockWise(){
@@ -128,7 +146,7 @@ public class Display extends JPanel implements KeyListener, MouseListener{
             rot = 5;
         else
             rot -= 1;
-        dash.rot = rot;
+        dash.setRotation(rot);
     }
 
     Display()
@@ -137,7 +155,6 @@ public class Display extends JPanel implements KeyListener, MouseListener{
         addMouseListener(this);
         addKeyListener(this);
         setFocusable(true);
-        requestFocusInWindow();
         createGrid();
         createAndShowGUI();
 

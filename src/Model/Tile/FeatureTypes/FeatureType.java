@@ -1,4 +1,4 @@
-package Model.FeatureTypes;
+package Model.Tile.FeatureTypes;
 
 /**
  * Created by Trevor on 3/25/2017.

@@ -1,6 +1,6 @@
 package Model.Tile;
 
-import Model.FeatureTypes.FeatureType;
+import Model.Tile.FeatureTypes.FeatureType;
 
 import java.util.ArrayList;
 /**
@@ -13,6 +13,8 @@ public abstract class Tile {
         this.feature=feature;
         this.tileEdges=tileEdges;
     }
+
+
     public TileEdge getTileEdge(int tileEdgePosition){
         return tileEdges.get(tileEdgePosition);
     }

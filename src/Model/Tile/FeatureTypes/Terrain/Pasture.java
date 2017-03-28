@@ -1,6 +1,4 @@
-package Model.FeatureTypes.Terrain;
-
-import Model.FeatureTypes.Terrain.Terrain;
+package Model.Tile.FeatureTypes.Terrain;
 
 /**
  * Created by Trevor on 3/25/2017.

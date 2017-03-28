@@ -11,10 +11,7 @@ import java.util.ArrayList;
 public abstract class Tile {
     FeatureType feature;
     ArrayList<TileEdge> tileEdges;
-    Tile(FeatureType feature,ArrayList<TileEdge> tileEdges){
-        this.feature=feature;
-        this.tileEdges=tileEdges;
-    }
+
 
 
     public TileEdge getTileEdge(int tileEdgePosition){

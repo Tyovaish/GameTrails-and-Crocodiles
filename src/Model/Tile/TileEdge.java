@@ -25,13 +25,10 @@ public class TileEdge {
     public void setSouthType(){
 
     }
-<<<<<<< HEAD
     public void setFeatureType(FeatureType feature){
        this.feature=feature;
     }
-=======
     public void setNWType(){
->>>>>>> 514fae011200cce62bbab6788566d49db09cbc17
 
     }
     public void setNEType(){

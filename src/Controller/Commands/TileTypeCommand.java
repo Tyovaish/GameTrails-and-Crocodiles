@@ -21,7 +21,8 @@ public class TileTypeCommand implements Command {
     public void execute(){
         tilePlacementManager.execute(this);
         featureType=null;
-        tileEdgeList=new ArrayList<TileEdge>(6);
+       clearRivers();
+       clearFeatureType();
     }
     public FeatureType getFeatureType() {
         return featureType;
@@ -32,6 +33,12 @@ public class TileTypeCommand implements Command {
     }
 
     public void setRivers(River river,int tileEdgePosition) {
-        tileEdgeList.get(tileEdgePosition).;
+        tileEdgeList.get(tileEdgePosition).setFeatureType(river);
+    }
+    public void clearRivers(){
+        tileEdgeList=new ArrayList<TileEdge>(6);
+    }
+    public void clearFeatureType(){
+        featureType=null;
     }
 }

@@ -3,6 +3,7 @@ package Controller;
 import Controller.Commands.RemoveCommand;
 import Controller.Commands.TilePlacementCommand;
 import Controller.Commands.TileTypeCommand;
+import GUI.Display;
 import Model.Location;
 import Model.TilePlacementManager;
 
@@ -19,12 +20,13 @@ TileTypeCommand tileTypeCommand;
 RemoveCommand removeCommand;
 State currentState;
 int tempState;
+
 Controller(){
     tilePlacementManager=new TilePlacementManager();
     tileTypeCommand=new TileTypeCommand(tilePlacementManager);
     removeCommand=new RemoveCommand(tilePlacementManager);
     tilePlacementCommand=new TilePlacementCommand(tilePlacementManager);
-    menuStates.add(new FeatureTypeMenuState());
+    menuStates.add(new FeatureTypeMenuState(this,tilePlacementCommand,tileTypeCommand));
     currentState=menuStates.get(0);
     tempState=0;
 }
@@ -64,18 +66,17 @@ public State forward(){
     }
     return null;
 }
-public void execute(){
-    tileTypeCommand.execute();
-}
 public void onLeftClick(int x,int y){
-    execute();
-
     tilePlacementCommand.setLocation(new Location(x,y));
+    tileTypeCommand.execute();
     tilePlacementCommand.execute();
 }
 public void onRightClick(int x, int y){
     removeCommand.setLocation(new Location(x,y));
     removeCommand.execute();
+}
+public void displayTile(){
+
 }
 
 }

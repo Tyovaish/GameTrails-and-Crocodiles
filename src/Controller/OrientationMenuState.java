@@ -33,7 +33,6 @@ public class OrientationMenuState implements State {
         tilePlacementCommand.setOrientation(orientationList.get(tempState));
     }
     public void previousState(){
-
         tempState--;
         if(tempState<0){
             tempState=orientationList.size()-1;
@@ -41,6 +40,8 @@ public class OrientationMenuState implements State {
         tilePlacementCommand.setOrientation(orientationList.get(tempState));
     }
     public State back(){
+        tilePlacementCommand.setOrientation(orientationList.get(0));
+        tempState=0;
         return previousState;
     }
     public State forward(){

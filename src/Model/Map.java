@@ -1,12 +1,15 @@
 package Model;
 
 import Model.Tile.Tile;
+import Model.Tile.TileOrientation;
+import javafx.geometry.Orientation;
 
 /**
  * Created by Trevor on 3/25/2017.
  */
 public class Map {
     TilePlacementManager tilePlacementManager;
+    MapObserver mapObserver;
     final int BSIZE = 10;
     protected Tile[][] map;
 
@@ -64,12 +67,13 @@ public class Map {
             return new Location(location.getX() + 1, location.getY() - 1);
     }
 
-    public boolean insertTile(Tile tile, Location location) {
+    public boolean insertTile(Tile tile, Location location, TileOrientation orientation) {
         return true;
     }
-    public boolean checkTileInsertionEligibilty(Tile tile, Location location){
+    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
         return true;
     }
+    
 
 
 }

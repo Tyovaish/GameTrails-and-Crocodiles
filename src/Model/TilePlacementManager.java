@@ -16,10 +16,10 @@ public class TilePlacementManager {
     public void execute(RemoveCommand removeCommand){
 
     }
-    public void execute(TileTypeCommand tileTypeCommand){
+    public void execute(Tile tile, TileTypeCommand tileTypeCommand){
 
     }
-    public void execute(TilePlacementCommand tilePlacementCommand){
+    public void execute(Tile tile, TilePlacementCommand tilePlacementCommand){
 
     }
 

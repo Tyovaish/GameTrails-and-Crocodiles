@@ -1,5 +1,6 @@
 package Model.Tile;
 
+import Controller.Commands.TileTypeCommand;
 import Model.Tile.FeatureTypes.FeatureType;
 import Model.Tile.FeatureTypes.River.River;
 import Model.Tile.FeatureTypes.Sea.Sea;
@@ -39,6 +40,8 @@ public class TileBuilder {
       }
       return tileToBeCreated;
    }
+
+   public Tile execute(TileTypeCommand command){}
 
 
 }

@@ -8,16 +8,18 @@ import java.util.ArrayList;
  * Created by Trevor on 3/26/2017.
  */
 public class GroundTile extends Tile {
-    FeatureType feature;
-    ArrayList<TileEdge> tileEdges;
-    GroundTile(FeatureType feature,ArrayList<TileEdge> tileEdges){
-        super(feature,tileEdges);
-    }
+
     public FeatureType getFeatureAtTileEdge(int tileEdgePosition) {
         return null;
     }
 
     public boolean checkEdgeCompatabilty(int tileEdgePositionToCheck, FeatureType otherTilesFeature){
         return true;
+    }
+    public void setFeature(FeatureType feature){
+        this.feature=feature;
+    }
+    public void setTileEdges(FeatureType feature){
+        this.feature=feature;
     }
 }

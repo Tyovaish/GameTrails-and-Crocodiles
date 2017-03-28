@@ -11,9 +11,7 @@ import java.util.ArrayList;
  */
 public class SeaTile extends Tile{
     Sea sea;
-    SeaTile(FeatureType feature,ArrayList<TileEdge> tileEdges){
-        super(feature,tileEdges);
-    }
+
     public FeatureType getFeatureAtTileEdge(int tileEdgePosition) {
         return sea;
     }

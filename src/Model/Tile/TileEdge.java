@@ -10,7 +10,8 @@ import com.sun.org.apache.xalan.internal.utils.FeatureManager;
  */
 public class TileEdge {
    FeatureType feature;
-   TileEdge(FeatureType feature){
+   public TileEdge(){}
+   public TileEdge(FeatureType feature){
        this.feature=feature;
    }
    public boolean equals(FeatureType feature){

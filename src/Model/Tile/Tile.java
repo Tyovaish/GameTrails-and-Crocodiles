@@ -8,15 +8,20 @@ import Model.Tile.FeatureTypes.FeatureType;
 import java.util.ArrayList;
 
 
-public abstract class Tile {
+public class Tile {
     FeatureType feature;
     ArrayList<TileEdge> tileEdges;
 
 
-
+    public Tile(){
+        for(int i=0;i<6;i++){
+            tileEdges.add(new TileEdge());
+        }
+    }
     public TileEdge getTileEdge(int tileEdgePosition){
         return tileEdges.get(tileEdgePosition);
     }
+    public void  setTileEdgeFeature(int tileEdgeFeature, FeatureType feature){tileEdges.add(new TileEdge(feature));}
 
     public Location getSouthWest(Location location) {
         if (location.getY() % 2 == 0)

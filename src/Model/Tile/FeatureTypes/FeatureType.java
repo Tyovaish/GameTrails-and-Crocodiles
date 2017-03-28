@@ -6,4 +6,5 @@ package Model.Tile.FeatureTypes;
 public abstract class FeatureType {
 
 
+
 }

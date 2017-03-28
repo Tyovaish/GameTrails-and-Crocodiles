@@ -1,7 +1,6 @@
 package Model.Tile;
 
 import Model.FeatureTypes.FeatureType;
-import Model.FeatureTypes.Sea;
 
 /**
  * Created by Trevor on 3/26/2017.

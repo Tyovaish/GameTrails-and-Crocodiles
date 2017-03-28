@@ -1,6 +1,4 @@
-package Model.FeatureTypes.River;
-
-import Model.FeatureTypes.River.River;
+package Model.Tile.FeatureTypes.River;
 
 /**
  * Created by Trevor on 3/25/2017.

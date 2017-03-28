@@ -1,6 +1,6 @@
-package Model.FeatureTypes;
+package Model.Tile.FeatureTypes.Sea;
 
-import Model.FeatureTypes.FeatureType;
+import Model.Tile.FeatureTypes.FeatureType;
 
 /**
  * Created by Trevor on 3/25/2017.

@@ -19,7 +19,6 @@ public class Map {
 
     public Tile[][] getMap(){return this.map;}
     public Tile getTile(int x, int y){return this.map[x][y];}
-
     public boolean checkcoordinates(int x, int y){
         if(x < 0 || x >= map[0].length)
             return false;
@@ -30,7 +29,6 @@ public class Map {
     }
 
     public boolean insertTile(Tile tile, Location location) {
-
         return true;
     }
     public boolean checkTileInsertionEligibilty(Tile tile, Location location){

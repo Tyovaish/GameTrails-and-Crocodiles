@@ -8,6 +8,7 @@ import Model.Tile.FeatureTypes.FeatureType;
 public class TileEdge {
    FeatureType feature;
    public boolean equals(FeatureType feature){
+
        return true;
     }
 }

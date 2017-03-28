@@ -77,6 +77,7 @@ public class Display extends JPanel implements KeyListener, MouseListener{
             System.out.println("OUTSIDE"); //IF USER CLICKS OUT OF THE MAP
             return;
         }
+        System.out.println(p.x + " " + p.y);
         board[p.x][p.y] = rot;
         repaint();
 

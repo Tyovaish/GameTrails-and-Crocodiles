@@ -60,9 +60,18 @@ public class Map {
         Tile neighbor;
         TileEdge neighborEdge;
         String type;
+        String tileType = tile.getFeature().getType();
         Boolean valid = false;
+        Boolean noRiver = true;
 
         int edgeCounter = 0;
+        for (TileEdge edge : edges){
+            if (edge.getFeatureType().getType() != tileType){
+                noRiver = false;
+            }
+        }
+        if(noRiver){ return noRiver; }
+
         for(TileEdge edge : edges){
             type = edge.getFeatureType().getType();
             neighbor = neighbors[edgeCounter];

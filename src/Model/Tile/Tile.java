@@ -26,6 +26,7 @@ public class Tile {
             this.tileEdges[i]=tileEdges[((i-orientation.getRotations()+6)%this.tileEdges.length)];
         }
     }
+    public FeatureType getFeature(){ return feature; }
     public TileEdge getTileEdge(int tileEdgePosition){
         return tileEdges[tileEdgePosition];
     }

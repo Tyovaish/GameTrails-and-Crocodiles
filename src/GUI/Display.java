@@ -24,6 +24,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
     private void createAndShowGUI()
     {
+
         dash = new dashboard(ctrl);
         JFrame frame = new JFrame("Phase 01");
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -35,8 +36,9 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         screen.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         frame.add(screen);
         frame.add(dash, BorderLayout.EAST);
-        frame.setResizable(true);
+        frame.setResizable(false);
         frame.pack();
+        frame.setMinimumSize(getSize());
         frame.setVisible(true);
 
     }
@@ -58,10 +60,12 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
                     AffineTransform old = g2.getTransform();
                     hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j),
                             board.getTileNumberOfRivers(i,j) , g2);
+                    hex.drawCursor(hoverP.x,hoverP.y,g2);
                     g2.setTransform(old);
             }
         }
     }
+    
 
 
     public void paintComponent(Graphics g)
@@ -74,7 +78,9 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         drawGameBoard(g2);
         //Fills In Hexes with Tile Images from the Board
         fillInHex(g2);
-        hex.drawCursor(hoverP.x, hoverP.y,g2);
+        //Drawing the cursor
+
+
 
     }
 
@@ -104,7 +110,8 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE){
             return;
         }
-        //this.repaint();
+
+        this.repaint();
     }
     public void mouseDragged(MouseEvent e){
 

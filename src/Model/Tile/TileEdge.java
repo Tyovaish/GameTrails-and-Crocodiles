@@ -49,6 +49,7 @@ public class TileEdge {
         }
         return true;
     }
+
     public void print(){
         feature.print();
     }

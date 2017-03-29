@@ -45,6 +45,8 @@ public class FeatureTypeMenuState implements State {
         tileTypeCommand.setFeatureType(featureTypeList.get(tempState));
     }
     public State back(){
+        tileTypeCommand.setFeatureType(featureTypeList.get(0));
+        tempState=0;
         return previousState;
     }
     public State forward(){

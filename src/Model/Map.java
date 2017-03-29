@@ -1,12 +1,19 @@
 package Model;
 
+import Model.Tile.FeatureTypes.River.NormalRiver;
 import Model.Tile.Tile;
+import Model.Tile.TileOrientation;
+import javafx.geometry.Orientation;
+
+import java.util.ArrayList;
 
 /**
  * Created by Trevor on 3/25/2017.
  */
 public class Map {
     TilePlacementManager tilePlacementManager;
+    MapObserver mapObserver;
+    RiverConnectionManager riverConnectionManager;
     final int BSIZE = 10;
     protected Tile[][] map;
 
@@ -28,48 +35,68 @@ public class Map {
             return true;
     }
 
-    public Location getSouthWest(Location location) {
-        if (location.getY() % 2 == 0)
-            return new Location(location.getX(), location.getY() + 1);
-        else
-            return new Location(location.getX()+1, location.getY() + 1);
-    }
+    public void insertTile(Tile tile, Location location, TileOrientation orientation) {
 
-    public Location getNorthWest(Location location) {
-        if (location.getY() % 2 == 0)
-            return new Location(location.getX()-1, location.getY() + 1);
-        else
-            return new Location(location.getX(), location.getY()+ 1);
+    // mapObserver.notify(this);
     }
+    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
+        ArrayList<Tile> tilesToBeChecked=getNeighbors(location);
+        for(int i=0;i<tilesToBeChecked.size();i++){
+            Tile tileToBeCheckedBasedOnTileInserted=tilesToBeChecked.get(i);
+            if(!tile.getTileEdge(i).equals(tileToBeCheckedBasedOnTileInserted.getTileEdge((i+3)%6))){
+                return false;
+            }
+        }
 
-    public Location getNorth(Location location) {
-        return new Location(location.getX() - 1, location.getY());
-    }
-
-    public Location getNorthEast(Location location) {
-        if (location.getY() % 2 == 0)
-            return new Location(location.getX()-1, location.getY() - 1);
-        else
-            return new Location(location.getX(), location.getY() - 1);
-    }
-
-    public Location getSouth(Location location) {
-        return new Location( location.getX() + 1, location.getY());
-    }
-
-    public Location getSouthEast(Location location) {
-        if (location.getY() % 2 == 0)
-            return new Location(location.getX(), location.getY() - 1);
-        else
-            return new Location(location.getX() + 1, location.getY() - 1);
-    }
-
-    public boolean insertTile(Tile tile, Location location) {
         return true;
     }
-    public boolean checkTileInsertionEligibilty(Tile tile, Location location){
-        return true;
-    }
+    private ArrayList<Tile> getNeighbors(Location location){
+        //This is bad need to change eventually.  TDA but I havent figured a better way
+        ArrayList<Tile> tileToBeReturned=new ArrayList<Tile>();
+        Location northLocation=location.getNorth();
+        Location southLocation=location.getSouth();
+        Location southEastLocation=location.getSouthEast();
+        Location southWestLocation=location.getSouthWest();
+        Location northEastLocation=location.getNorthEast();
+        Location northWestLocation=location.getNorthWest();
+        if(checkcoordinates(northLocation.getX(),northLocation.getY())){
+            tileToBeReturned.add(map[northLocation.getX()][northLocation.getY()]);
+            
+        } else {
+            tileToBeReturned.add(null);
+        }
+        if(checkcoordinates(northEastLocation.getX(),northEastLocation.getY())){
+            tileToBeReturned.add(map[northEastLocation.getX()][northEastLocation.getY()]);
 
+        } else {
+            tileToBeReturned.add(null);
+        }
+        if(checkcoordinates(southEastLocation.getX(),southEastLocation.getY())){
+            tileToBeReturned.add(map[southEastLocation.getX()][southEastLocation.getY()]);
+
+        } else {
+            tileToBeReturned.add(null);
+        }
+
+        if(checkcoordinates(southLocation.getX(),southLocation.getY())){
+            tileToBeReturned.add(map[southLocation.getX()][southLocation.getY()]);
+
+        } else {
+            tileToBeReturned.add(null);
+        }
+        if(checkcoordinates(southWestLocation.getX(),southWestLocation.getY())){
+            tileToBeReturned.add(map[southWestLocation.getX()][southWestLocation.getY()]);
+
+        } else {
+            tileToBeReturned.add(null);
+        }
+        if(checkcoordinates(northWestLocation.getX(),northWestLocation.getY())){
+            tileToBeReturned.add(map[northWestLocation.getX()][northWestLocation.getY()]);
+
+        } else {
+            tileToBeReturned.add(null);
+        }
+        return tileToBeReturned;
+    }
 
 }

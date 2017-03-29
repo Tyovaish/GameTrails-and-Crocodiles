@@ -22,7 +22,7 @@ State currentState;
 int tempState;
 
 Controller(){
-    tilePlacementManager=new TilePlacementManager();
+    //tilePlacementManager=new TilePlacementManager();
     tileTypeCommand=new TileTypeCommand(tilePlacementManager);
     removeCommand=new RemoveCommand(tilePlacementManager);
     tilePlacementCommand=new TilePlacementCommand(tilePlacementManager);

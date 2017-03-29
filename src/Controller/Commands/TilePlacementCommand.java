@@ -29,6 +29,9 @@ public class TilePlacementCommand implements Command {
     }
 
     public void setLocation(Location location){ this.location=location; }
+    public void clearOrientation(){
+        orientation.reset();
+    }
     public void setOrientation(TileOrientation orientation) {
         this.orientation = orientation;
     }

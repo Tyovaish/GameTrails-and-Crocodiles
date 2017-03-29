@@ -32,7 +32,7 @@ public class Tile {
     public TileEdge[] getTileEdges() { return tileEdges; }
     public String getTileType(){return this.feature.getType();}
     public int getTileOrientation(){return this.orientation.getRotations();}
-    public int getNumberOfRivers(){return numberOfRivers;}
+    public int getNumberOfRivers(){return this.numberOfRivers;}
     public void  setTileEdgeFeature(int tileEdgeFeaturePosition, FeatureType feature){tileEdges[tileEdgeFeaturePosition].setFeatureType(feature);}
     public FeatureType getTileEdgeFeature(int tileEdgePosition){
         return tileEdges[tileEdgePosition].getFeatureType();

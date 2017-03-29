@@ -2,7 +2,6 @@ package Controller.Commands;
 
 import Model.Tile.FeatureTypes.FeatureType;
 import Model.Tile.FeatureTypes.River.River;
-import Model.Tile.Tile;
 import Model.Tile.TileEdge;
 import Model.TilePlacementManager;
 
@@ -11,19 +10,10 @@ import java.util.ArrayList;
 /**
  * Created by Trevor on 3/28/2017.
  */
-public class TileTypeCommand implements Command {
-    TilePlacementManager tilePlacementManager;
+public class TileTypeCommand {
     FeatureType  featureType;
     ArrayList<TileEdge> tileEdgeList;
-    public TileTypeCommand(TilePlacementManager tilePlacementManager){
-        this.tilePlacementManager=tilePlacementManager;
-    }
-    public void execute(){
-        tilePlacementManager.execute(this);
-        featureType=null;
-       clearRivers();
-       clearFeatureType();
-    }
+
     public FeatureType getFeatureType() {
         return featureType;
     }
@@ -35,7 +25,10 @@ public class TileTypeCommand implements Command {
     public void setRivers(River river,int tileEdgePosition) {
         tileEdgeList.get(tileEdgePosition).setFeatureType(river);
     }
-    public void clearRivers(){
+    public ArrayList<TileEdge> getTileEdgeList(){
+        return tileEdgeList;
+    }
+    public void clearTileEdgeList(){
         tileEdgeList=new ArrayList<TileEdge>(6);
     }
     public void clearFeatureType(){

@@ -19,7 +19,8 @@ public class Map {
 
 
     //CREATING THE GAME MAP
-    Map(){
+    Map(MapObserver mapObserver){
+        this.mapObserver=mapObserver;
         map = new Tile[BSIZE][BSIZE];
 
     }
@@ -36,7 +37,10 @@ public class Map {
     }
 
     public void insertTile(Tile tile, Location location, TileOrientation orientation) {
-
+        if(checkTileInsertionEligibilty(tile,location,orientation)){
+            map[location.getX()][location.getY()]=tile;
+            mapObserver.update(this);
+        }
     // mapObserver.notify(this);
     }
     private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
@@ -97,6 +101,10 @@ public class Map {
             tileToBeReturned.add(null);
         }
         return tileToBeReturned;
+    }
+    public void removeTile(Location location){
+        map[location.getX()][location.getY()]=null;
+        mapObserver.update(this);
     }
 
 }

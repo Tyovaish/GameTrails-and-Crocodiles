@@ -40,18 +40,18 @@ public class RiverMenuState implements State {
             tileTypeCommand.clearTileEdgeList();
             return;
         }else if(tempState==1){
-            tileTypeCommand.setRivers(sourceRiver,0);
+            tileTypeCommand.setTileEdge(sourceRiver,0);
             tempState++;
             return;
         }else if(tempState==2&&riverPositionCounter<=3){
-            tileTypeCommand.setRivers(normalRiver,0);
-            tileTypeCommand.setRivers(normalRiver,riverPositionCounter);
+            tileTypeCommand.setTileEdge(normalRiver,0);
+            tileTypeCommand.setTileEdge(normalRiver,riverPositionCounter);
             riverPositionCounter++;
             return;
         } else if(tempState==3){
-            tileTypeCommand.setRivers(normalRiver,5);
-            tileTypeCommand.setRivers(normalRiver,1);
-            tileTypeCommand.setRivers(normalRiver,3);
+            tileTypeCommand.setTileEdge(normalRiver,5);
+            tileTypeCommand.setTileEdge(normalRiver,1);
+            tileTypeCommand.setTileEdge(normalRiver,3);
         }
         riverPositionCounter=0;
     }
@@ -65,17 +65,17 @@ public class RiverMenuState implements State {
             tileTypeCommand.clearTileEdgeList();
             return;
         }else if(tempState==1){
-            tileTypeCommand.setRivers(sourceRiver,0);
+            tileTypeCommand.setTileEdge(sourceRiver,0);
             tempState++;
         }else if(tempState==2&&riverPositionCounter>=0){
-            tileTypeCommand.setRivers(normalRiver,0);
-            tileTypeCommand.setRivers(normalRiver,riverPositionCounter);
+            tileTypeCommand.setTileEdge(normalRiver,0);
+            tileTypeCommand.setTileEdge(normalRiver,riverPositionCounter);
             riverPositionCounter--;
             return;
         } else if(tempState==3){
-            tileTypeCommand.setRivers(normalRiver,5);
-            tileTypeCommand.setRivers(normalRiver,1);
-            tileTypeCommand.setRivers(normalRiver,3);
+            tileTypeCommand.setTileEdge(normalRiver,5);
+            tileTypeCommand.setTileEdge(normalRiver,1);
+            tileTypeCommand.setTileEdge(normalRiver,3);
         }
         riverPositionCounter=3;
     }

@@ -5,6 +5,7 @@ package Model.Tile;
  */
 public class TileOrientation {
     int rotations;
+
     public TileOrientation(int degrees){
         this.rotations=degrees;
     }

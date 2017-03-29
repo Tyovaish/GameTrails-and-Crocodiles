@@ -15,5 +15,5 @@ public class RemoveCommand {
     public void setLocation(Location location){
         this.location=location;
     }
-    public Location  getLocation(){return location;}
+    public Location getLocation(){return location;}
 }

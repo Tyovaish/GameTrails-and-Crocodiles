@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class Map {
     TilePlacementManager tilePlacementManager;
-    MapObserver mapObserver;
     RiverConnectionManager riverConnectionManager;
     final int BSIZE = 10;
     protected Tile[][] map;
@@ -50,14 +49,11 @@ public class Map {
             return true;
     }
 
-    public void insertTile(Tile tile, Location location, TileOrientation orientation) {
-        if(checkTileInsertionEligibilty(tile,location,orientation)){
-            map[location.getX()][location.getY()]=tile;
-            mapObserver.update(this);
-        }
+    public void insertTile(Tile tile, Location location) {
+        map[location.getX()][location.getY()]=tile;
     // mapObserver.notify(this);
     }
-    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
+/*    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
         Tile[] tilesToBeChecked=getNeighbors(location);
         for(int i=0;i<tilesToBeChecked.length;i++){
             Tile tileToBeCheckedBasedOnTileInserted=tilesToBeChecked[i];
@@ -66,7 +62,7 @@ public class Map {
             }
         }
         return true;
-    }
+    } */
     private Tile[] getNeighbors(Location location){
         //This is bad need to change eventually.  TDA but I havent figured a better way
         Tile[] tileToBeReturned=new Tile[6];
@@ -117,7 +113,6 @@ public class Map {
     }
     public void removeTile(Location location){
         map[location.getX()][location.getY()]=null;
-        mapObserver.update(this);
     }
 
 }

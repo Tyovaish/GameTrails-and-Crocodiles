@@ -6,6 +6,8 @@ import Controller.Commands.TileTypeCommand;
 import GUI.Display;
 import Model.Location;
 import Model.Map;
+import Model.Tile.TileBuilder;
+import Model.TileCommandDispatcher;
 import Model.TilePlacementManager;
 
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
  * Created by Trevor on 3/26/2017.
  */
 public class Controller implements State{
-    private TilePlacementManager tilePlacementManager;
+    private TileCommandDispatcher tileCommandDispatcher;
     private ArrayList<State> menuStates;
     private TilePlacementCommand tilePlacementCommand;
     private TileTypeCommand tileTypeCommand;
@@ -23,7 +25,7 @@ public class Controller implements State{
     private int tempState;
 
 public Controller(Map map){
-    tilePlacementManager=new TilePlacementManager(map);
+    tileCommandDispatcher=new TileCommandDispatcher(new TileBuilder(), new TilePlacementManager(map));
     tileTypeCommand=new TileTypeCommand();
     removeCommand=new RemoveCommand();
     tilePlacementCommand=new TilePlacementCommand();
@@ -75,13 +77,13 @@ public State forward(){ //GOING FROM FEATURE TYPE TO FEATURE RIVER TO ORIENTATIO
 }
 public void onLeftClick(int x,int y){
     tilePlacementCommand.setLocation(new Location(x,y));
-    tilePlacementManager.execute(tilePlacementCommand,tileTypeCommand);
+    tileCommandDispatcher.addNewTile(tileTypeCommand, tilePlacementCommand);
     tileTypeCommand.clearTileEdgeList();
     tileTypeCommand.clearFeatureType();
 }
 public void onRightClick(int x, int y){
     removeCommand.setLocation(new Location(x,y));
-    tilePlacementManager.execute(removeCommand);
+    tileCommandDispatcher.removeTile(removeCommand);
 }
 //TODO Maybe
 public void displayTile(){

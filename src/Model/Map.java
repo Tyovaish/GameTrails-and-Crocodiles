@@ -2,12 +2,10 @@ package Model;
 
 import Model.Tile.FeatureTypes.FeatureType;
 import Model.Tile.FeatureTypes.River.NormalRiver;
+
 import Model.Tile.Tile;
 import Model.Tile.TileEdge;
-import Model.Tile.TileOrientation;
-import javafx.geometry.Orientation;
 
-import java.util.ArrayList;
 
 /**
  * Created by Trevor on 3/25/2017.
@@ -21,13 +19,7 @@ public class Map {
 
     //CREATING THE GAME MAP
     public Map(){
-
-
-        //this.mapObserver=mapObserver;
-
         map = new Tile[BSIZE][BSIZE];
-
-
     }
 
 

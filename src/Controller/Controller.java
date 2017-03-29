@@ -14,13 +14,13 @@ import java.util.ArrayList;
  * Created by Trevor on 3/26/2017.
  */
 public class Controller implements State{
-TilePlacementManager tilePlacementManager;
-ArrayList<State> menuStates;
-TilePlacementCommand tilePlacementCommand;
-TileTypeCommand tileTypeCommand;
-RemoveCommand removeCommand;
-State currentState;
-int tempState;
+    private TilePlacementManager tilePlacementManager;
+    private ArrayList<State> menuStates;
+    private TilePlacementCommand tilePlacementCommand;
+    private TileTypeCommand tileTypeCommand;
+    private RemoveCommand removeCommand;
+    private State currentState;
+    private int tempState;
 
 public Controller(Map map){
     tilePlacementManager=new TilePlacementManager(map);
@@ -32,7 +32,7 @@ public Controller(Map map){
     currentState=menuStates.get(0);
     tempState=0;
 }
-public void nextState(){
+public void nextState(){ // FORWARD SELECTING FEATURE TYPE/ RIVERS TYPES /ORIENTATION
     if(currentState!=this) {
         currentState.nextState();
     } else {
@@ -43,7 +43,9 @@ public void nextState(){
     }
     tileTypeCommand.print();
 }
-public void previousState(){
+
+public String getType(){return tileTypeCommand.getFeatureType().getType();}
+public void previousState(){ //BACKWARDS SELECTING FEATURES TYPES / RIVERS TYPES / ORIENTATION
     if(currentState!=this) {
         currentState.previousState();
     } else {
@@ -54,7 +56,7 @@ public void previousState(){
     }
     tileTypeCommand.print();
 }
-public State back(){
+public State back(){ //GOING FROM RIVER TYPE TO FEATURE or FEATURE TYPE TO ITSELF
     if(currentState!=this) {
         currentState = currentState.back();
     } else {
@@ -62,7 +64,7 @@ public State back(){
     }
     return null;
 }
-public State forward(){
+public State forward(){ //GOING FROM FEATURE TYPE TO FEATURE RIVER TO ORIENTATION
     if(currentState!=this){
         System.out.println("Trying to go farther");
     currentState=currentState.forward();

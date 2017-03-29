@@ -17,6 +17,9 @@ public class TilePlacementCommand {
     public void setLocation(Location location){
       this.location=location;
     }
+    public void setOrientation(Orientation orientation){
+        orientation=orientation;
+    }
 
 
 }

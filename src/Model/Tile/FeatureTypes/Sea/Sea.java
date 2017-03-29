@@ -7,6 +7,7 @@ import Model.Tile.FeatureTypes.FeatureType;
  */
 public class Sea extends FeatureType {
     String type = "sea";
+    public Sea(){addType(type);}
     public void print(){
         System.out.println(type);
     }

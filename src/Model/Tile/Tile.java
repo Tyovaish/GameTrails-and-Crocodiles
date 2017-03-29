@@ -2,11 +2,9 @@ package Model.Tile;
 
 
 
-import Model.Location;
-import Model.Tile.FeatureTypes.FeatureType;
-import javafx.geometry.Orientation;
 
-import java.util.ArrayList;
+import Model.Tile.FeatureTypes.FeatureType;
+
 
 
 public class Tile {
@@ -17,6 +15,7 @@ public class Tile {
     public Tile(){
       tileEdges=new TileEdge[6];
     }
+
     public Tile(FeatureType feature,TileEdge [] tileEdges, TileOrientation orientation){
         this.feature=feature;
         this.tileEdges=new TileEdge[6];
@@ -28,7 +27,8 @@ public class Tile {
     public TileEdge getTileEdge(int tileEdgePosition){
         return tileEdges[tileEdgePosition];
     }
-
+    public String getTileType(){return this.feature.getType();}
+    public int getTileOrientation(){return this.orientation.getRotations();}
     public void  setTileEdgeFeature(int tileEdgeFeaturePosition, FeatureType feature){tileEdges[tileEdgeFeaturePosition].setFeatureType(feature);}
     public FeatureType getTileEdgeFeature(int tileEdgePosition){
         return tileEdges[tileEdgePosition].getFeatureType();

@@ -47,7 +47,7 @@ public void nextState(){ // FORWARD SELECTING FEATURE TYPE/ RIVERS TYPES /ORIENT
 
 public String getType(){return tileTypeCommand.getFeatureType().getType();}
 public int getOrientation(){return tileTypeCommand.getOrientation().getRotations();}
-public int getNumberOfRivers(){return tileTypeCommand.getNumberOfRivers();}
+public int getNumberOfRivers(){return tileTypeCommand.getNumberOfRivers(); }
 public void previousState(){ //BACKWARDS SELECTING FEATURES TYPES / RIVERS TYPES / ORIENTATION
     if(currentState!=this) {
         currentState.previousState();

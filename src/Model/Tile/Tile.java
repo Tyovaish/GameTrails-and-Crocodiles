@@ -19,7 +19,8 @@ public class Tile {
             tileEdges.add(new TileEdge());
         }
     }
-    public Tile(ArrayList<TileEdge> tileEdges, TileOrientation orientation){
+    public Tile(FeatureType feature,ArrayList<TileEdge> tileEdges, TileOrientation orientation){
+        this.feature=feature;
         this.tileEdges=new ArrayList<TileEdge>(6);
         this.orientation=orientation;
         for(int i=0;i<this.tileEdges.size();i++){

@@ -53,7 +53,9 @@ public class FeatureTypeMenuState implements State {
         return this;
     }
     public State forward(){
-        if(tileTypeCommand.getFeatureType().equals(new Sea())) {
+        Sea sea=new Sea();
+        Mountain mountain=new Mountain();
+        if(tileTypeCommand.getFeatureType().getClass().equals(sea.getClass())||tileTypeCommand.getFeatureType().getClass().equals(mountain.getClass())) {
             return this;
         }
         return nextState;

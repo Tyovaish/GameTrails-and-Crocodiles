@@ -75,8 +75,8 @@ public class PaintHex extends JPanel{
     public void fillHex(int i, int j, int rot, String type, int rivers,  Graphics2D g2) {
         String riverType;
         riverType = getRiverType(rivers);
-        File img = new File("./GameTrails-and-Crocodiles/src/GUI/" + type + ".jpg");
-        File img2 = new File("./GameTrails-and-Crocodiles/src/GUI/" + riverType);
+        File img = new File("./src/GUI/" + type + ".jpg");
+        File img2 = new File("./src/GUI/" + riverType);
 
         BufferedImage bi = null;
         BufferedImage bi2 = null;

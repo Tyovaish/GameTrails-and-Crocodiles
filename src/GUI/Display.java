@@ -2,6 +2,7 @@ package GUI;
 
 
 import Controller.Controller;
+import Model.ExportManager;
 import Model.Map;
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +20,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     private Map board ;
     private Controller ctrl;
     private dashboard dash ;
+    private ExportManager exportManager;
 
 
 
@@ -149,6 +151,9 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
             ctrl.back();
             dash.repaint();
         }
+        if(e.isControlDown() && e.getKeyCode()==KeyEvent.VK_E){
+            exportManager.export();
+        }
     }
     @Override
     public void keyReleased(KeyEvent e){
@@ -164,6 +169,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     {
         board = map;
         ctrl = controller;
+        exportManager=new ExportManager(board);
         setBackground(Color.blue);
         addMouseListener(this);
         addKeyListener(this);

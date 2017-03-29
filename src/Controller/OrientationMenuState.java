@@ -29,7 +29,7 @@ public class OrientationMenuState implements State {
     }
     public void nextState(){
         tempState++;
-        if(tempState>=orientationList.size()){
+        if(tempState>5){
             tempState=0;
         }
         tileTypeCommand.setOrientation(orientationList.get(tempState));
@@ -37,7 +37,7 @@ public class OrientationMenuState implements State {
     public void previousState(){
         tempState--;
         if(tempState<0){
-            tempState=orientationList.size()-1;
+            tempState=5;
         }
         tileTypeCommand.setOrientation(orientationList.get(tempState));
     }

@@ -54,7 +54,7 @@ public class RiverMenuState implements State {
 
     public void previousState(){
         tileTypeCommand.clearTileEdgeList();
-            tempState--;
+        tempState--;
         if(tempState<0){
             tempState=3;
         }
@@ -79,6 +79,9 @@ public class RiverMenuState implements State {
     }
 
     public State forward(){
+        if(tileTypeCommand.getNumberOfRivers()==0) {
+            return this;
+        }
         return nextState;
     }
 }

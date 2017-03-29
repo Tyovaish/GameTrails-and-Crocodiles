@@ -19,7 +19,6 @@ public class Map {
         map = new Tile[BSIZE][BSIZE];
     }
 
-
     public String getTileType(int x, int y){
         if(map[x][y] != null)
         return map[x][y].getTileType();

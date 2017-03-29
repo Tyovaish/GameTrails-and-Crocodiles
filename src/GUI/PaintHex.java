@@ -67,9 +67,6 @@ public class PaintHex extends JPanel{
 
 
         Polygon poly = setHex(horiz, vert);
-        if(i == -1)
-            g2.setColor(Color.black);
-        else
         g2.setColor(Color.RED);
         g2.setStroke(new BasicStroke(5));
         g2.drawPolygon(poly);

@@ -79,7 +79,6 @@ public void onLeftClick(int x,int y){
     tilePlacementCommand.setLocation(new Location(x,y));
     tilePlacementManager.execute(tilePlacementCommand,tileTypeCommand);
     tileTypeCommand.clearTileEdgeList();
-    tileTypeCommand.clearOrientation();
     currentState=menuStates.get(0);
 
 }

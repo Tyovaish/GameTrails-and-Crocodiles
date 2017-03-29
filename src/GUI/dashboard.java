@@ -24,10 +24,10 @@ public class dashboard extends JPanel {
 
         g2.setFont(new Font("Times New Roman", Font.BOLD, 50));
         FontMetrics metrics = g.getFontMetrics(g.getFont());
-        int x = (500 - metrics.stringWidth(ctrl.getType())) / 2;
-        g2.drawString(ctrl.getType(), x,250);
+        int x = (500 - metrics.stringWidth(ctrl.getType().toUpperCase())) / 2;
+        g2.drawString(ctrl.getType().toUpperCase(), x,250);
 
-        g2.translate(150,300);
+        g2.translate(150,275);
         hex.drawHex(0,0,g2);
         hex.fillHex(0,0,ctrl.getOrientation(),ctrl.getType(), ctrl.getNumberOfRivers(),g2);
 

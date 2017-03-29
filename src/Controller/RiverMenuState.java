@@ -48,7 +48,6 @@ public class RiverMenuState implements State {
             tileTypeCommand.setRivers(normalRiver,5);
             tileTypeCommand.setRivers(normalRiver,1);
             tileTypeCommand.setRivers(normalRiver,3);
-            tempState++;
         }
 
     }

@@ -23,7 +23,15 @@ public class TileTypeCommand {
     public FeatureType getFeatureType() {
         return featureType;
     }
-
+    public int getNumberOfRivers(){
+        int numberOfRivers=0;
+        for(int i=0;i<tileEdgeList.length;i++){
+            if(tileEdgeList[i]!=null){
+                numberOfRivers++;
+            }
+        }
+        return numberOfRivers;
+    }
     public void setFeatureType(FeatureType featureType) {
         this.featureType = featureType;
     }

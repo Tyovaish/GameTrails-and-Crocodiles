@@ -75,16 +75,21 @@ public class PaintHex extends JPanel{
         g2.drawPolygon(poly);
     }
 
-    public void fillHex(int i, int j, int rot, String type, Graphics2D g2) {
+    public void fillHex(int i, int j, int rot, String type, int rivers,  Graphics2D g2) {
+        String riverType;
         int vert;
         int horiz = radius +(j*((width/4*3)));
         if(j % 2 == 0)
             vert = radius +(i * height);
         else
             vert = 10 + ((i+1) * (height));
+        riverType = getRiverType(rivers);
 
             File img = new File("./GameTrails-and-Crocodiles/src/GUI/" + type + ".jpg");
+            File img2 = new File("./GameTrails-and-Crocodiles/src/GUI/" + riverType);
+
             BufferedImage bi = null;
+            BufferedImage bi2 = null;
         if(type == null) {return;}
         else{
             try {
@@ -94,16 +99,52 @@ public class PaintHex extends JPanel{
             }
         }
 
+        if(riverType != null){
+            try {
+                bi2 = ImageIO.read(img2);
+            } catch (IOException e) {
+                System.err.println("Could not load image file!");
+            }
+        }
+
+        float alpha = 0.5f;
+        int compositeRule = AlphaComposite.SRC_OVER;
+        AlphaComposite ac;
+        ac = AlphaComposite.getInstance(compositeRule, alpha);
+
         if(rot > -1) {
             g2.rotate(Math.toRadians(rot * 60), horiz, vert);
             g2.setClip(setHex(horiz, vert));
             g2.drawImage(bi.getScaledInstance(230, 320, 0), horiz - radius, vert - 150, null);
+            g2.drawImage(bi2, horiz - radius, vert - 150, null);
+            g2.setComposite(ac);
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(10));
             g2.draw(setHex(horiz, vert));
         }
 
 
+    }
+
+    private String getRiverType(int river){
+        switch (river){
+            case 0: {
+                return null;
+            }
+            case 1:{
+                return "source.PNG";
+
+            }
+            case 2:{
+                return "sharpbend.PNG";
+
+            }
+            case 3:{
+                return "Y.PNG";
+
+            }
+        }
+        return null;
     }
 
 

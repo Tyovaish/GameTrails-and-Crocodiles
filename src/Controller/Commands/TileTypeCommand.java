@@ -24,14 +24,11 @@ public class TileTypeCommand implements Command {
     public FeatureType getFeatureType() {
         return featureType;
     }
+    public void setFeatureType(FeatureType featureType) { this.featureType = featureType; }
 
-    public void setFeatureType(FeatureType featureType) {
-        this.featureType = featureType;
-    }
     public ArrayList<River> getRivers() {
         return rivers;
     }
-
     public void setRivers(ArrayList<River> rivers) {
         this.rivers = rivers;
     }

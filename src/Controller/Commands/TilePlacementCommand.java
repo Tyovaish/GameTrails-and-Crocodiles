@@ -17,24 +17,18 @@ public class TilePlacementCommand implements Command {
         this.tilePlacementManager=tilePlacementManager;
     }
     public void execute(){
-        tilePlacementManager.execute(this);
+        // tilePlacementManager.execute(this);
         location=null;
         orientation.reset();
     }
     public Location getLocation() {
         return location;
     }
-
-    public void setLocation(Location location){
-      this.location=location;
-    }
-    public void setOrientation(Orientation orientation){
-        orientation=orientation;
-    }
     public TileOrientation getOrientation() {
         return orientation;
     }
 
+    public void setLocation(Location location){ this.location=location; }
     public void setOrientation(TileOrientation orientation) {
         this.orientation = orientation;
     }

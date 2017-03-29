@@ -5,18 +5,22 @@ import Controller.Commands.TileTypeCommand;
 import Model.Tile.Tile;
 import Model.Tile.TileBuilder;
 
-public class TileCommandDistributer {
+public class TileCommandDispatcher {
     private TileBuilder tileBuilder;
     private TilePlacementManager tilePlacementManager;
     private Tile currentTile;
 
-    public TileCommandDistributer(TileBuilder tileBuilder, TilePlacementManager tilePlacementManager) {
+    public TileCommandDispatcher(TileBuilder tileBuilder, TilePlacementManager tilePlacementManager) {
         this.tileBuilder = tileBuilder;
         this.tilePlacementManager = tilePlacementManager;
     }
 
-    public void execute(TileTypeCommand command){ currentTile = tileBuilder.execute(command); }
-    public void execute(TilePlacementCommand command){ tilePlacementManager.execute(currentTile, command); }
+    public void addNewTile(TileTypeCommand typeCommand, TilePlacementCommand placementCommand){
+        execute(typeCommand);
+        execute(placementCommand);
+    }
+    private void execute(TileTypeCommand command){ currentTile = tileBuilder.execute(command); }
+    private void execute(TilePlacementCommand command){ tilePlacementManager.execute(currentTile, command); }
 
     public TileBuilder getTileBuilder() { return tileBuilder; }
     public TilePlacementManager getTilePlacementManager() { return tilePlacementManager; }

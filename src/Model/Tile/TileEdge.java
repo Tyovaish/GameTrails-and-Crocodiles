@@ -29,4 +29,7 @@ public class TileEdge {
     public FeatureType getFeatureType(){
         return feature;
     }
+    public void print(){
+        feature.print();
+    }
 }

@@ -19,7 +19,7 @@ public class OrientationMenuState implements State {
     public OrientationMenuState(State state, TilePlacementCommand tilePlacementCommand){
         this.tilePlacementCommand=tilePlacementCommand;
         for(int i=0;i<6;i++){
-            orientationList.add(new TileOrientation(60*i));
+            orientationList.add(new TileOrientation(i));
         }
         nextState=this;
         previousState=state;

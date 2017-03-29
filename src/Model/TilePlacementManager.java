@@ -14,7 +14,7 @@ public class TilePlacementManager {
         this.map=map;
     }
     public void execute(RemoveCommand removeCommand){
-
+        map.removeTile(removeCommand.getLocation());
     }
 
     public void execute(TilePlacementCommand tilePlacementCommand, TileTypeCommand tileTypeCommand){

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class TileTypeCommand {
     FeatureType  featureType;
-    ArrayList<TileEdge> tileEdgeList;
+    TileEdge[] tileEdgeList;
 
     public FeatureType getFeatureType() {
         return featureType;
@@ -23,13 +23,13 @@ public class TileTypeCommand {
     }
 
     public void setRivers(River river,int tileEdgePosition) {
-        tileEdgeList.get(tileEdgePosition).setFeatureType(river);
+        tileEdgeList[tileEdgePosition].setFeatureType(river);
     }
-    public ArrayList<TileEdge> getTileEdgeList(){
+    public TileEdge [] getTileEdgeList(){
         return tileEdgeList;
     }
     public void clearTileEdgeList(){
-        tileEdgeList=new ArrayList<TileEdge>(6);
+        tileEdgeList=new TileEdge[6];
     }
     public void clearFeatureType(){
         featureType=null;

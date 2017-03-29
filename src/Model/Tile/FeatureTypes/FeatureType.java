@@ -14,5 +14,6 @@ public abstract class FeatureType {
         public String getType(){
             return this.featureType;
         }
+        abstract public void print();
 
 }

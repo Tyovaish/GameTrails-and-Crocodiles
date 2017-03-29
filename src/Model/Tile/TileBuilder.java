@@ -11,10 +11,12 @@ import java.util.ArrayList;
  * Created by Trevor on 3/28/2017.
  */
 public class TileBuilder {
-   public static Tile createTile(FeatureType featureType,ArrayList<TileEdge> tileEdges, TileOrientation orientation){
-      for(int i=0;i<tileEdges.size();i++){
-         if(tileEdges.get(i)==null){
-            tileEdges.get(i).setFeatureType(featureType);
+   public static Tile createTile(FeatureType featureType,TileEdge[] tileEdges, TileOrientation orientation){
+      for(int i=0;i<tileEdges.length;i++){
+         if(tileEdges[i]==null){
+            System.out.println("We good");
+            tileEdges[i]=new TileEdge();
+            tileEdges[i].setFeatureType(featureType);
          }
       }
 

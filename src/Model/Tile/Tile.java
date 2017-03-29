@@ -11,13 +11,15 @@ public class Tile {
     FeatureType feature;
     TileEdge [] tileEdges;
     TileOrientation orientation;
+    int numberOfRivers;
 
     public Tile(){
       tileEdges=new TileEdge[6];
     }
 
-    public Tile(FeatureType feature,TileEdge [] tileEdges, TileOrientation orientation){
+    public Tile(FeatureType feature,TileEdge [] tileEdges, TileOrientation orientation,int numberOfRivers){
         this.feature=feature;
+        this.numberOfRivers=numberOfRivers;
         this.tileEdges=new TileEdge[6];
         this.orientation=orientation;
         for(int i=0;i<this.tileEdges.length;i++){
@@ -29,6 +31,7 @@ public class Tile {
     }
     public String getTileType(){return this.feature.getType();}
     public int getTileOrientation(){return this.orientation.getRotations();}
+    public int getNumberOfRivers(){return numberOfRivers;}
     public void  setTileEdgeFeature(int tileEdgeFeaturePosition, FeatureType feature){tileEdges[tileEdgeFeaturePosition].setFeatureType(feature);}
     public FeatureType getTileEdgeFeature(int tileEdgePosition){
         return tileEdges[tileEdgePosition].getFeatureType();

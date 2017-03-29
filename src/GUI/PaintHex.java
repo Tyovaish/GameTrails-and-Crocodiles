@@ -2,7 +2,7 @@ package GUI;
 
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -90,6 +90,8 @@ public class PaintHex extends JPanel{
 
             BufferedImage bi = null;
             BufferedImage bi2 = null;
+            BufferedImage transparentImage = null;
+
         if(type == null) {return;}
         else{
             try {
@@ -101,23 +103,22 @@ public class PaintHex extends JPanel{
 
         if(riverType != null){
             try {
-                bi2 = ImageIO.read(img2);
+              bi2 = ImageIO.read(img2);
+
             } catch (IOException e) {
                 System.err.println("Could not load image file!");
             }
+
+            Image imageWithTransparency = makeColorTransparent(bi2);
+            transparentImage = imageToBufferedImage(imageWithTransparency);
         }
 
-        float alpha = 0.5f;
-        int compositeRule = AlphaComposite.SRC_OVER;
-        AlphaComposite ac;
-        ac = AlphaComposite.getInstance(compositeRule, alpha);
 
         if(rot > -1) {
             g2.rotate(Math.toRadians(rot * 60), horiz, vert);
             g2.setClip(setHex(horiz, vert));
             g2.drawImage(bi.getScaledInstance(230, 320, 0), horiz - radius, vert - 150, null);
-            g2.drawImage(bi2, horiz - radius, vert - 150, null);
-            g2.setComposite(ac);
+            g2.drawImage(transparentImage, horiz - radius, vert - 150, null);
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(10));
             g2.draw(setHex(horiz, vert));
@@ -166,7 +167,41 @@ public class PaintHex extends JPanel{
         return p;
     }
 
+    private static BufferedImage imageToBufferedImage(final Image image)
+    {
+        final BufferedImage bufferedImage =
+                new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        final Graphics2D g2 = bufferedImage.createGraphics();
+        g2.drawImage(image, 0, 0, null);
+        g2.dispose();
+        return bufferedImage;
+    }
 
+    public static Image makeColorTransparent(final BufferedImage im)
+    {
+        final ImageFilter filter = new RGBImageFilter()
+        {
+            // the color we are looking for (white)... Alpha bits are set to opaque
+            public int markerRGB =  0xFFFFFFFF;
+
+            public final int filterRGB(final int x, final int y, final int rgb)
+            {
+                if ((rgb | 0xFF000000) == markerRGB)
+                {
+                    // Mark the alpha bits as zero - transparent
+                    return 0x00FFFFFF & rgb;
+                }
+                else
+                {
+                    // nothing to do
+                    return rgb;
+                }
+            }
+        };
+
+        final ImageProducer ip = new FilteredImageSource(im.getSource(), filter);
+        return Toolkit.getDefaultToolkit().createImage(ip);
+    }
 
 
 

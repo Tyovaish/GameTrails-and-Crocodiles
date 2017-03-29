@@ -23,7 +23,7 @@ public class Controller implements State{
     private int tempState;
 
 public Controller(Map map){
-TilePlacementManager tilePlacementManager=new TilePlacementManager(map);
+    this.tilePlacementManager=new TilePlacementManager(map);
     tileTypeCommand=new TileTypeCommand();
     removeCommand=new RemoveCommand();
     tilePlacementCommand=new TilePlacementCommand();

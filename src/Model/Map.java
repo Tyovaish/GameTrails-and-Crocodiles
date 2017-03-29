@@ -43,6 +43,12 @@ public class Map {
         }
         return 0;
     }
+    public int getTileNumberOfRivers(int x, int y){
+        if(map[x][y]!=null) {
+            return map[x][y].getNumberOfRivers();
+        }
+        return 0;
+    }
 
     public boolean checkcoordinates(int x, int y){
         if(x < 0 || x >= map[0].length)

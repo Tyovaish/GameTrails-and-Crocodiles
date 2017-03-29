@@ -4,7 +4,8 @@ package Model.Tile;
 
 
 import Model.Tile.FeatureTypes.FeatureType;
-
+import Model.Tile.FeatureTypes.River.NormalRiver;
+import Model.Tile.FeatureTypes.River.SourceRiver;
 
 
 public class Tile {
@@ -45,6 +46,24 @@ public class Tile {
             System.out.print(i);
             tileEdges[i].print();
         }
+    }
+    public String printForExport(){
+        String tileString="";
+        tileString+=feature.getType();
+        NormalRiver normalRiver=new NormalRiver();
+        SourceRiver sourceRiver=new SourceRiver();
+        String riverSubString="";
+        for(int i=0;i<tileEdges.length;i++){
+            if(tileEdges[i].getFeatureType().getClass().equals(normalRiver.getClass())||tileEdges[i].getFeatureType().getClass().equals(sourceRiver.getClass())){
+               riverSubString+=" "+(i+1)+" ";
+            }
+        }
+        if(!riverSubString.equals("")){
+            tileString+=" (";
+            tileString+=riverSubString;
+            tileString+=" )";
+        }
+        return tileString;
     }
 
 }

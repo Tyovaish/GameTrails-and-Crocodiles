@@ -65,7 +65,7 @@ public class TileTypeCommand {
         return orientation;
     }
     public void clearOrientation(){
-        orientation.reset();
+        orientation=new TileOrientation(0);
     }
     public void setOrientation(TileOrientation orientation) {
         this.orientation = orientation;

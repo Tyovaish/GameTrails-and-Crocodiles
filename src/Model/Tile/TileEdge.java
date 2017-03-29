@@ -33,10 +33,11 @@ public class TileEdge {
             if (!featureType.getClass().equals(sourceRiver.getClass()) && !featureType.getClass().equals(sea.getClass()) && !featureType.getClass().equals(normalRiver.getClass())) {
                 return false;
             }
-        }else if(!feature.getClass().equals(sea.getClass())) {
-                if (featureType.getClass().equals(sourceRiver.getClass()) || featureType.getClass().equals(sea.getClass()) || featureType.getClass().equals(normalRiver.getClass())) {
-                    return false;
-                }
+
+        } else if(!featureType.getClass().equals(sea.getClass())){
+            if(featureType.getClass().equals(sourceRiver.getClass())||featureType.getClass().equals(normalRiver.getClass())){
+                return false;
+
             }
         return true;
     }

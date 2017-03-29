@@ -25,6 +25,9 @@ public class Map {
     else
         return null;
     }
+    public Tile getTile(int x,int y){
+        return map[x][y];
+    }
     public int getTileOrientation(int x, int y){
         if(map[x][y]!=null) {
             return map[x][y].getTileOrientation();

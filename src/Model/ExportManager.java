@@ -1,11 +1,10 @@
 /**
  * Created by larry on 3/28/2017.
  */
-/*package Model;
+package Model;
 import Model.Tile.Tile;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class ExportManager { //it isn't finished
     Map map;
@@ -18,6 +17,8 @@ public class ExportManager { //it isn't finished
             mapFile = new File(file);
             if (mapFile.createNewFile()) {
                 System.out.println("File is created!");
+                FileWriter writer = new FileWriter(mapFile);
+                writer.write("BEGIN MAP\n");
             }
         }
         catch (IOException e) {
@@ -28,13 +29,16 @@ public class ExportManager { //it isn't finished
             for(int j = 0; j < 21; j++){
                 //map.getTile(i, j);
                 //when you get the first Tile that exists
-
+                //currentLine = tileToString(tile, i, j);
+                //writer.write(currentLine);
+                //writer.write("\n");
             }
         }
     }
 
     public String tileToString(Tile tile, int row, int col){
-        int numRivers;
+        int riverFaces[] = new int[3];
+        int numRivers = 0;
 
         int x = col;
         int z = row - (col - (col+1)) / 2;
@@ -49,11 +53,24 @@ public class ExportManager { //it isn't finished
                 i=6;
                 line+="sea ()";
             }
-            else if (tile.getTileType().contains("river") || tile.getTileType().contains("sourceRiver")|| tile.getTileType().contains("normalRiver")){
-
+            else if (tile.getTileType().contains("river")){
+                riverFaces[numRivers] = i;
+                numRivers++;
             }
+            else
+                line+=tile.getTileType() + " ";
+        }
+        if(numRivers == 0){
+            line+="()";
+        }
+        else {
+            line += "(";
+            for(int i = 0; i < numRivers; i++) {
+                line += Integer.toString(riverFaces[i]) + " ";
+            }
+            line+=")";
         }
         return line;
     }
 }
-*/
+

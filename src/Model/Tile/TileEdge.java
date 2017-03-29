@@ -21,6 +21,9 @@ public class TileEdge {
    }
 
     public RiverLink getRiverLink(){ return riverLink; }
+
+    public TileEdge getLinkPrev(){ return riverLink.getPrev(); }
+    public TileEdge getLinkNext(){ return riverLink.getNext(); }
     public void setLinkPrev(TileEdge edge){ riverLink.setPrev(edge); }
     public void setLinkNext(TileEdge edge){ riverLink.setNext(edge); }
 

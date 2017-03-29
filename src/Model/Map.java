@@ -70,6 +70,7 @@ public class Map {
         Tile neighbor;
         TileEdge neighborEdge;
         String type;
+        Boolean valid = false;
 
         int edgeCounter = 0;
         for(TileEdge edge : edges){
@@ -85,34 +86,41 @@ public class Map {
                 default: neighborEdge = null;
             }
             if(type == "sea"){
-                if(neighborEdge.getRiverLink().getPrev() == null){ edge.setLinkPrev(edge); }
+                if(neighborEdge.getLinkPrev() == null){ edge.setLinkPrev(edge); }
                 else{
                     edge.setLinkPrev(neighborEdge);
                     neighborEdge.setLinkNext(edge);
+                    valid = true;
                 }
             }
             if(type == "sourceriver"){
-                if(neighborEdge.getRiverLink().getPrev() == null){ edge.setLinkPrev(edge); }
+                if(neighborEdge.getLinkPrev() == null){ edge.setLinkPrev(edge); }
                 else{
                     edge.setLinkPrev(neighborEdge);
                     neighborEdge.setLinkNext(edge);
+                    valid = true;
                 }
             }
             if(type == "normalriver"){
-                if(neighborEdge.getRiverLink().getPrev() == null){ System.out.println("INVALID RIVER PLACEMENT"); }
-                else{
-                    edge.setLinkPrev(neighborEdge);
-                    neighborEdge.setLinkNext(edge);
-                    for (TileEdge nestedEdge : edges){
-                        if (nestedEdge != edge
-                                && nestedEdge.getFeatureType().getType() == "normalriver"
-                                && nestedEdge.getRiverLink().getPrev() == null){
-                            nestedEdge.setLinkPrev(edge);
+                if (edge.getLinkPrev() == null){
+                    if(neighborEdge.getLinkPrev() == null){ valid = false; }
+                    else{
+                        edge.setLinkPrev(neighborEdge);
+                        neighborEdge.setLinkNext(edge);
+                        for (TileEdge nestedEdge : edges){
+                            if (nestedEdge != edge
+                                    && nestedEdge.getFeatureType().getType() == "normalriver"
+                                    && nestedEdge.getLinkPrev() == null){
+                                nestedEdge.setLinkPrev(edge);
+                            }
                         }
+                        valid = true;
                     }
                 }
             }
+            edgeCounter++;
         }
+        if (!valid) System.out.println("INVALID PLACEMENT");
     }
 /*    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
         Tile[] tilesToBeChecked=getNeighbors(location);

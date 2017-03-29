@@ -11,34 +11,37 @@ import java.util.ArrayList;
 
 public class Tile {
     FeatureType feature;
-    ArrayList<TileEdge> tileEdges;
+    TileEdge [] tileEdges;
     TileOrientation orientation;
 
     public Tile(){
-        for(int i=0;i<6;i++){
-            tileEdges.add(new TileEdge());
-        }
+      tileEdges=new TileEdge[6];
     }
-    public Tile(FeatureType feature,ArrayList<TileEdge> tileEdges, TileOrientation orientation){
+    public Tile(FeatureType feature,TileEdge [] tileEdges, TileOrientation orientation){
         this.feature=feature;
-        this.tileEdges=new ArrayList<TileEdge>(6);
+        this.tileEdges=new TileEdge[6];
         this.orientation=orientation;
-        for(int i=0;i<this.tileEdges.size();i++){
-            this.tileEdges.add(i,tileEdges.get((i+orientation.getRotations())%this.tileEdges.size()));
+        for(int i=0;i<this.tileEdges.length;i++){
+            this.tileEdges[i]=tileEdges[((i-orientation.getRotations()+6)%this.tileEdges.length)];
         }
     }
-
     public TileEdge getTileEdge(int tileEdgePosition){
-        return tileEdges.get(tileEdgePosition);
+        return tileEdges[tileEdgePosition];
     }
 
-    public void  setTileEdgeFeature(int tileEdgeFeature, FeatureType feature){tileEdges.add(new TileEdge(feature));}
+    public void  setTileEdgeFeature(int tileEdgeFeaturePosition, FeatureType feature){tileEdges[tileEdgeFeaturePosition].setFeatureType(feature);}
     public FeatureType getTileEdgeFeature(int tileEdgePosition){
-        return tileEdges.get(tileEdgePosition).getFeatureType();
+        return tileEdges[tileEdgePosition].getFeatureType();
     }
 
     public boolean checkEdgeCompatabilty(int tileEdgePositionToCheck, FeatureType otherTilesFeature){
-        return tileEdges.get(tileEdgePositionToCheck).equals(otherTilesFeature);
+        return tileEdges[tileEdgePositionToCheck].equals(otherTilesFeature);
+    }
+    public void print(){
+        for(int i=0;i<tileEdges.length;i++){
+            System.out.print(i);
+            tileEdges[i].print();
+        }
     }
 
 }

@@ -5,11 +5,11 @@ package Model.Tile;
  */
 public class TileOrientation {
     int rotations;
-    public TileOrientation(int degrees){
-        this.rotations=degrees;
+    public TileOrientation(int rotations){
+        this.rotations=rotations;
     }
-    public void rotate(int degrees){
-        this.rotations+=degrees;
+    public void rotate(int rotations){
+        this.rotations+=rotations;
     }
     public void reset(){
         rotations=0;

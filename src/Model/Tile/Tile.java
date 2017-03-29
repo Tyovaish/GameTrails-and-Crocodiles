@@ -29,7 +29,7 @@ public class Tile {
     public TileEdge getTileEdge(int tileEdgePosition){
         return tileEdges[tileEdgePosition];
     }
-    public ArrayList<TileEdge> getTileEdges(){ return tileEdges; }
+    public TileEdge[] getTileEdges(){ return tileEdges; }
 
     public void  setTileEdgeFeature(int tileEdgeFeaturePosition, FeatureType feature){tileEdges[tileEdgeFeaturePosition].setFeatureType(feature);}
     public FeatureType getTileEdgeFeature(int tileEdgePosition){

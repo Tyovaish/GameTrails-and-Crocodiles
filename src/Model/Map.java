@@ -21,12 +21,29 @@ public class Map {
 
     //CREATING THE GAME MAP
     public Map(){
+
+
+        //this.mapObserver=mapObserver;
+
         map = new Tile[BSIZE][BSIZE];
+
 
     }
 
-    public Tile[][] getMap(){return this.map;}
-    public Tile getTile(int x, int y){return this.map[x][y];}
+
+    public String getTileType(int x, int y){
+        if(map[x][y] != null)
+        return map[x][y].getTileType();
+    else
+        return null;
+    }
+    public int getTileOrientation(int x, int y){
+        if(map[x][y]!=null) {
+            return map[x][y].getTileOrientation();
+        }
+        return 0;
+    }
+
     public boolean checkcoordinates(int x, int y){
         if(x < 0 || x >= map[0].length)
             return false;
@@ -39,7 +56,6 @@ public class Map {
     public void insertTile(Tile tile, Location location) {
         if(checkTileInsertionEligibilty(tile,location)){
             map[location.getX()][location.getY()]=tile;
-            mapObserver.update(this);
         }
     // mapObserver.notify(this);
     }

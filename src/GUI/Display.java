@@ -1,29 +1,33 @@
 package GUI;
 
-import Model.Tile.FeatureTypes.FeatureType;
+
+import Controller.Controller;
+import Model.Map;
+
+import Model.Tile.Tile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 
 /**
  * Created by Lazaro on 3/26/2017.
  */
-public class Display extends JPanel implements KeyListener, MouseListener{
+public class Display extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
 
     final   int BSIZE = 10; //board size.
-    private dashboard dash = new dashboard();
     private PaintHex hex = new PaintHex();
-    private int rot = 0;
-    private int[][] board = new int[BSIZE][BSIZE];
+    private Point hoverP = new Point(0,0);
+    private Map board ;
+    private Controller ctrl;
+    private dashboard dash ;
+
 
 
     private void createAndShowGUI()
     {
+        dash = new dashboard(ctrl);
         JFrame frame = new JFrame("Phase 01");
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
@@ -37,38 +41,43 @@ public class Display extends JPanel implements KeyListener, MouseListener{
         frame.setResizable(true);
         frame.pack();
         frame.setVisible(true);
+
     }
-    private void createGrid(){
-        for (int i=0;i<BSIZE;i++) {
-            for (int j=0;j<BSIZE;j++) {
-                board[i][j]= -1;
+
+
+    private void drawGameBoard(Graphics2D g2){
+
+            for (int i = 0; i < BSIZE; i++) {
+                for (int j = 0; j < BSIZE; j++) {
+                    hex.drawHex(i, j, g2);
+                }
+            }
+    }
+
+
+    private void fillInHex(Graphics2D g2){
+        for (int i = 0; i < BSIZE; i++) {
+            for (int j = 0; j < BSIZE; j++) {
+                    AffineTransform old = g2.getTransform();
+                    hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j), g2);
+                    g2.setTransform(old);
             }
         }
     }
+
 
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g.create();
+        Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-
-
         //draws GameBoard
-        for (int i=0;i<BSIZE;i++) {
-            for (int j=0;j<BSIZE;j++) {
-                hex.drawHex(i,j,g2 );
-            }
-        }
-
-        //FILLS IN HEX WHEN THE GAME-BOARD HAS A ROTATION VALUE
-        for (int i=0;i<BSIZE;i++) {
-            for (int j=0;j<BSIZE;j++) {
-                AffineTransform old = g2.getTransform();
-                hex.fillHex(i,j,board[i][j],g2, "b.jpg");
-                g2.setTransform(old);
-            }
-        }
+        drawGameBoard(g2);
+        //Fills In Hexes with Tile Images
+        fillInHex(g2);
+        if(hoverP.x >= 0 || hoverP.y >= 0 || hoverP.x < BSIZE || hoverP.y < BSIZE)
+        hex.drawCursor(hoverP.x, hoverP.y,g2);
 
     }
 
@@ -80,12 +89,23 @@ public class Display extends JPanel implements KeyListener, MouseListener{
             return;
         }
         System.out.println(p.x + " " + p.y);
-        board[p.x][p.y] = rot;
-        repaint();
+        ctrl.onLeftClick(p.x,p.y);
+        this.repaint();
+
 
 
     }//end of mouseClicked method
 
+    public void mouseMoved(MouseEvent e){
+        hoverP = hex.pxtoHex(e.getX(),e.getY());
+        if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE){
+            return;
+        }
+        this.repaint();
+    }
+    public void mouseDragged(MouseEvent e){
+
+    }
     public void mouseEntered(MouseEvent e) {
     }
 
@@ -101,27 +121,20 @@ public class Display extends JPanel implements KeyListener, MouseListener{
     @Override
     public void keyPressed(KeyEvent e) {
 
-        if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_R) {
-            rotateCounterClockWise();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_R) {
-            rotateClockWise();
-        }
 
         if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            dash.incrementIndex();
-            if (dash.getIndex() == 6)
-                dash.setIndex(0);
-
-            dash.setTileType(dash.getSelectedType(dash.getIndex()));
+            ctrl.nextState();
+            dash.repaint();
 
         } if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_LEFT) {
-            dash.incrementIndex();
-            if (dash.getIndex() < 0)
-                dash.setIndex(5);
+          ctrl.previousState();
 
-            dash.setTileType(dash.getSelectedType(dash.getIndex()));
-
+        }
+        if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_DOWN){
+            ctrl.forward();
+        }
+        if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_UP){
+            ctrl.back();
         }
     }
     @Override
@@ -133,29 +146,16 @@ public class Display extends JPanel implements KeyListener, MouseListener{
 
     }
 
-    private void rotateClockWise(){
-        if (rot == 5)
-            rot = 0;
-        else
-            rot += 1;
-        dash.setRotation(rot);
-    }
 
-    private void rotateCounterClockWise(){
-        if (rot == 0)
-            rot = 5;
-        else
-            rot -= 1;
-        dash.setRotation(rot);
-    }
-
-    Display()
+    Display(Map map, Controller controller)
     {
+        board = map;
+        ctrl = controller;
         setBackground(Color.blue);
         addMouseListener(this);
         addKeyListener(this);
+        addMouseMotionListener(this);
         setFocusable(true);
-        createGrid();
         createAndShowGUI();
 
     }

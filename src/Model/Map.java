@@ -57,62 +57,64 @@ public class Map {
     }
 
     private void riverLinking(Tile tile, Location location){
-        TileEdge[] edges = tile.getTileEdges();
-        Tile[] neighbors = getNeighbors(location);
-        Tile neighbor;
-        TileEdge neighborEdge;
-        String type;
-        Boolean valid = false;
+        try{
+            TileEdge[] edges = tile.getTileEdges();
+            Tile[] neighbors = getNeighbors(location);
+            Tile neighbor;
+            TileEdge neighborEdge;
+            String type;
+            Boolean valid = false;
 
-        int edgeCounter = 0;
-        for(TileEdge edge : edges){
-            type = edge.getFeatureType().getType();
-            neighbor = neighbors[edgeCounter];
-            switch (edgeCounter) {
-                case 0: neighborEdge = neighbor.getTileEdge(3);
-                case 1: neighborEdge = neighbor.getTileEdge(4);
-                case 2: neighborEdge = neighbor.getTileEdge(5);
-                case 3: neighborEdge = neighbor.getTileEdge(0);
-                case 4: neighborEdge = neighbor.getTileEdge(1);
-                case 5: neighborEdge = neighbor.getTileEdge(2);
-                default: neighborEdge = null;
-            }
-            if(type == "sea"){
-                if(neighborEdge.getLinkPrev() == null){ edge.setLinkPrev(edge); }
-                else{
-                    edge.setLinkPrev(neighborEdge);
-                    neighborEdge.setLinkNext(edge);
-                    valid = true;
+            int edgeCounter = 0;
+            for(TileEdge edge : edges){
+                type = edge.getFeatureType().getType();
+                neighbor = neighbors[edgeCounter];
+                switch (edgeCounter) {
+                    case 0: neighborEdge = neighbor.getTileEdge(3);
+                    case 1: neighborEdge = neighbor.getTileEdge(4);
+                    case 2: neighborEdge = neighbor.getTileEdge(5);
+                    case 3: neighborEdge = neighbor.getTileEdge(0);
+                    case 4: neighborEdge = neighbor.getTileEdge(1);
+                    case 5: neighborEdge = neighbor.getTileEdge(2);
+                    default: neighborEdge = null;
                 }
-            }
-            if(type == "sourceriver"){
-                if(neighborEdge.getLinkPrev() == null){ edge.setLinkPrev(edge); }
-                else{
-                    edge.setLinkPrev(neighborEdge);
-                    neighborEdge.setLinkNext(edge);
-                    valid = true;
-                }
-            }
-            if(type == "normalriver"){
-                if (edge.getLinkPrev() == null){
-                    if(neighborEdge.getLinkPrev() == null){ valid = false; }
+                if(type == "sea"){
+                    if(neighborEdge.getLinkPrev() == null){ edge.setLinkPrev(edge); }
                     else{
                         edge.setLinkPrev(neighborEdge);
                         neighborEdge.setLinkNext(edge);
-                        for (TileEdge nestedEdge : edges){
-                            if (nestedEdge != edge
-                                    && nestedEdge.getFeatureType().getType() == "normalriver"
-                                    && nestedEdge.getLinkPrev() == null){
-                                nestedEdge.setLinkPrev(edge);
-                            }
-                        }
                         valid = true;
                     }
                 }
+                if(type == "source"){
+                    if(neighborEdge.getLinkPrev() == null){ edge.setLinkPrev(edge); }
+                    else{
+                        edge.setLinkPrev(neighborEdge);
+                        neighborEdge.setLinkNext(edge);
+                        valid = true;
+                    }
+                }
+                if(type == "normalriver"){
+                    if (edge.getLinkPrev() == null){
+                        if(neighborEdge.getLinkPrev() == null){ valid = false; }
+                        else{
+                            edge.setLinkPrev(neighborEdge);
+                            neighborEdge.setLinkNext(edge);
+                            for (TileEdge nestedEdge : edges){
+                                if (nestedEdge != edge
+                                        && nestedEdge.getFeatureType().getType() == "normalriver"
+                                        && nestedEdge.getLinkPrev() == null){
+                                    nestedEdge.setLinkPrev(edge);
+                                }
+                            }
+                            valid = true;
+                        }
+                    }
+                }
+                edgeCounter++;
             }
-            edgeCounter++;
-        }
-        if (!valid) System.out.println("INVALID PLACEMENT");
+            if (!valid) System.out.println("INVALID PLACEMENT");
+        } catch (NullPointerException e){}
     }
 /*    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
         Tile[] tilesToBeChecked=getNeighbors(location);

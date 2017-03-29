@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * Created by Trevor on 3/26/2017.
  */
 public class Controller implements State{
+    Map map;
 TilePlacementManager tilePlacementManager;
 ArrayList<State> menuStates;
 TilePlacementCommand tilePlacementCommand;
@@ -22,7 +23,8 @@ RemoveCommand removeCommand;
 State currentState;
 int tempState;
 
-public Controller(Map map){
+public Controller(){
+    map=new Map();
     tilePlacementManager=new TilePlacementManager(map);
     tileTypeCommand=new TileTypeCommand();
     removeCommand=new RemoveCommand();
@@ -76,6 +78,7 @@ public void onLeftClick(int x,int y){
     tilePlacementManager.execute(tilePlacementCommand,tileTypeCommand);
     tileTypeCommand.clearTileEdgeList();
     tileTypeCommand.clearFeatureType();
+    currentState=menuStates.get(0);
 }
 public void onRightClick(int x, int y){
     removeCommand.setLocation(new Location(x,y));

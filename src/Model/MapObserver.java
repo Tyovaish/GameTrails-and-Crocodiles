@@ -1,5 +1,6 @@
 package Model;
 
+import GUI.Display;
 import GUI.PaintHex;
 
 /**
@@ -7,7 +8,7 @@ import GUI.PaintHex;
  */
 public class MapObserver {
     Map map;
-    PaintHex paintHex;
+    Display paintHex;
    public void update(Map map){
 
    }

@@ -18,7 +18,7 @@ public class TilePlacementManager {
     }
 
     public void execute(TilePlacementCommand tilePlacementCommand, TileTypeCommand tileTypeCommand){
-        TileBuilder.createTile(tileTypeCommand.getFeatureType(),tileTypeCommand.getTileEdgeList(),tilePlacementCommand.getOrientation());
+        TileBuilder.createTile(tileTypeCommand.getFeatureType(),tileTypeCommand.getTileEdgeList(),tileTypeCommand.getOrientation());
 
     }
 

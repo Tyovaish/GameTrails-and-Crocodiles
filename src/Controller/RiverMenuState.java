@@ -20,70 +20,62 @@ public class RiverMenuState implements State {
     State previousState;
     State nextState;
     int tempState;
-    int riverPositionCounter;
 
-    public RiverMenuState(State state, TilePlacementCommand tilePlacementCommand, TileTypeCommand tileTypeCommand){
+
+    public RiverMenuState(State state,TileTypeCommand tileTypeCommand){
         tempState=0;
         sourceRiver=new SourceRiver();
         normalRiver=new NormalRiver();
         this.tileTypeCommand=tileTypeCommand;
-        nextState=new OrientationMenuState(this,tilePlacementCommand);
+        nextState=new OrientationMenuState(this,tileTypeCommand);
         previousState=state;
     }
 //This is bad, need to change if time
     public void nextState(){
+        tileTypeCommand.clearTileEdgeList();
         tempState++;
         if(tempState>3){
             tempState=0;
         }
+
         if(tempState==0){
-            tileTypeCommand.clearTileEdgeList();
-            return;
         }else if(tempState==1){
             tileTypeCommand.setRivers(sourceRiver,0);
-            tempState++;
-            return;
-        }else if(tempState==2&&riverPositionCounter<=3){
-            tileTypeCommand.setRivers(normalRiver,0);
-            tileTypeCommand.setRivers(normalRiver,riverPositionCounter);
-            riverPositionCounter++;
-            return;
+        }else if(tempState==2){
+           tileTypeCommand.setRivers(normalRiver,0);
+           tileTypeCommand.setRivers(normalRiver,2);
         } else if(tempState==3){
             tileTypeCommand.setRivers(normalRiver,5);
             tileTypeCommand.setRivers(normalRiver,1);
             tileTypeCommand.setRivers(normalRiver,3);
+            tempState++;
         }
-        riverPositionCounter=0;
+
     }
 
     public void previousState(){
-        tempState--;
+        tileTypeCommand.clearTileEdgeList();
+            tempState--;
         if(tempState<0){
             tempState=3;
         }
         if(tempState==0){
-            tileTypeCommand.clearTileEdgeList();
-            return;
         }else if(tempState==1){
             tileTypeCommand.setRivers(sourceRiver,0);
-            tempState++;
-        }else if(tempState==2&&riverPositionCounter>=0){
+        }else if(tempState==2){
             tileTypeCommand.setRivers(normalRiver,0);
-            tileTypeCommand.setRivers(normalRiver,riverPositionCounter);
-            riverPositionCounter--;
-            return;
+            tileTypeCommand.setRivers(normalRiver,2);
         } else if(tempState==3){
-            tileTypeCommand.setRivers(normalRiver,5);
             tileTypeCommand.setRivers(normalRiver,1);
             tileTypeCommand.setRivers(normalRiver,3);
+            tileTypeCommand.setRivers(normalRiver,5);
         }
-        riverPositionCounter=3;
+
     }
 
     public State back(){
         tileTypeCommand.clearTileEdgeList();
         tempState=0;
-        riverPositionCounter=0;
         return previousState;
     }
 

@@ -1,6 +1,5 @@
 package Model;
 
-import Controller.Commands.Command;
 import Controller.Commands.RemoveCommand;
 import Controller.Commands.TilePlacementCommand;
 import Controller.Commands.TileTypeCommand;
@@ -12,12 +11,9 @@ import Model.Tile.TileOrientation;
  * Created by Trevor on 3/25/2017.
  */
 public class TilePlacementManager {
-    TileBuilder tileBuilder;
     Map map;
-
-    public TilePlacementManager(TileBuilder tileBuilder, Map map) {
-        this.tileBuilder = tileBuilder;
-        this.map = map;
+   public TilePlacementManager(Map map){
+        this.map=map;
     }
 
     public void execute(RemoveCommand removeCommand){}

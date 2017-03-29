@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Commands.RemoveCommand;
 import Controller.Commands.TilePlacementCommand;
 import Controller.Commands.TileTypeCommand;
 import Model.Tile.Tile;
@@ -19,8 +20,11 @@ public class TileCommandDispatcher {
         execute(typeCommand);
         execute(placementCommand);
     }
+    public void removeTile(RemoveCommand command){ execute(command); }
+
     private void execute(TileTypeCommand command){ currentTile = tileBuilder.execute(command); }
     private void execute(TilePlacementCommand command){ tilePlacementManager.execute(currentTile, command); }
+    private void execute(RemoveCommand command){ tilePlacementManager.execute(command); }
 
     public TileBuilder getTileBuilder() { return tileBuilder; }
     public TilePlacementManager getTilePlacementManager() { return tilePlacementManager; }

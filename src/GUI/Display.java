@@ -38,6 +38,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         frame.add(dash, BorderLayout.EAST);
         frame.setResizable(false);
         frame.pack();
+        frame.setMinimumSize(getSize());
         frame.setVisible(true);
 
     }

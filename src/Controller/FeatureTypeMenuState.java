@@ -20,6 +20,7 @@ public class FeatureTypeMenuState implements State {
     State nextState;
     int tempState;
     public FeatureTypeMenuState(State state,TilePlacementCommand  tilePlacementCommand, TileTypeCommand tileTypeCommand){
+        featureTypeList=new ArrayList<FeatureType>();
         featureTypeList.add(new Desert());
         featureTypeList.add(new Mountain());
         featureTypeList.add(new Pasture());
@@ -27,6 +28,7 @@ public class FeatureTypeMenuState implements State {
         featureTypeList.add(new Woods());
         featureTypeList.add(new Sea());
         this.tileTypeCommand=tileTypeCommand;
+        tileTypeCommand.setFeatureType(featureTypeList.get(0));
         nextState=new RiverMenuState(this,tilePlacementCommand,tileTypeCommand);
         previousState=state;
     }
@@ -51,9 +53,9 @@ public class FeatureTypeMenuState implements State {
     }
     public State forward(){
         if(tileTypeCommand.getFeatureType().equals(new Sea())) {
-            return nextState;
+            return this;
         }
-        return this;
+        return nextState;
     }
 
 }

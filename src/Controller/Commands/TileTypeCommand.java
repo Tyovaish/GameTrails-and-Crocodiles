@@ -13,7 +13,9 @@ import java.util.ArrayList;
 public class TileTypeCommand {
     FeatureType  featureType;
     TileEdge[] tileEdgeList;
-
+    public  TileTypeCommand(){
+        tileEdgeList=new TileEdge[6];
+    }
     public FeatureType getFeatureType() {
         return featureType;
     }
@@ -23,6 +25,7 @@ public class TileTypeCommand {
     }
 
     public void setRivers(River river,int tileEdgePosition) {
+        tileEdgeList[tileEdgePosition]=new TileEdge();
         tileEdgeList[tileEdgePosition].setFeatureType(river);
     }
     public TileEdge [] getTileEdgeList(){
@@ -33,5 +36,17 @@ public class TileTypeCommand {
     }
     public void clearFeatureType(){
         featureType=null;
+    }
+    public void print(){
+        if(featureType!=null) {
+            System.out.println("FeatureType: ");
+            featureType.print();
+        }
+        for(int i=0;i<tileEdgeList.length;i++){
+            if(tileEdgeList[i]!=null){
+                System.out.print(i+": ");
+                tileEdgeList[i].print();
+            }
+        }
     }
 }

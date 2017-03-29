@@ -24,6 +24,7 @@ public class RiverMenuState implements State {
 
     public RiverMenuState(State state, TilePlacementCommand tilePlacementCommand, TileTypeCommand tileTypeCommand){
         tempState=0;
+        riverPositionCounter=1;
         sourceRiver=new SourceRiver();
         normalRiver=new NormalRiver();
         this.tileTypeCommand=tileTypeCommand;
@@ -33,15 +34,14 @@ public class RiverMenuState implements State {
 //This is bad, need to change if time
     public void nextState(){
         tempState++;
+        tileTypeCommand.clearTileEdgeList();
         if(tempState>3){
             tempState=0;
         }
         if(tempState==0){
-            tileTypeCommand.clearTileEdgeList();
             return;
         }else if(tempState==1){
             tileTypeCommand.setRivers(sourceRiver,0);
-            tempState++;
             return;
         }else if(tempState==2&&riverPositionCounter<=3){
             tileTypeCommand.setRivers(normalRiver,0);
@@ -57,6 +57,7 @@ public class RiverMenuState implements State {
     }
 
     public void previousState(){
+        tileTypeCommand.clearTileEdgeList();
         tempState--;
         if(tempState<0){
             tempState=3;
@@ -66,16 +67,15 @@ public class RiverMenuState implements State {
             return;
         }else if(tempState==1){
             tileTypeCommand.setRivers(sourceRiver,0);
-            tempState++;
         }else if(tempState==2&&riverPositionCounter>=0){
             tileTypeCommand.setRivers(normalRiver,0);
             tileTypeCommand.setRivers(normalRiver,riverPositionCounter);
             riverPositionCounter--;
             return;
         } else if(tempState==3){
-            tileTypeCommand.setRivers(normalRiver,5);
             tileTypeCommand.setRivers(normalRiver,1);
             tileTypeCommand.setRivers(normalRiver,3);
+            tileTypeCommand.setRivers(normalRiver,5);
         }
         riverPositionCounter=3;
     }

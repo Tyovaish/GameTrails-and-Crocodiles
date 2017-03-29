@@ -8,7 +8,7 @@ import Model.Tile.FeatureTypes.FeatureType;
 import Model.Tile.FeatureTypes.River.NormalRiver;
 import Model.Tile.FeatureTypes.River.River;
 import Model.Tile.FeatureTypes.River.SourceRiver;
-import Model.TileCommandDistributer;
+//import Model.TileCommandDistributer;
 import Controller.Commands.TileTypeCommand;
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,9 +18,9 @@ import java.lang.String;
 
 public class ImportManager {
     TilePlacementCommand tilePlacementCommand = new TilePlacementCommand();
-    TileCommandDistributer tileCommandDistributer;
+    //TileCommandDistributer tileCommandDistributer;
     TileTypeCommand tileTypeCommand = new TileTypeCommand();
-    FeatureType featureType = new FeatureType();
+    private FeatureType featureType;
     public ImportManager()
     {
         File mapFile = null;
@@ -77,7 +77,7 @@ public class ImportManager {
         substr = smallString.substring(0, smallString.indexOf(" "));
         y = Integer.parseInt(substr);
         smallString = smallString.substring(substr.length()+1);//start of z
-        substr = smallString.substring(0, smallString.indexOf(")"));
+        substr = smallString.substring(0, smallString.indexOf(" "));
         z = Integer.parseInt(substr);
         row = z + (x - (x+1)) / 2;
         col = x;
@@ -120,7 +120,8 @@ public class ImportManager {
                 tileTypeCommand.setRivers(river, riverFace[0]);
             }
         }
-    tileCommandDistributer.addNewTile(tileTypeCommand, tilePlacementCommand);
+    //tileCommandDistributer.addNewTile(tileTypeCommand, tilePlacementCommand);
     }
 
 }
+

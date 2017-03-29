@@ -5,6 +5,7 @@ import Controller.Commands.TilePlacementCommand;
 import Controller.Commands.TileTypeCommand;
 import Model.Location;
 import Model.Map;
+import Model.TilePlacementManager;
 
 
 import java.util.ArrayList;
@@ -13,16 +14,16 @@ import java.util.ArrayList;
  * Created by Trevor on 3/26/2017.
  */
 public class Controller implements State{
-
     private ArrayList<State> menuStates;
     private TilePlacementCommand tilePlacementCommand;
     private TileTypeCommand tileTypeCommand;
+    TilePlacementManager tilePlacementManager;
     private RemoveCommand removeCommand;
     private State currentState;
     private int tempState;
 
 public Controller(Map map){
-
+TilePlacementManager tilePlacementManager=new TilePlacementManager(map);
     tileTypeCommand=new TileTypeCommand();
     removeCommand=new RemoveCommand();
     tilePlacementCommand=new TilePlacementCommand();
@@ -76,6 +77,7 @@ public State forward(){ //GOING FROM FEATURE TYPE TO FEATURE RIVER TO ORIENTATIO
 }
 public void onLeftClick(int x,int y){
     tilePlacementCommand.setLocation(new Location(x,y));
+    tilePlacementManager.execute(tilePlacementCommand,tileTypeCommand);
     tileTypeCommand.clearTileEdgeList();
     tileTypeCommand.clearOrientation();
     currentState=menuStates.get(0);
@@ -83,6 +85,7 @@ public void onLeftClick(int x,int y){
 }
 public void onRightClick(int x, int y){
     removeCommand.setLocation(new Location(x,y));
+    tilePlacementManager.execute(removeCommand);
 }
 //TODO Maybe
 public void displayTile(){

@@ -151,7 +151,7 @@ public class Map {
         Location northWestLocation=location.getNorthWest();
         if(checkcoordinates(northLocation.getX(),northLocation.getY())){
             tileToBeReturned[0]=map[northLocation.getX()][northLocation.getY()];
-            
+
         } else {
             tileToBeReturned[0]=null;
         }

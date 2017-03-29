@@ -29,7 +29,7 @@ public class TileTypeCommand {
     }
 
     public void setRivers(River river,int tileEdgePosition) {
-        tileEdgeList[tileEdgePosition]=new TileEdge();
+        tileEdgeList[tileEdgePosition] = new TileEdge();
         tileEdgeList[tileEdgePosition].setFeatureType(river);
     }
     public TileEdge [] getTileEdgeList(){

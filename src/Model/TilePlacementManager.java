@@ -3,6 +3,7 @@ package Model;
 import Controller.Commands.RemoveCommand;
 import Controller.Commands.TilePlacementCommand;
 import Controller.Commands.TileTypeCommand;
+import Model.Tile.Tile;
 import Model.Tile.TileBuilder;
 
 /**
@@ -18,7 +19,8 @@ public class TilePlacementManager {
     }
 
     public void execute(TilePlacementCommand tilePlacementCommand, TileTypeCommand tileTypeCommand){
-        TileBuilder.createTile(tileTypeCommand.getFeatureType(),tileTypeCommand.getTileEdgeList(),tileTypeCommand.getOrientation());
+        Tile tilePractice=TileBuilder.createTile(tileTypeCommand.getFeatureType(),tileTypeCommand.getTileEdgeList(),tileTypeCommand.getOrientation());
+        map.insertTile(tilePractice,tilePlacementCommand.getLocation());
 
     }
 

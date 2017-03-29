@@ -16,23 +16,29 @@ public class TileEdge {
    public TileEdge(FeatureType feature){
        this.feature=feature;
    }
-   public boolean equalTileEdgeFeatureType(FeatureType feature){
-       SourceRiver sourceRiver=new SourceRiver();
-       NormalRiver normalRiver=new NormalRiver();
-       Sea sea =new Sea();
 
-       if((this.feature.getClass().equals(normalRiver.getClass())||this.feature.getClass().equals(sourceRiver.getClass()))&&!(feature.getClass().equals(normalRiver.getClass())||feature.getClass().equals(sourceRiver.getClass())||feature.getClass().equals(sea.getClass()))){
-           System.out.println("Im sorry");
-           return false;
-       }
-       return true;
-    }
 
     public void setFeatureType(FeatureType feature){
        this.feature=feature;
     }
     public FeatureType getFeatureType(){
         return feature;
+    }
+    public boolean tileEdgeFeatureEqual(FeatureType featureType){
+        FeatureType sourceRiver=new SourceRiver();
+        FeatureType normalRiver=new NormalRiver();
+        FeatureType sea =new Sea();
+
+        if(feature.getClass().equals(sourceRiver.getClass())||feature.getClass().equals(normalRiver.getClass())){
+            if(!featureType.getClass().equals(sourceRiver.getClass())&&!featureType.getClass().equals(sea.getClass())&&!featureType.getClass().equals(normalRiver.getClass())){
+                return false;
+            }
+        } else{
+            if(featureType.getClass().equals(sourceRiver.getClass())||featureType.getClass().equals(sea.getClass())||featureType.getClass().equals(normalRiver.getClass())){
+                return false;
+            }
+        }
+        return true;
     }
     public void print(){
         feature.print();

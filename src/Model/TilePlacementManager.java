@@ -16,10 +16,14 @@ public class TilePlacementManager {
         this.map=map;
     }
 
-    public void execute(RemoveCommand removeCommand){}
     public void execute(Tile tile, TileTypeCommand tileTypeCommand){}
-    public void execute(Tile tile, TilePlacementCommand tilePlacementCommand){
+    public void execute(Tile tile, TilePlacementCommand tilePlacementCommand) {
         Location location = tilePlacementCommand.getLocation();
         map.insertTile(tile, location);
+    }
+
+    public void execute(RemoveCommand removeCommand){
+        map.removeTile(removeCommand.getLocation());
+
     }
 }

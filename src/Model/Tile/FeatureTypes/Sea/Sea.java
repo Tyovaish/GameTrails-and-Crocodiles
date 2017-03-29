@@ -10,4 +10,8 @@ public class Sea extends FeatureType {
 
     public Boolean isLand(){ return false; }
     public Boolean riverEnd(){ return true; }
+
+    public void print(){
+        System.out.println(type);
+    }
 }

@@ -14,10 +14,12 @@ import java.util.ArrayList;
 public class TileBuilder {
     public TileBuilder(){}
 
-    public static Tile createTile(FeatureType featureType,ArrayList<TileEdge> tileEdges, TileOrientation orientation){
-      for(int i=0;i<tileEdges.size();i++){
-         if(tileEdges.get(i)==null){
-            tileEdges.get(i).setFeatureType(featureType);
+   public static Tile createTile(FeatureType featureType,TileEdge[] tileEdges, TileOrientation orientation){
+      for(int i=0;i<tileEdges.length;i++){
+         if(tileEdges[i]==null){
+            System.out.println("We good");
+            tileEdges[i]=new TileEdge();
+            tileEdges[i].setFeatureType(featureType);
          }
       }
        return new Tile(featureType, tileEdges, orientation);
@@ -25,7 +27,7 @@ public class TileBuilder {
 
     public Tile execute(TileTypeCommand command){
         FeatureType featureType = command.getFeatureType();
-        ArrayList<TileEdge> tileEdges = command.getTileEdgeList();
+        TileEdge[] tileEdges = command.getTileEdgeList();
         TileOrientation orientation = command.getOrientation();
         return new Tile(featureType, tileEdges, orientation);
     }

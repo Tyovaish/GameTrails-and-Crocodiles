@@ -2,6 +2,7 @@ package Model;
 
 import Model.Tile.FeatureTypes.River.NormalRiver;
 import Model.Tile.Tile;
+import Model.Tile.TileEdge;
 import Model.Tile.TileOrientation;
 import javafx.geometry.Orientation;
 
@@ -37,16 +38,17 @@ public class Map {
     }
 
     public void insertTile(Tile tile, Location location) {
-        if(checkTileInsertionEligibilty(tile,location)){
-            map[location.getX()][location.getY()]=tile;
-            mapObserver.update(this);
-        }
+      //  if(checkTileInsertionEligibilty(tile,location)){
+     //       map[location.getX()][location.getY()]=tile;
+     //       mapObserver.update(this);
+      //  }
     // mapObserver.notify(this);
     }
-    private boolean checkTileInsertionEligibilty(Tile tile, Location location){
-        ArrayList<Tile> tilesToBeChecked=getNeighbors(location);
-        for(int i=0;i<tilesToBeChecked.size();i++){
-            Tile tileToBeCheckedBasedOnTileInserted=tilesToBeChecked.get(i);
+
+    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
+        Tile[] tilesToBeChecked=getNeighbors(location);
+        for(int i=0;i<tilesToBeChecked.length;i++){
+            Tile tileToBeCheckedBasedOnTileInserted=tilesToBeChecked[i];
             if(!tile.getTileEdge(i).equals(tileToBeCheckedBasedOnTileInserted.getTileEdge((i+3)%6))){
                 return false;
             }
@@ -54,9 +56,9 @@ public class Map {
 
         return true;
     }
-    private ArrayList<Tile> getNeighbors(Location location){
+    private Tile[] getNeighbors(Location location){
         //This is bad need to change eventually.  TDA but I havent figured a better way
-        ArrayList<Tile> tileToBeReturned=new ArrayList<Tile>();
+        Tile[] tileToBeReturned=new Tile[6];
         Location northLocation=location.getNorth();
         Location southLocation=location.getSouth();
         Location southEastLocation=location.getSouthEast();
@@ -64,41 +66,41 @@ public class Map {
         Location northEastLocation=location.getNorthEast();
         Location northWestLocation=location.getNorthWest();
         if(checkcoordinates(northLocation.getX(),northLocation.getY())){
-            tileToBeReturned.add(map[northLocation.getX()][northLocation.getY()]);
+            tileToBeReturned[0]=map[northLocation.getX()][northLocation.getY()];
             
         } else {
-            tileToBeReturned.add(null);
+            tileToBeReturned[0]=null;
         }
         if(checkcoordinates(northEastLocation.getX(),northEastLocation.getY())){
-            tileToBeReturned.add(map[northEastLocation.getX()][northEastLocation.getY()]);
+            tileToBeReturned[1]=map[northEastLocation.getX()][northEastLocation.getY()];
 
         } else {
-            tileToBeReturned.add(null);
+            tileToBeReturned[1]=(null);
         }
         if(checkcoordinates(southEastLocation.getX(),southEastLocation.getY())){
-            tileToBeReturned.add(map[southEastLocation.getX()][southEastLocation.getY()]);
+            tileToBeReturned[2]=map[southEastLocation.getX()][southEastLocation.getY()];
 
         } else {
-            tileToBeReturned.add(null);
+            tileToBeReturned[2]=null;
         }
 
         if(checkcoordinates(southLocation.getX(),southLocation.getY())){
-            tileToBeReturned.add(map[southLocation.getX()][southLocation.getY()]);
+            tileToBeReturned[3]=map[southLocation.getX()][southLocation.getY()];
 
         } else {
-            tileToBeReturned.add(null);
+            tileToBeReturned[3]=null;
         }
         if(checkcoordinates(southWestLocation.getX(),southWestLocation.getY())){
-            tileToBeReturned.add(map[southWestLocation.getX()][southWestLocation.getY()]);
+            tileToBeReturned[4]=map[southWestLocation.getX()][southWestLocation.getY()];
 
         } else {
-            tileToBeReturned.add(null);
+            tileToBeReturned[4]=null;
         }
         if(checkcoordinates(northWestLocation.getX(),northWestLocation.getY())){
-            tileToBeReturned.add(map[northWestLocation.getX()][northWestLocation.getY()]);
+            tileToBeReturned[5]=map[northWestLocation.getX()][northWestLocation.getY()];
 
         } else {
-            tileToBeReturned.add(null);
+            tileToBeReturned[5]=null;
         }
         return tileToBeReturned;
     }

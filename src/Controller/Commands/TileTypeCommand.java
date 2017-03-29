@@ -13,17 +13,7 @@ import java.util.ArrayList;
  */
 public class TileTypeCommand {
     FeatureType  featureType;
-    ArrayList<TileEdge> tileEdgeList;
-    TileOrientation orientation;
-
-    public TileTypeCommand(){}
-
-    public TileTypeCommand(FeatureType featureType, ArrayList<TileEdge> tileEdgeList, TileOrientation orientation){
-        this.featureType = featureType;
-        this.tileEdgeList = tileEdgeList;
-        this.orientation = orientation;
-    }
-
+    TileEdge[] tileEdgeList;
 
     public FeatureType getFeatureType() {
         return featureType;
@@ -37,11 +27,14 @@ public class TileTypeCommand {
     }
     public void setOrientation(TileOrientation orientation){ this.orientation = orientation; }
 
-    public void clearFeatureType(){
-        featureType=null;
+    public void setRivers(River river,int tileEdgePosition) {
+        tileEdgeList[tileEdgePosition].setFeatureType(river);
+    }
+    public TileEdge [] getTileEdgeList(){
+        return tileEdgeList;
     }
     public void clearTileEdgeList(){
-        tileEdgeList=new ArrayList<TileEdge>(6);
+        tileEdgeList=new TileEdge[6];
     }
     public void clearOrientation() { orientation = null;}
 }

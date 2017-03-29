@@ -14,6 +14,7 @@ public abstract class FeatureType {
         public String getType(){
             return this.featureType;
         }
+        abstract public void print();
 
         public abstract Boolean isLand();
         public abstract Boolean riverEnd();

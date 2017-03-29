@@ -28,12 +28,11 @@ public Controller(Map map){
     removeCommand=new RemoveCommand();
     tilePlacementCommand=new TilePlacementCommand();
     menuStates=new ArrayList<State>();
-    menuStates.add(new FeatureTypeMenuState(this,tilePlacementCommand,tileTypeCommand));
+    menuStates.add(new FeatureTypeMenuState(this,tileTypeCommand));
     currentState=menuStates.get(0);
     tempState=0;
 }
 public void nextState(){
-    tileTypeCommand.print();
     if(currentState!=this) {
         currentState.nextState();
     } else {
@@ -42,9 +41,9 @@ public void nextState(){
             tempState=0;
         }
     }
+    tileTypeCommand.print();
 }
 public void previousState(){
-    tileTypeCommand.print();
     if(currentState!=this) {
         currentState.previousState();
     } else {
@@ -53,6 +52,7 @@ public void previousState(){
             tempState=menuStates.size()-1;
         }
     }
+    tileTypeCommand.print();
 }
 public State back(){
     if(currentState!=this) {
@@ -74,7 +74,6 @@ public State forward(){
 public void onLeftClick(int x,int y){
     tilePlacementCommand.setLocation(new Location(x,y));
     tilePlacementManager.execute(tilePlacementCommand,tileTypeCommand);
-    tilePlacementCommand.clearOrientation();
     tileTypeCommand.clearTileEdgeList();
     tileTypeCommand.clearFeatureType();
 }

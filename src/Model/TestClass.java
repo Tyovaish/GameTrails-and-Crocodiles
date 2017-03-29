@@ -18,14 +18,7 @@ import java.util.ArrayList;
  */
 public class TestClass {
     public static void main(String args[]){
-       Controller controller=new Controller(new Map(new MapObserver()));
-       controller.nextState();
-       controller.nextState();
-       controller.nextState();
-       controller.nextState();
-       controller.forward();
-       for(int i=0;i<7;i++) {
-           controller.nextState();
-       }
+     
+
     }
 }

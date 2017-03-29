@@ -52,7 +52,6 @@ public class Map {
                 return false;
             }
         }
-
         return true;
     }
     private Tile[] getNeighbors(Location location){

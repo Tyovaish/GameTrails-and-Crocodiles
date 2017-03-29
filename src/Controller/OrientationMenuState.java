@@ -12,16 +12,17 @@ import java.util.ArrayList;
  */
 public class OrientationMenuState implements State {
     ArrayList<TileOrientation> orientationList;
-    TilePlacementCommand tilePlacementCommand;
+    TileTypeCommand tileTypeCommand;
     State previousState;
     State nextState;
     int tempState;
-    public OrientationMenuState(State state, TilePlacementCommand tilePlacementCommand){
-        this.tilePlacementCommand=tilePlacementCommand;
+    public OrientationMenuState(State state, TileTypeCommand tileTypeCommand){
+        this.tileTypeCommand=tileTypeCommand;
         orientationList=new ArrayList<TileOrientation>();
         for(int i=0;i<6;i++){
             orientationList.add(new TileOrientation(i));
         }
+        tileTypeCommand.setOrientation(orientationList.get(0));
         nextState=this;
         previousState=state;
         tempState=0;
@@ -31,17 +32,17 @@ public class OrientationMenuState implements State {
         if(tempState>=orientationList.size()){
             tempState=0;
         }
-        tilePlacementCommand.setOrientation(orientationList.get(tempState));
+        tileTypeCommand.setOrientation(orientationList.get(tempState));
     }
     public void previousState(){
         tempState--;
         if(tempState<0){
             tempState=orientationList.size()-1;
         }
-        tilePlacementCommand.setOrientation(orientationList.get(tempState));
+        tileTypeCommand.setOrientation(orientationList.get(tempState));
     }
     public State back(){
-        tilePlacementCommand.setOrientation(orientationList.get(0));
+        tileTypeCommand.setOrientation(orientationList.get(0));
         tempState=0;
         return previousState;
     }

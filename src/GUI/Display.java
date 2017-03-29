@@ -17,6 +17,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     private PaintHex hex = new PaintHex();
     private Point hoverP = new Point(0,0);
     private Map board ;
+    private int count = 0;
     private Controller ctrl;
     private dashboard dash ;
 
@@ -34,7 +35,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         screen.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         frame.add(screen);
         frame.add(dash, BorderLayout.EAST);
-        frame.setPreferredSize(new Dimension(2000, 1300));
+        frame.setPreferredSize(new Dimension(2400, 1300));
         frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
@@ -131,6 +132,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
 
         if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
             ctrl.nextState();
             dash.repaint();
 
@@ -140,10 +142,18 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_DOWN){
+            count++;
+            if(count == 1 ) dash.setState("Select River Type");
+            else if(count == 2) dash.setState("Select Rotation");
+            else{count = 2; dash.setState("Select Rotation");}
             ctrl.forward();
             dash.repaint();
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_UP){
+            count --;
+            if(count == 1)dash.setState("Select River Type");
+            else if(count == 2) dash.setState("Select Rotation");
+            else{count = 0; dash.setState("Select Tile Type");}
             ctrl.back();
             dash.repaint();
         }

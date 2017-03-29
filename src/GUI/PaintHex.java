@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 
 public class PaintHex extends JPanel{
-    final int radius = 100; //radius
+    final int radius = 110; //radius
     final int width = radius * 2;
     final int height = (int) (Math.sqrt(3)/2 * width);
 
@@ -116,11 +116,11 @@ public class PaintHex extends JPanel{
             if(bi != null)
             g2.drawImage(bi.getScaledInstance(230, 320, 0), horiz - radius, vert - 150, null);
             if(riverType != null && riverType.equals("source.PNG"))
-            g2.drawImage(transparentImage, horiz - 55, vert-90, null);
+            g2.drawImage(transparentImage, horiz - 55, vert-100, null);
             else if(riverType != null && riverType.equals("sharpbend.PNG"))
-                g2.drawImage(transparentImage, horiz-77, vert-150, null);
+                g2.drawImage(transparentImage, horiz-77, vert-190, null);
             else if(riverType != null && riverType.equals("Y.PNG"))
-                g2.drawImage(transparentImage, horiz-120, vert-90, null);
+                g2.drawImage(transparentImage, horiz-120, vert-110, null);
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(10));
             g2.draw(setHex(horiz, vert));

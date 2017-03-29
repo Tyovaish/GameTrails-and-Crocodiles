@@ -18,6 +18,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     private PaintHex hex = new PaintHex();
     private Point hoverP = new Point(0,0);
     private Map board ;
+    private int count = 0;
     private Controller ctrl;
     private dashboard dash ;
     private ExportManager exportManager;
@@ -36,7 +37,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         screen.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         frame.add(screen);
         frame.add(dash, BorderLayout.EAST);
-        frame.setPreferredSize(new Dimension(2000, 1300));
+        frame.setPreferredSize(new Dimension(2400, 1300));
         frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
@@ -97,6 +98,8 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
             }
             System.out.println(p.x + " " + p.y);
             ctrl.onLeftClick(p.x, p.y);
+            dash.setState("Select Tile Type");
+            count = 0;
             this.repaint();
             dash.repaint();
         }
@@ -133,6 +136,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
 
         if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
             ctrl.nextState();
             dash.repaint();
 
@@ -142,10 +146,18 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_DOWN){
+            count++;
+            if(count == 1 ) dash.setState("Select River Type");
+            else if(count == 2) dash.setState("Select Rotation");
+            else{count = 2; dash.setState("Select Rotation");}
             ctrl.forward();
             dash.repaint();
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_UP){
+            count --;
+            if(count == 1)dash.setState("Select River Type");
+            else if(count == 2) dash.setState("Select Rotation");
+            else{count = 0; dash.setState("Select Tile Type");}
             ctrl.back();
             dash.repaint();
         }
@@ -169,6 +181,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         ctrl = controller;
         exportManager=new ExportManager(board);
         setBackground(Color.blue);
+        setBackground(Color.BLACK);
         addMouseListener(this);
         addKeyListener(this);
         addMouseMotionListener(this);

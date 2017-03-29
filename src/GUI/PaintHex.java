@@ -77,20 +77,20 @@ public class PaintHex extends JPanel{
 
     public void fillHex(int i, int j, int rot, String type, int rivers,  Graphics2D g2) {
         String riverType;
+        riverType = getRiverType(rivers);
+        File img = new File("./GameTrails-and-Crocodiles/src/GUI/" + type + ".jpg");
+        File img2 = new File("./GameTrails-and-Crocodiles/src/GUI/" + riverType);
+
+        BufferedImage bi = null;
+        BufferedImage bi2 = null;
+        BufferedImage transparentImage = null;
+
         int vert;
         int horiz = radius +(j*((width/4*3)));
         if(j % 2 == 0)
             vert = radius +(i * height);
         else
             vert = 10 + ((i+1) * (height));
-        riverType = getRiverType(rivers);
-
-            File img = new File("./GameTrails-and-Crocodiles/src/GUI/" + type + ".jpg");
-            File img2 = new File("./GameTrails-and-Crocodiles/src/GUI/" + riverType);
-
-            BufferedImage bi = null;
-            BufferedImage bi2 = null;
-            BufferedImage transparentImage = null;
 
         if(type == null) {return;}
         else{
@@ -100,7 +100,6 @@ public class PaintHex extends JPanel{
                 System.err.println("Could not load image file!");
             }
         }
-
         if(riverType != null){
             try {
               bi2 = ImageIO.read(img2);
@@ -118,7 +117,12 @@ public class PaintHex extends JPanel{
             g2.rotate(Math.toRadians(rot * 60), horiz, vert);
             g2.setClip(setHex(horiz, vert));
             g2.drawImage(bi.getScaledInstance(230, 320, 0), horiz - radius, vert - 150, null);
-            g2.drawImage(transparentImage, horiz - radius, vert - 150, null);
+            if(riverType != null && riverType.equals("source.PNG"))
+            g2.drawImage(transparentImage, 40, 50, null);
+            else if(riverType != null && riverType.equals("sharpbend.PNG"))
+                g2.drawImage(transparentImage, 30, -50, null);
+            else if(riverType != null && riverType.equals("Y.PNG"))
+                g2.drawImage(transparentImage, -25, 20, null);
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(10));
             g2.draw(setHex(horiz, vert));

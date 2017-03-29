@@ -24,6 +24,7 @@ public class Controller implements State{
     private State currentState;
     private int tempState;
 
+
 public Controller(Map map){
     tileCommandDispatcher=new TileCommandDispatcher(new TileBuilder(), new TilePlacementManager(map));
     tileTypeCommand=new TileTypeCommand();
@@ -80,6 +81,7 @@ public void onLeftClick(int x,int y){
     tileCommandDispatcher.addNewTile(tileTypeCommand, tilePlacementCommand);
     tileTypeCommand.clearTileEdgeList();
     tileTypeCommand.clearFeatureType();
+    currentState=menuStates.get(0);
 }
 public void onRightClick(int x, int y){
     removeCommand.setLocation(new Location(x,y));

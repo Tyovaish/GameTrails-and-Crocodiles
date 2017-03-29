@@ -16,14 +16,16 @@ public class TileBuilder {
         return createTile(command.getFeatureType(), command.getTileEdgeList(), command.getOrientation());
     }
 
-   private static Tile createTile(FeatureType featureType,TileEdge[] tileEdges, TileOrientation orientation){
+   public static Tile createTile(FeatureType featureType,TileEdge[] tileEdges, TileOrientation orientation){
+      int numberOfRivers=0;
       for(int i=0;i<tileEdges.length;i++){
          if(tileEdges[i]==null){
-            System.out.println("We good");
             tileEdges[i]=new TileEdge();
             tileEdges[i].setFeatureType(featureType);
+         } else {
+            numberOfRivers++;
          }
       }
-      return new Tile(featureType,tileEdges,orientation);
+      return new Tile(featureType,tileEdges,orientation,numberOfRivers);
    }
 }

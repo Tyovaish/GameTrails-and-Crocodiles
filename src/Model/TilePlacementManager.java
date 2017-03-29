@@ -18,6 +18,7 @@ public class TilePlacementManager {
     public void execute(RemoveCommand removeCommand){
         map.removeTile(removeCommand.getLocation());
     }
+
     public void execute(Tile tile, TilePlacementCommand command){
         map.insertTile(tile, command.getLocation());
     }

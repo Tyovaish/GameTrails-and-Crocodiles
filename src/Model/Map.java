@@ -20,7 +20,10 @@ public class Map {
 
     //CREATING THE GAME MAP
     public Map(){
+
+
         //this.mapObserver=mapObserver;
+
         map = new Tile[BSIZE][BSIZE];
 
 
@@ -55,11 +58,15 @@ public class Map {
     }
 /*    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
         Tile[] tilesToBeChecked=getNeighbors(location);
-        for(int i=0;i<tilesToBeChecked.length;i++){
-            Tile tileToBeCheckedBasedOnTileInserted=tilesToBeChecked[i];
-            if(!tile.getTileEdge(i).equals(tileToBeCheckedBasedOnTileInserted.getTileEdge((i+3)%6))){
-                return false;
+        for(int i=0;i<tilesToBeChecked.length;i++) {
+            Tile tileToBeCheckedBasedOnTileInserted = tilesToBeChecked[i];
+            if(!(tileToBeCheckedBasedOnTileInserted==null)) {
+                if (!tile.getTileEdge(i).equalTileEdgeFeatureType(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3) % 6).getFeatureType())) {
+                    System.out.println(i);
+                    return false;
+                }
             }
+
         }
         return true;
     } */
@@ -113,6 +120,16 @@ public class Map {
     }
     public void removeTile(Location location){
         map[location.getX()][location.getY()]=null;
+    }
+    public void print(){
+        for(int i=0;i<BSIZE;i++){
+            for(int j=0;j<BSIZE;j++){
+                if(map[i][j]!=null){
+                    System.out.println("Position: "+i+","+j);
+                    map[i][j].print();
+                }
+            }
+        }
     }
 
 }

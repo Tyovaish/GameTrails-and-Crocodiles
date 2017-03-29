@@ -16,8 +16,13 @@ public class TileEdge {
    public TileEdge(FeatureType feature){
        this.feature=feature;
    }
-   public boolean equals(FeatureType feature){
-       if((this.feature.getClass().equals(new NormalRiver())||this.feature.getClass().equals(new SourceRiver()))&&(feature.getClass().equals(new NormalRiver())||feature.getClass().equals(new SourceRiver())||feature.getClass().equals(new Sea()))){
+   public boolean equalTileEdgeFeatureType(FeatureType feature){
+       SourceRiver sourceRiver=new SourceRiver();
+       NormalRiver normalRiver=new NormalRiver();
+       Sea sea =new Sea();
+
+       if((this.feature.getClass().equals(normalRiver.getClass())||this.feature.getClass().equals(sourceRiver.getClass()))&&!(feature.getClass().equals(normalRiver.getClass())||feature.getClass().equals(sourceRiver.getClass())||feature.getClass().equals(sea.getClass()))){
+           System.out.println("Im sorry");
            return false;
        }
        return true;

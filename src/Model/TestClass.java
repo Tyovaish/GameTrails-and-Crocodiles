@@ -42,7 +42,7 @@ public class TestClass {
         Location location=new Location(3,2);
         map.insertTile(TileBuilder.createTile(featureType,tileEdges,orientation), new Location(3,2));
         map.insertTile(TileBuilder.createTile(featureType1,tileEdges1,orientation1), location.getNorth());
-        map.print();
+       // map.print();
 
     }
 }

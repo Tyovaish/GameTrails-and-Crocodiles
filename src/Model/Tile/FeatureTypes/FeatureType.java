@@ -7,7 +7,7 @@ public abstract class FeatureType {
         private String featureType;
 
         public void addType(String type){
-            this.featureType= type;
+            this.featureType = type;
         }
 
 
@@ -15,4 +15,6 @@ public abstract class FeatureType {
             return this.featureType;
         }
 
+        public abstract Boolean isLand();
+        public abstract Boolean riverEnd();
 }

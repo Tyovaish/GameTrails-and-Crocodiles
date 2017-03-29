@@ -22,7 +22,4 @@ public class TilePlacementManager {
         Location location = tilePlacementCommand.getLocation();
         map.insertTile(tile, location);
     }
-
-
-
 }

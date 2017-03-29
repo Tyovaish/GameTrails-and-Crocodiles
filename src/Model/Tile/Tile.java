@@ -26,11 +26,13 @@ public class Tile {
         for(int i=0;i<this.tileEdges.size();i++){
             this.tileEdges.add(i,tileEdges.get((i+orientation.getRotations())%this.tileEdges.size()));
         }
+        rotate();
     }
 
     public TileEdge getTileEdge(int tileEdgePosition){
         return tileEdges.get(tileEdgePosition);
     }
+    public ArrayList<TileEdge> getTileEdges(){ return tileEdges; }
 
     public void  setTileEdgeFeature(int tileEdgeFeature, FeatureType feature){tileEdges.add(new TileEdge(feature));}
     public FeatureType getTileEdgeFeature(int tileEdgePosition){
@@ -41,4 +43,9 @@ public class Tile {
         return tileEdges.get(tileEdgePositionToCheck).equals(otherTilesFeature);
     }
 
+    public void rotate(){
+        for (int i = 0; i < orientation.getRotations(); i++){
+            tileEdges.add(0, tileEdges.remove(5));
+        }
+    }
 }

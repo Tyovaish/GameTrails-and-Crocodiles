@@ -6,4 +6,6 @@ import Model.Tile.FeatureTypes.FeatureType;
  * Created by Trevor on 3/25/2017.
  */
 public abstract class Terrain extends FeatureType {
+    public Boolean isLand(){ return true; }
+    public Boolean riverEnd(){ return false; }
 }

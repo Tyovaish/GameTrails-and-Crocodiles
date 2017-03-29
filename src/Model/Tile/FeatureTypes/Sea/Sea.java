@@ -8,5 +8,6 @@ import Model.Tile.FeatureTypes.FeatureType;
 public class Sea extends FeatureType {
     String type = "sea";
 
-
+    public Boolean isLand(){ return false; }
+    public Boolean riverEnd(){ return true; }
 }

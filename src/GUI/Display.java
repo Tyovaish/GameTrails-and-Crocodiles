@@ -36,7 +36,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         screen.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         frame.add(screen);
         frame.add(dash, BorderLayout.EAST);
-        frame.setResizable(true);
+        frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
 

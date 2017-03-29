@@ -113,6 +113,7 @@ public class PaintHex extends JPanel{
         if(rot > -1) {
             g2.rotate(Math.toRadians(rot * 60), horiz, vert);
             g2.setClip(setHex(horiz, vert));
+            if(bi != null)
             g2.drawImage(bi.getScaledInstance(230, 320, 0), horiz - radius, vert - 150, null);
             if(riverType != null && riverType.equals("source.PNG"))
             g2.drawImage(transparentImage, horiz - 55, vert-90, null);

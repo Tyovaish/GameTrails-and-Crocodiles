@@ -64,8 +64,7 @@ public class Map {
         for(int i=0;i<tilesToBeChecked.length;i++) {
             Tile tileToBeCheckedBasedOnTileInserted = tilesToBeChecked[i];
             if(!(tileToBeCheckedBasedOnTileInserted==null)) {
-                if (!tile.getTileEdge(i).equalTileEdgeFeatureType(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3) % 6).getFeatureType())) {
-                    System.out.println(i);
+                if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3) % 6).getFeatureType())){
                     return false;
                 }
             }

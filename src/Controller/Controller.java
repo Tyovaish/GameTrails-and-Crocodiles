@@ -3,7 +3,6 @@ package Controller;
 import Controller.Commands.RemoveCommand;
 import Controller.Commands.TilePlacementCommand;
 import Controller.Commands.TileTypeCommand;
-import GUI.Display;
 import Model.Location;
 import Model.Map;
 import Model.Tile.TileBuilder;
@@ -23,7 +22,6 @@ public class Controller implements State{
     private RemoveCommand removeCommand;
     private State currentState;
     private int tempState;
-
 
 public Controller(Map map){
     tileCommandDispatcher=new TileCommandDispatcher(new TileBuilder(), new TilePlacementManager(map));
@@ -48,6 +46,8 @@ public void nextState(){ // FORWARD SELECTING FEATURE TYPE/ RIVERS TYPES /ORIENT
 }
 
 public String getType(){return tileTypeCommand.getFeatureType().getType();}
+public int getOrientation(){return tileTypeCommand.getOrientation().getRotations();}
+public int getNumberOfRivers(){return tileTypeCommand.getNumberOfRivers();}
 public void previousState(){ //BACKWARDS SELECTING FEATURES TYPES / RIVERS TYPES / ORIENTATION
     if(currentState!=this) {
         currentState.previousState();
@@ -80,8 +80,9 @@ public void onLeftClick(int x,int y){
     tilePlacementCommand.setLocation(new Location(x,y));
     tileCommandDispatcher.addNewTile(tileTypeCommand, tilePlacementCommand);
     tileTypeCommand.clearTileEdgeList();
-    tileTypeCommand.clearFeatureType();
+    tileTypeCommand.clearOrientation();
     currentState=menuStates.get(0);
+
 }
 public void onRightClick(int x, int y){
     removeCommand.setLocation(new Location(x,y));

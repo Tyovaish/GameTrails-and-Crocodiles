@@ -21,6 +21,7 @@ public class TilePlacementManager {
 
     public void execute(Tile tile, TilePlacementCommand command){
         map.insertTile(tile, command.getLocation());
+
     }
 
 

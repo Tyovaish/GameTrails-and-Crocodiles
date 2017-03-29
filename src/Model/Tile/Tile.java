@@ -29,6 +29,7 @@ public class Tile {
     public TileEdge getTileEdge(int tileEdgePosition){
         return tileEdges[tileEdgePosition];
     }
+    public TileEdge[] getTileEdges() { return tileEdges; }
     public String getTileType(){return this.feature.getType();}
     public int getTileOrientation(){return this.orientation.getRotations();}
     public int getNumberOfRivers(){return numberOfRivers;}

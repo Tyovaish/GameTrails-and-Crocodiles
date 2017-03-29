@@ -3,9 +3,6 @@ package GUI;
 
 import Controller.Controller;
 import Model.Map;
-
-import Model.Tile.Tile;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -59,7 +56,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
                     AffineTransform old = g2.getTransform();
-                    hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j), g2);
+                    hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j), 0 , g2);
                     g2.setTransform(old);
             }
         }
@@ -74,7 +71,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
         //draws GameBoard
         drawGameBoard(g2);
-        //Fills In Hexes with Tile Images
+        //Fills In Hexes with Tile Images from the Board
         fillInHex(g2);
         if(hoverP.x >= 0 || hoverP.y >= 0 || hoverP.x < BSIZE || hoverP.y < BSIZE)
         hex.drawCursor(hoverP.x, hoverP.y,g2);
@@ -82,15 +79,21 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     }
 
     public void mouseClicked(MouseEvent e) {
-
         Point p = new Point( hex.pxtoHex(e.getX(),e.getY()) );
-        if (p.x < 0 || p.y < 0 || p.x >= BSIZE || p.y >= BSIZE){
-            System.out.println("OUTSIDE"); //IF USER CLICKS OUT OF THE MAP
-            return;
+        if(SwingUtilities.isRightMouseButton(e)){
+            ctrl.onRightClick(p.x,p.y);
+            this.repaint();
         }
-        System.out.println(p.x + " " + p.y);
-        ctrl.onLeftClick(p.x,p.y);
-        this.repaint();
+        else {
+            if (p.x < 0 || p.y < 0 || p.x >= BSIZE || p.y >= BSIZE) {
+                System.out.println("OUTSIDE"); //IF USER CLICKS OUT OF THE MAP
+                return;
+            }
+            System.out.println(p.x + " " + p.y);
+            ctrl.onLeftClick(p.x, p.y);
+            this.repaint();
+            dash.repaint();
+        }
 
 
 
@@ -128,13 +131,16 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
         } if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_LEFT) {
           ctrl.previousState();
+          dash.repaint();
 
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_DOWN){
             ctrl.forward();
+            dash.repaint();
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_UP){
             ctrl.back();
+            dash.repaint();
         }
     }
     @Override

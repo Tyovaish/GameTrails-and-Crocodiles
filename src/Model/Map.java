@@ -1,5 +1,6 @@
 package Model;
 
+import Model.Tile.FeatureTypes.FeatureType;
 import Model.Tile.FeatureTypes.River.NormalRiver;
 import Model.Tile.Tile;
 import Model.Tile.TileEdge;
@@ -54,15 +55,65 @@ public class Map {
 
     public void insertTile(Tile tile, Location location) {
         map[location.getX()][location.getY()]=tile;
-    // mapObserver.notify(this);
+        riverLinking(tile, location);
+    }
+
+    private void riverLinking(Tile tile, Location location){
+        TileEdge[] edges = tile.getTileEdges();
+        Tile[] neighbors = getNeighbors(location);
+        Tile neighbor;
+        TileEdge neighborEdge;
+        String type;
+
+        int edgeCounter = 0;
+        for(TileEdge edge : edges){
+            type = edge.getFeatureType().getType();
+            neighbor = neighbors[edgeCounter];
+            switch (edgeCounter) {
+                case 0: neighborEdge = neighbor.getTileEdge(3);
+                case 1: neighborEdge = neighbor.getTileEdge(4);
+                case 2: neighborEdge = neighbor.getTileEdge(5);
+                case 3: neighborEdge = neighbor.getTileEdge(0);
+                case 4: neighborEdge = neighbor.getTileEdge(1);
+                case 5: neighborEdge = neighbor.getTileEdge(2);
+                default: neighborEdge = null;
+            }
+            if(type == "sea"){
+                if(neighborEdge.getRiverLink().getPrev() == null){ edge.setLinkPrev(edge); }
+                else{
+                    edge.setLinkPrev(neighborEdge);
+                    neighborEdge.setLinkNext(edge);
+                }
+            }
+            if(type == "sourceriver"){
+                if(neighborEdge.getRiverLink().getPrev() == null){ edge.setLinkPrev(edge); }
+                else{
+                    edge.setLinkPrev(neighborEdge);
+                    neighborEdge.setLinkNext(edge);
+                }
+            }
+            if(type == "normalriver"){
+                if(neighborEdge.getRiverLink().getPrev() == null){ System.out.println("INVALID RIVER PLACEMENT"); }
+                else{
+                    edge.setLinkPrev(neighborEdge);
+                    neighborEdge.setLinkNext(edge);
+                    for (TileEdge nestedEdge : edges){
+                        if (nestedEdge != edge
+                                && nestedEdge.getFeatureType().getType() == "normalriver"
+                                && nestedEdge.getRiverLink().getPrev() == null){
+                            nestedEdge.setLinkPrev(edge);
+                        }
+                    }
+                }
+            }
+        }
     }
 /*    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
         Tile[] tilesToBeChecked=getNeighbors(location);
         for(int i=0;i<tilesToBeChecked.length;i++) {
             Tile tileToBeCheckedBasedOnTileInserted = tilesToBeChecked[i];
             if(!(tileToBeCheckedBasedOnTileInserted==null)) {
-                if (!tile.getTileEdge(i).equalTileEdgeFeatureType(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3) % 6).getFeatureType())) {
-                    System.out.println(i);
+                if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3) % 6).getFeatureType())){
                     return false;
                 }
             }

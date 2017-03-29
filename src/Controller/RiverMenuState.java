@@ -30,7 +30,7 @@ public class RiverMenuState implements State {
         nextState=new OrientationMenuState(this,tilePlacementCommand);
         previousState=state;
     }
-
+//This is bad, need to change if time
     public void nextState(){
         tempState++;
         if(tempState>3){

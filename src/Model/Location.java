@@ -16,8 +16,8 @@ public class Location {
     }
 
     public Location(Location location){
-        this.x = location.x;
-        this.y = location.y;
+        this.x = x;
+        this.y = y;
     }
 
     //Check if the two coordinates of Location refers to the same tiles
@@ -40,6 +40,41 @@ public class Location {
 
     public void setY(int y) {
         this.y = y;
+    }
+    public Location getSouthWest() {
+        if (getY() % 2 == 0)
+            return new Location(getX(), getY() + 1);
+        else
+            return new Location(getX()+1, getY() + 1);
+    }
+
+    public Location getNorthWest() {
+        if (getY() % 2 == 0)
+            return new Location(getX()-1, getY() + 1);
+        else
+            return new Location(getX(), getY()+ 1);
+    }
+
+    public Location getNorth() {
+        return new Location(getX() - 1, getY());
+    }
+
+    public Location getNorthEast() {
+        if (getY() % 2 == 0)
+            return new Location(getX()-1, getY() - 1);
+        else
+            return new Location(getX(), getY() - 1);
+    }
+
+    public Location getSouth() {
+        return new Location( getX() + 1, getY());
+    }
+
+    public Location getSouthEast() {
+        if (getY() % 2 == 0)
+            return new Location(getX(), getY() - 1);
+        else
+            return new Location(getX() + 1, getY() - 1);
     }
 
 }

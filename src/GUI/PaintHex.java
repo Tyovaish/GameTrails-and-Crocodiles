@@ -118,11 +118,11 @@ public class PaintHex extends JPanel{
             g2.setClip(setHex(horiz, vert));
             g2.drawImage(bi.getScaledInstance(230, 320, 0), horiz - radius, vert - 150, null);
             if(riverType != null && riverType.equals("source.PNG"))
-            g2.drawImage(transparentImage, 40, 50, null);
+            g2.drawImage(transparentImage, horiz - 55, vert-90, null);
             else if(riverType != null && riverType.equals("sharpbend.PNG"))
-                g2.drawImage(transparentImage, 30, -50, null);
+                g2.drawImage(transparentImage, horiz-77, vert-150, null);
             else if(riverType != null && riverType.equals("Y.PNG"))
-                g2.drawImage(transparentImage, -25, 20, null);
+                g2.drawImage(transparentImage, horiz-120, vert-90, null);
             g2.setColor(Color.BLACK);
             g2.setStroke(new BasicStroke(10));
             g2.draw(setHex(horiz, vert));

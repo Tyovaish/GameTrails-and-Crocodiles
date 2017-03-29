@@ -56,6 +56,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
                     AffineTransform old = g2.getTransform();
+                    System.out.println( "Orientation" + board.getTileOrientation(i, j));
                     hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j),
                             board.getTileNumberOfRivers(i,j) , g2);
                     g2.setTransform(old);
@@ -74,7 +75,6 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         drawGameBoard(g2);
         //Fills In Hexes with Tile Images from the Board
         fillInHex(g2);
-        if(hoverP.x >= 0 || hoverP.y >= 0 || hoverP.x < BSIZE || hoverP.y < BSIZE)
         hex.drawCursor(hoverP.x, hoverP.y,g2);
 
     }
@@ -105,7 +105,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE){
             return;
         }
-        this.repaint();
+        //this.repaint();
     }
     public void mouseDragged(MouseEvent e){
 

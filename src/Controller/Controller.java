@@ -80,7 +80,6 @@ public void onLeftClick(int x,int y){
     tilePlacementCommand.setLocation(new Location(x,y));
     tileCommandDispatcher.addNewTile(tileTypeCommand, tilePlacementCommand);
     tileTypeCommand.clearTileEdgeList();
-    tileTypeCommand.clearOrientation();
     currentState=menuStates.get(0);
 
 }

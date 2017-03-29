@@ -51,10 +51,10 @@ public class Map {
     }
 
     public void insertTile(Tile tile, Location location) {
-        if (riverLinking(tile, location)){ map[location.getX()][location.getY()]=tile; }
+        map[location.getX()][location.getY()]=tile;
     }
 
-    private Boolean riverLinking(Tile tile, Location location){
+    /* private Boolean riverLinking(Tile tile, Location location){
         TileEdge[] edges = tile.getTileEdges();
         Tile[] neighbors = getNeighbors(location);
         Tile neighbor;
@@ -67,6 +67,9 @@ public class Map {
         int edgeCounter = 0;
         for (TileEdge edge : edges){
             if (edge.getFeatureType().getType() != tileType){
+                if(edge.getFeatureType().getType() == "sea"){
+                    edge.setLinkPrev(edge);
+                }
                 noRiver = false;
             }
         }
@@ -123,7 +126,7 @@ public class Map {
         }
         if (!valid) System.out.println("INVALID PLACEMENT");
         return valid;
-    }
+    } */
 /*    private boolean checkTileInsertionEligibilty(Tile tile, Location location,TileOrientation orientation){
         Tile[] tilesToBeChecked=getNeighbors(location);
         for(int i=0;i<tilesToBeChecked.length;i++) {
@@ -137,7 +140,7 @@ public class Map {
         }
         return true;
     } */
-    private Tile[] getNeighbors(Location location){
+    public Tile[] getNeighbors(Location location){
         //This is bad need to change eventually.  TDA but I havent figured a better way
         Tile[] tileToBeReturned=new Tile[6];
         Location northLocation=location.getNorth();

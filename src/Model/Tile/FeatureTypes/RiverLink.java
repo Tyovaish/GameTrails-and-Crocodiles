@@ -6,21 +6,21 @@ import Model.Tile.TileEdge;
  * Created by khariollivierre on 3/29/17.
  */
 public class RiverLink {
-    private TileEdge prev;
-    private TileEdge next;
+    private FeatureType prev;
+    private FeatureType next;
 
     public RiverLink(){
         prev = null;
         next = null;
     }
-    public RiverLink(TileEdge prev){
+    public RiverLink(FeatureType prev){
         this.prev = prev;
         this.next = null;
     }
 
-    public TileEdge getPrev() { return prev; }
-    public TileEdge getNext() { return next; }
+    public FeatureType getPrev() { return prev; }
+    public FeatureType getNext() { return next; }
 
-    public void setPrev(TileEdge prev) { this.prev = prev; }
-    public void setNext(TileEdge next) { this.next = next; }
+    public void setPrev(FeatureType prev) { this.prev = prev; }
+    public void setNext(FeatureType next) { this.next = next; }
 }

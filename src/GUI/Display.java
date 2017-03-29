@@ -56,7 +56,6 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
                     AffineTransform old = g2.getTransform();
-                    System.out.println( "Orientation" + board.getTileOrientation(i, j));
                     hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j),
                             board.getTileNumberOfRivers(i,j) , g2);
                     g2.setTransform(old);

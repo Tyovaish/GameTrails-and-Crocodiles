@@ -96,6 +96,8 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
             }
             System.out.println(p.x + " " + p.y);
             ctrl.onLeftClick(p.x, p.y);
+            dash.setState("Select Tile Type");
+            count = 0;
             this.repaint();
             dash.repaint();
         }
@@ -172,7 +174,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     {
         board = map;
         ctrl = controller;
-        setBackground(Color.blue);
+        setBackground(Color.BLACK);
         addMouseListener(this);
         addKeyListener(this);
         addMouseMotionListener(this);

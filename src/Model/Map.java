@@ -48,16 +48,25 @@ public class Map {
     }
 
     public void insertTile(Tile tile, Location location) {
+
         if(checkTileInsertionEligibilty(tile,location)){
             map[location.getX()][location.getY()]=tile;
         }
+        else
+            System.out.println("INVALID PLACEMENT");
     }
     private boolean checkTileInsertionEligibilty(Tile tile, Location location){
         Tile[] tilesToBeChecked=getNeighbors(location);
         for(int i=0;i<tilesToBeChecked.length;i++) {
             Tile tileToBeCheckedBasedOnTileInserted = tilesToBeChecked[i];
             if(!(tileToBeCheckedBasedOnTileInserted==null)) {
-                if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3) % 6).getFeatureType())){
+                if(i<3) {
+                    if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3)).getFeatureType())) {
+                        return false;
+                    }
+                }
+                else
+                if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i - 3)).getFeatureType())) {
                     return false;
                 }
             }
@@ -65,6 +74,8 @@ public class Map {
         }
         return true;
     }
+
+
     private Tile[] getNeighbors(Location location){
         //This is bad need to change eventually.  TDA but I havent figured a better way
         Tile[] tileToBeReturned=new Tile[6];

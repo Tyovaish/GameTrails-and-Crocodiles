@@ -23,7 +23,7 @@ public class Tile {
         this.tileEdges=new TileEdge[6];
         this.orientation=orientation;
         for(int i=0;i<this.tileEdges.length;i++){
-            this.tileEdges[i]=tileEdges[((i-orientation.getRotations()+6)%this.tileEdges.length)];
+            this.tileEdges[i]=tileEdges[((i-orientation.getRotations()+6)%6)];
         }
     }
     public TileEdge getTileEdge(int tileEdgePosition){

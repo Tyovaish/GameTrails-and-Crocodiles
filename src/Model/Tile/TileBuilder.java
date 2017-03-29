@@ -12,14 +12,16 @@ import java.util.ArrayList;
  */
 public class TileBuilder {
    public static Tile createTile(FeatureType featureType,TileEdge[] tileEdges, TileOrientation orientation){
+      int numberOfRivers=0;
       for(int i=0;i<tileEdges.length;i++){
          if(tileEdges[i]==null){
-            System.out.println("We good");
             tileEdges[i]=new TileEdge();
             tileEdges[i].setFeatureType(featureType);
+         } else {
+            numberOfRivers++;
          }
       }
 
-      return new Tile(featureType,tileEdges,orientation);
+      return new Tile(featureType,tileEdges,orientation,numberOfRivers);
    }
 }

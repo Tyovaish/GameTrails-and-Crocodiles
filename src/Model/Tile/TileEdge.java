@@ -21,7 +21,7 @@ public class TileEdge {
        NormalRiver normalRiver=new NormalRiver();
        Sea sea =new Sea();
 
-       if((this.feature.getClass().equals(normalRiver.getClass())||this.feature.getClass().equals(sourceRiver.getClass()))&&(feature.getClass().equals(normalRiver.getClass())||feature.getClass().equals(sourceRiver.getClass())||feature.getClass().equals(sea.getClass()))){
+       if((this.feature.getClass().equals(normalRiver.getClass())||this.feature.getClass().equals(sourceRiver.getClass()))&&!(feature.getClass().equals(normalRiver.getClass())||feature.getClass().equals(sourceRiver.getClass())||feature.getClass().equals(sea.getClass()))){
            System.out.println("Im sorry");
            return false;
        }

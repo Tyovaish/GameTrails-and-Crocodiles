@@ -30,17 +30,15 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         dash = new dashboard(ctrl);
         JFrame frame = new JFrame("Phase 01");
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
-        setPreferredSize(new Dimension(5000,5000));
+        setPreferredSize(new Dimension(3000,3000));
         JScrollPane screen = new JScrollPane(this);
-        screen.setPreferredSize(new Dimension(3000, 1100));
         screen.setWheelScrollingEnabled(false);
         screen.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         frame.add(screen);
         frame.add(dash, BorderLayout.EAST);
+        frame.setPreferredSize(new Dimension(2000, 1300));
         frame.setResizable(false);
         frame.pack();
-        frame.setMinimumSize(getSize());
         frame.setVisible(true);
 
     }

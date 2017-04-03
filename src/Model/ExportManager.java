@@ -26,6 +26,16 @@ public class ExportManager {
                     }
                 }
             }
+            for(int i=0;i<map.BSIZE;i++){
+                for (int j=0;j<map.BSIZE;j++){
+                    if(map.getTile(i,j)!=null){
+                        int xPosition=i;
+                        int yPosition=j;
+                        int zPosition=-1*(i+j);
+                        writer.println("("+xPosition+" "+yPosition+" "+zPosition+") "+map.getTile(i,j).printForExport());
+                    }
+                }
+            }
             writer.close();
 
         } catch (IOException e) {

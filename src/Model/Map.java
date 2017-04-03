@@ -42,9 +42,9 @@ public class Map {
     }
 
     public boolean checkcoordinates(int x, int y){
-        if(x < 0 || x >= map[0].length)
+        if(x < 0 || x >= map.length)
             return false;
-        else if(y < 0 || y >= map[1].length)
+        else if(y < 0 || y >= map.length)
             return false;
         else
             return true;
@@ -79,7 +79,8 @@ public class Map {
     }
 
 
-    private Tile[] getNeighbors(Location location){
+    public Tile[] getNeighbors(Location location){
+        System.out.println("LOCATION: " + location.getX() + " " + location.getY());
         //This is bad need to change eventually.  TDA but I havent figured a better way
         Tile[] tileToBeReturned=new Tile[6];
         Location northLocation=location.getNorth();
@@ -88,43 +89,55 @@ public class Map {
         Location southWestLocation=location.getSouthWest();
         Location northEastLocation=location.getNorthEast();
         Location northWestLocation=location.getNorthWest();
+
+        System.out.println("N "+ northLocation.getX() + " " + northLocation.getY());
+
         if(checkcoordinates(northLocation.getX(),northLocation.getY())){
             tileToBeReturned[0]=map[northLocation.getX()][northLocation.getY()];
             
         } else {
             tileToBeReturned[0]=null;
         }
+        System.out.println("NE " +northEastLocation.getX() + " " + northEastLocation.getY());
+
         if(checkcoordinates(northEastLocation.getX(),northEastLocation.getY())){
             tileToBeReturned[1]=map[northEastLocation.getX()][northEastLocation.getY()];
 
         } else {
             tileToBeReturned[1]=(null);
         }
+        System.out.println("SE " + southEastLocation.getX() + " " + southEastLocation.getY());
         if(checkcoordinates(southEastLocation.getX(),southEastLocation.getY())){
             tileToBeReturned[2]=map[southEastLocation.getX()][southEastLocation.getY()];
 
         } else {
             tileToBeReturned[2]=null;
         }
-
+        System.out.println("S " + southLocation.getX() + " " + southLocation.getY());
         if(checkcoordinates(southLocation.getX(),southLocation.getY())){
             tileToBeReturned[3]=map[southLocation.getX()][southLocation.getY()];
 
         } else {
             tileToBeReturned[3]=null;
         }
+        System.out.println("SW "+southWestLocation.getX() + " " + southWestLocation.getY());
         if(checkcoordinates(southWestLocation.getX(),southWestLocation.getY())){
             tileToBeReturned[4]=map[southWestLocation.getX()][southWestLocation.getY()];
 
         } else {
             tileToBeReturned[4]=null;
         }
+        System.out.println("NW " + northWestLocation.getX() + " " + northWestLocation.getY());
         if(checkcoordinates(northWestLocation.getX(),northWestLocation.getY())){
             tileToBeReturned[5]=map[northWestLocation.getX()][northWestLocation.getY()];
 
         } else {
             tileToBeReturned[5]=null;
         }
+
+        for(int i = 0 ; i< tileToBeReturned.length; i++)
+            System.out.println(tileToBeReturned[i]);
+
         return tileToBeReturned;
     }
     public void removeTile(Location location){

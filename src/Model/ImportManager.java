@@ -7,7 +7,6 @@ import Controller.Commands.TilePlacementCommand;
 import Model.Tile.FeatureTypes.FeatureType;
 import Model.Tile.FeatureTypes.River.NormalRiver;
 import Model.Tile.FeatureTypes.River.SourceRiver;
-import Model.TilePlacementManager;
 import Controller.Commands.TileTypeCommand;
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,15 +15,14 @@ import java.io.IOException;
 import java.lang.String;
 
 public class ImportManager {
-    Map map;
-    TilePlacementCommand tilePlacementCommand = new TilePlacementCommand();
-    TilePlacementManager tilePlacementManager = new TilePlacementManager(map);
-    TileTypeCommand tileTypeCommand = new TileTypeCommand();
-    public ImportManager(Map map)
+    private TilePlacementCommand tilePlacementCommand = new TilePlacementCommand();
+    private TilePlacementManager tilePlacementManager;
+    private TileTypeCommand tileTypeCommand = new TileTypeCommand();
+    private FeatureType featureType;
+    public ImportManager()
     {
-        this.map = map;
-        File mapFile = null;
-        String file = "C:\\Users\\larry\\Desktop\\GameTrails-and-Crocodiles-master\\src\\Model\\mapTest.txt";
+        File mapFile;
+        String file = "mapTest.txt";
         String currentLine;
         //could create string input here to get any txt file
         Boolean executable;
@@ -33,50 +31,30 @@ public class ImportManager {
         try
         {
             mapFile = new File(file);
-            System.out.println(mapFile.getCanonicalPath());
             FileReader fileReader = new FileReader(mapFile);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             executable = mapFile.canExecute(); //if File is excuteable
-            System.out.println(String.valueOf(executable));
             currentLine = bufferedReader.readLine();//read the first line
-            System.out.println(currentLine);
             correctFile = checkFileStart(currentLine);//check for "Start Map" else text file is wrong
-            System.out.println(String.valueOf(correctFile));
-            if(executable && correctFile == true) {
-                System.out.println("Reading file...");
-                currentLine = bufferedReader.readLine();
-                while (!currentLine.equals("End Map") && checkCorrectPhrasing(currentLine)) {
+            if(executable && correctFile) {
+                while ((currentLine = bufferedReader.readLine()) != null) {
                     convertTextToCommands(currentLine);
-                    currentLine = bufferedReader.readLine();
                 }
             }
             else
                 System.out.println("An incorrect file has been selected.");
         }
-        catch (Exception e)
+        catch (IOException e)
         {
             e.printStackTrace();
         }
     }
 
-    private boolean checkCorrectPhrasing(String currentLine) {
-        if(currentLine.contains("Tile::=(")){
-            return true;
-        }
-        else
-            return false;
+    private Boolean checkFileStart(String firstLine){
+        return firstLine.equals("Begin Map");
     }
 
-    public Boolean checkFileStart(String firstLine){
-        if(firstLine.equals("Begin Map")){
-            return true;
-        }
-        else
-            return false;
-    }
-
-    public void convertTextToCommands(String line){
-        System.out.println(line);
+    private void convertTextToCommands(String line){
         int numOfRivers = 0;
         //first get location
         Location location;
@@ -87,15 +65,12 @@ public class ImportManager {
         int col;
         String smallString; //slowly holds less of the string
         String substr = line.substring(8, line.indexOf(" "));
-        System.out.println(substr);
         x = Integer.parseInt(substr);
         smallString = line.substring(line.indexOf(" ")+1);//start of y
         substr = smallString.substring(0, smallString.indexOf(" "));
-        System.out.println(substr);
         y = Integer.parseInt(substr);
         smallString = smallString.substring(substr.length()+1);//start of z
         substr = smallString.substring(0, smallString.indexOf(" "));
-        System.out.println(substr);
         z = Integer.parseInt(substr);
         row = z + (x - (x+1)) / 2;
         col = x;
@@ -103,14 +78,12 @@ public class ImportManager {
         tilePlacementCommand.setLocation(location);
         //next get terrain type
         String terrainType;
-        smallString = smallString.substring(substr.length()+3);//start of terrainType
+        smallString = smallString.substring(substr.length()+2);//start of terrainType
         substr = smallString.substring(0, smallString.indexOf(" "));
-        System.out.println(substr);
         terrainType = substr;
-        System.out.println(terrainType);//test1
-        //tileTypeCommand.setFeatureType(terrainType); NEED FEATURE, BROKEN
+        featureType.addType(terrainType);
         //next attempt to get rivers
-        if (!terrainType.equals("sea") || line.endsWith("()") == false){
+        if (!line.endsWith("()") || !terrainType.equals("sea")){
             //get River faces
             int riverFace[] = new int[3];
             smallString = smallString.substring(substr.length()+2);//start of first River face
@@ -118,12 +91,12 @@ public class ImportManager {
             riverFace[numOfRivers] = Integer.parseInt(substr);
             numOfRivers++;
             smallString = smallString.substring(2);//start of second River face
-            if (smallString != ")"){//more Rivers!
+            if (!smallString.equals(")")){//more Rivers!
                 substr = smallString.substring(0, 1);
                 riverFace[numOfRivers] = Integer.parseInt(substr);
                 numOfRivers++;
                 smallString = smallString.substring(2);//start of second River face
-                if (smallString != ")") {//more Rivers!
+                if (!smallString.equals(")")) {//more Rivers!
                     substr = smallString.substring(0, 1);
                     riverFace[numOfRivers] = Integer.parseInt(substr);
                     numOfRivers++;
@@ -140,7 +113,7 @@ public class ImportManager {
                 tileTypeCommand.setRivers(river, riverFace[0]);
             }
         }
-        //tilePlacementManager.execute(tilePlacementCommand, tileTypeCommand); causes nullPointerException
+    tilePlacementManager.execute(tilePlacementCommand, tileTypeCommand);
     }
 
 }

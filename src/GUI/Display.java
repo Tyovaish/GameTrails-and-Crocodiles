@@ -20,7 +20,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     private Map board ;
     private int count = 0;
     private Controller ctrl;
-    private dashboard dash ;
+    private tileForDashboard tile;
     private ExportManager exportManager;
 
 
@@ -28,20 +28,41 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     private void createAndShowGUI()
     {
 
-        dash = new dashboard(ctrl);
+        dashboard dash = new dashboard();
+        dash.add(tile, BorderLayout.CENTER);
         JFrame frame = new JFrame("Phase 01");
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         setPreferredSize(new Dimension(3000,3000));
+
         JScrollPane screen = new JScrollPane(this);
         screen.setWheelScrollingEnabled(false);
         screen.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        screen.setPreferredSize(new Dimension(2000, 1300));
         frame.add(screen);
-        frame.add(dash, BorderLayout.EAST);
-        frame.setPreferredSize(new Dimension(2400, 1300));
+        frame.getContentPane().add(dash, BorderLayout.EAST);
+        frame.setPreferredSize(new Dimension(2500, 1300));
         frame.setResizable(true);
         frame.pack();
         frame.setVisible(true);
 
+    }
+
+    private boolean checkTileType(String type){
+        switch(type){
+            case "desert":{
+                return true;
+            }
+            case "pasture":{
+                return true;
+            }
+            case "woods":{
+                return true;
+            }
+            case "rock":{
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -98,10 +119,10 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
             }
             System.out.println(p.x + " " + p.y);
             ctrl.onLeftClick(p.x, p.y);
-            dash.setState("Select Tile Type");
+            tile.setState("Select Tile Type");
             count = 0;
             this.repaint();
-            dash.repaint();
+            tile.repaint();
         }
 
 
@@ -138,28 +159,29 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_RIGHT) {
 
             ctrl.nextState();
-            dash.repaint();
+            tile.repaint();
 
         } if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_LEFT) {
           ctrl.previousState();
-          dash.repaint();
+          tile.repaint();
 
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_DOWN){
             count++;
-            if(count == 1 ) dash.setState("Select River Type");
-            else if(count == 2) dash.setState("Select Rotation");
-            else{count = 2; dash.setState("Select Rotation");}
+            if(count == 1 && checkTileType(ctrl.getType())) tile.setState("Select River Type");
+            else if(count == 2 && ctrl.getNumberOfRivers() > 0) tile.setState("Select Rotation");
+            else count =1;
             ctrl.forward();
-            dash.repaint();
+            tile.repaint();
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_UP){
             count --;
-            if(count == 1)dash.setState("Select River Type");
-            else if(count == 2) dash.setState("Select Rotation");
-            else{count = 0; dash.setState("Select Tile Type");}
+            if(count < 0 ) count = 0;
+            if(count == 1)tile.setState("Select River Type");
+            else if(count == 2) tile.setState("Select Rotation");
+            else{count = 0; tile.setState("Select Tile Type");}
             ctrl.back();
-            dash.repaint();
+            tile.repaint();
         }
         if(e.isControlDown() && e.getKeyCode()==KeyEvent.VK_E){
             exportManager.export();
@@ -179,8 +201,8 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     {
         board = map;
         ctrl = controller;
+        tile = new tileForDashboard(ctrl);
         exportManager=new ExportManager(board);
-        setBackground(Color.blue);
         setBackground(Color.BLACK);
         addMouseListener(this);
         addKeyListener(this);

@@ -17,7 +17,7 @@ public class Controller implements State{
     private ArrayList<State> menuStates;
     private TilePlacementCommand tilePlacementCommand;
     private TileTypeCommand tileTypeCommand;
-    TilePlacementManager tilePlacementManager;
+    private TilePlacementManager tilePlacementManager;
     private RemoveCommand removeCommand;
     private State currentState;
     private int tempState;
@@ -43,7 +43,6 @@ public void nextState(){ // FORWARD SELECTING FEATURE TYPE/ RIVERS TYPES /ORIENT
     }
     tileTypeCommand.print();
 }
-
 public String getType(){return tileTypeCommand.getFeatureType().getType();}
 public int getOrientation(){return tileTypeCommand.getOrientation().getRotations();}
 public int getNumberOfRivers(){return tileTypeCommand.getNumberOfRivers();}

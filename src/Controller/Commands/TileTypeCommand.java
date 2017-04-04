@@ -45,6 +45,7 @@ public class TileTypeCommand {
     }
     public void clearTileEdgeList(){
         tileEdgeList=new TileEdge[6];
+        System.out.println(getNumberOfRivers());
     }
     public void clearFeatureType(){
         featureType=null;

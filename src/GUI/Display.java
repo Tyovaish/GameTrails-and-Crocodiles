@@ -193,7 +193,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     }
 
 
-    Display(Map map, Controller controller)
+    public Display(Map map, Controller controller)
     {
         board = map;
         ctrl = controller;

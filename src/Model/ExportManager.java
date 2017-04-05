@@ -1,3 +1,11 @@
+package Model;
+
+import Model.Map;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  * Created by Trevor on 3/29/2017.
  */
@@ -17,11 +25,13 @@ public class ExportManager {
                         int xPosition=i;
                         int yPosition=j;
                         int zPosition=-1*(i+j);
-                        writer.print("Tile::=( ");
-                        writer.println( xPosition + " " + yPosition + " " + zPosition + ") "+map.getTile(i,j).printForExport());
+                        writer.print("Tile::=(");
+                        writer.println( xPosition + " " + yPosition + " " + zPosition + ") "+
+                                map.getTile(i,j).printForExport() + " ()");
                     }
                 }
             }
+            writer.println("End Map");
             writer.close();
         } catch (IOException e) {
             System.out.println("Error");

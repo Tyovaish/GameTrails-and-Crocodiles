@@ -20,15 +20,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.String;
 
-class ImportManager {
+public class ImportManager {
     private Map impMap = new Map();
     private TilePlacementCommand tilePlacementCommand = new TilePlacementCommand();
     private TileBuilder tileBuilder = new TileBuilder();
+    int riverFace[];
 
-    ImportManager()
+    public ImportManager()
     {
         File mapFile;
-        String file = "src/Model/mapTest.txt";
+        String file = "src/newFile.txt";
         String currentLine;
         //could create string input here to get any txt file
         Boolean executable;
@@ -123,7 +124,6 @@ class ImportManager {
         System.out.println(terrainType.equals("sea"));
         if (!line.endsWith("()") || terrainType.equals("sea")){
             //get River faces
-            int riverFace[] = new int[3];
             smallString = smallString.substring(substr.length()+2);//start of first River face
             substr = smallString.substring(0, 1);//1-6, therefore length = 1
             riverFace[numOfRivers] = Integer.parseInt(substr);
@@ -156,8 +156,12 @@ class ImportManager {
                 }
             }
         }
-        impMap.map[row][col] = tileBuilder.createTile(featureType, tileEdges, orientation);
+
+
+        impMap.map[row][col] = tileBuilder.createTile(featureType, riverFace);
+        numOfRivers = 0;
     }
+    public Map getMap(){return impMap;}
 
 }
 

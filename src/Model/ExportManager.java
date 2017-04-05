@@ -8,7 +8,7 @@ public class ExportManager {
     }
     public void export(){
         try{
-            File ExFile = new File("./src/Model/mapTest.txt");
+            File ExFile = new File("./src/newFile.txt");
             PrintWriter writer = new PrintWriter(ExFile, "UTF-8");
             writer.println("Begin Map");
             for(int i=0;i<map.BSIZE;i++){

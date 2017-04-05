@@ -110,8 +110,11 @@ class ImportManager {
         else if(terrainType.equals("rock")) {
             featureType = new Rock();
         }
-        else {
+        else if(terrainType.equals("woods")){
             featureType = new Woods();
+        }
+        else{
+            featureType = new Sea();
         }
 
         //next attempt to get rivers

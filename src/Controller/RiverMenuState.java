@@ -48,14 +48,13 @@ public class RiverMenuState implements State {
             tileTypeCommand.setRivers(normalRiver,5);
             tileTypeCommand.setRivers(normalRiver,1);
             tileTypeCommand.setRivers(normalRiver,3);
-            tempState++;
         }
 
     }
 
     public void previousState(){
         tileTypeCommand.clearTileEdgeList();
-            tempState--;
+        tempState--;
         if(tempState<0){
             tempState=3;
         }
@@ -80,6 +79,9 @@ public class RiverMenuState implements State {
     }
 
     public State forward(){
+        if(tileTypeCommand.getNumberOfRivers()==0) {
+            return this;
+        }
         return nextState;
     }
 }

@@ -8,4 +8,5 @@ public interface State {
     public void previousState();
     public State back();
     public State forward();
+
 }

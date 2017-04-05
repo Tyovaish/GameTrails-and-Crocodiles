@@ -30,51 +30,45 @@ public class Location {
     public int getX() {
         return x;
     }
-
     public void setX(int x) {
         this.x = x;
     }
     public int getY() {
         return y;
     }
-
     public void setY(int y) {
         this.y = y;
-    }
-    public Location getSouthWest() {
-        if (getY() % 2 == 0)
-            return new Location(getX(), getY() + 1);
-        else
-            return new Location(getX()+1, getY() + 1);
-    }
-
-    public Location getNorthWest() {
-        if (getY() % 2 == 0)
-            return new Location(getX()-1, getY() + 1);
-        else
-            return new Location(getX(), getY()+ 1);
     }
 
     public Location getNorth() {
         return new Location(getX() - 1, getY());
     }
-
-    public Location getNorthEast() {
-        if (getY() % 2 == 0)
-            return new Location(getX()-1, getY() - 1);
-        else
-            return new Location(getX(), getY() - 1);
-    }
-
     public Location getSouth() {
         return new Location( getX() + 1, getY());
     }
-
-    public Location getSouthEast() {
+    public Location getNorthWest() {
+        if (getY() % 2 == 0)
+            return new Location(getX() - 1, getY() - 1);
+        else
+            return new Location(getX(), getY() - 1);
+    }
+    public Location getSouthWest() {
         if (getY() % 2 == 0)
             return new Location(getX(), getY() - 1);
         else
             return new Location(getX() + 1, getY() - 1);
+    }
+    public Location getNorthEast() {
+        if (getY() % 2 == 0)
+            return new Location(getX() - 1, getY() + 1);
+        else
+            return new Location(getX(), getY() + 1);
+    }
+    public Location getSouthEast() {
+        if (getY() % 2 == 0)
+            return new Location(getX(), getY() + 1);
+        else
+            return new Location(getX() + 1, getY() + 1);
     }
 
 }

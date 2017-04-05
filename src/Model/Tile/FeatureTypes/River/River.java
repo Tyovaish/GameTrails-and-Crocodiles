@@ -9,4 +9,5 @@ public abstract class River extends FeatureType {
     public void print(){
         System.out.println("River");
     }
+    River(){addType("River");}
 }

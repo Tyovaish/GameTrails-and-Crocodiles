@@ -3,10 +3,10 @@ package Controller;
 import Controller.Commands.RemoveCommand;
 import Controller.Commands.TilePlacementCommand;
 import Controller.Commands.TileTypeCommand;
-import GUI.Display;
 import Model.Location;
 import Model.Map;
 import Model.TilePlacementManager;
+
 
 import java.util.ArrayList;
 
@@ -14,20 +14,16 @@ import java.util.ArrayList;
  * Created by Trevor on 3/26/2017.
  */
 public class Controller implements State{
-
-
-
-    private TilePlacementManager tilePlacementManager;
     private ArrayList<State> menuStates;
     private TilePlacementCommand tilePlacementCommand;
     private TileTypeCommand tileTypeCommand;
+    private TilePlacementManager tilePlacementManager;
     private RemoveCommand removeCommand;
     private State currentState;
     private int tempState;
 
-
 public Controller(Map map){
-    tilePlacementManager=new TilePlacementManager(map);
+    this.tilePlacementManager=new TilePlacementManager(map);
     tileTypeCommand=new TileTypeCommand();
     removeCommand=new RemoveCommand();
     tilePlacementCommand=new TilePlacementCommand();
@@ -47,8 +43,9 @@ public void nextState(){ // FORWARD SELECTING FEATURE TYPE/ RIVERS TYPES /ORIENT
     }
     tileTypeCommand.print();
 }
-
 public String getType(){return tileTypeCommand.getFeatureType().getType();}
+public int getOrientation(){return tileTypeCommand.getOrientation().getRotations();}
+public int getNumberOfRivers(){return tileTypeCommand.getNumberOfRivers();}
 public void previousState(){ //BACKWARDS SELECTING FEATURES TYPES / RIVERS TYPES / ORIENTATION
     if(currentState!=this) {
         currentState.previousState();
@@ -81,8 +78,9 @@ public void onLeftClick(int x,int y){
     tilePlacementCommand.setLocation(new Location(x,y));
     tilePlacementManager.execute(tilePlacementCommand,tileTypeCommand);
     tileTypeCommand.clearTileEdgeList();
-    tileTypeCommand.clearFeatureType();
+    tileTypeCommand.clearOrientation();
     currentState=menuStates.get(0);
+
 }
 public void onRightClick(int x, int y){
     removeCommand.setLocation(new Location(x,y));

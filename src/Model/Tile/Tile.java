@@ -4,7 +4,8 @@ package Model.Tile;
 
 
 import Model.Tile.FeatureTypes.FeatureType;
-
+import Model.Tile.FeatureTypes.River.NormalRiver;
+import Model.Tile.FeatureTypes.River.SourceRiver;
 
 
 public class Tile {
@@ -23,7 +24,7 @@ public class Tile {
         this.tileEdges=new TileEdge[6];
         this.orientation=orientation;
         for(int i=0;i<this.tileEdges.length;i++){
-            this.tileEdges[i]=tileEdges[((i-orientation.getRotations()+6)%this.tileEdges.length)];
+            this.tileEdges[i]=tileEdges[((i-orientation.getRotations()+6)%6)];
         }
     }
     public TileEdge getTileEdge(int tileEdgePosition){
@@ -31,7 +32,7 @@ public class Tile {
     }
     public String getTileType(){return this.feature.getType();}
     public int getTileOrientation(){return this.orientation.getRotations();}
-    public int getNumberOfRivers(){return numberOfRivers;}
+    public int getNumberOfRivers(){return this.numberOfRivers;}
     public void  setTileEdgeFeature(int tileEdgeFeaturePosition, FeatureType feature){tileEdges[tileEdgeFeaturePosition].setFeatureType(feature);}
     public FeatureType getTileEdgeFeature(int tileEdgePosition){
         return tileEdges[tileEdgePosition].getFeatureType();
@@ -45,6 +46,24 @@ public class Tile {
             System.out.print(i);
             tileEdges[i].print();
         }
+    }
+    public String printForExport(){
+        String tileString="";
+        tileString+=feature.getType();
+        NormalRiver normalRiver=new NormalRiver();
+        SourceRiver sourceRiver=new SourceRiver();
+        String riverSubString="";
+        for(int i=0;i<tileEdges.length;i++){
+            if(tileEdges[i].getFeatureType().getClass().equals(normalRiver.getClass())||tileEdges[i].getFeatureType().getClass().equals(sourceRiver.getClass())){
+               riverSubString+=" "+(i+1)+" ";
+            }
+        }
+        if(!riverSubString.equals("")){
+            tileString+=" (";
+            tileString+=riverSubString;
+            tileString+=" )";
+        }
+        return tileString;
     }
 
 }

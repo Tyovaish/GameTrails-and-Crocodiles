@@ -2,10 +2,8 @@ package GUI;
 
 
 import Controller.Controller;
+import Model.ExportManager;
 import Model.Map;
-
-import Model.Tile.Tile;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -20,28 +18,51 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     private PaintHex hex = new PaintHex();
     private Point hoverP = new Point(0,0);
     private Map board ;
+    private int count = 0;
     private Controller ctrl;
-    private dashboard dash ;
+    private tileForDashboard tile;
+    private ExportManager exportManager;
 
 
 
     private void createAndShowGUI()
     {
-        dash = new dashboard(ctrl);
+
+        dashboard dash = new dashboard();
+        dash.add(tile, BorderLayout.CENTER);
         JFrame frame = new JFrame("Phase 01");
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
-        setPreferredSize(new Dimension(5000,5000));
+        setPreferredSize(new Dimension(3000,3000));
+
         JScrollPane screen = new JScrollPane(this);
-        screen.setPreferredSize(new Dimension(3000, 1100));
         screen.setWheelScrollingEnabled(false);
         screen.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        screen.setPreferredSize(new Dimension(2000, 1300));
         frame.add(screen);
-        frame.add(dash, BorderLayout.EAST);
+        frame.getContentPane().add(dash, BorderLayout.EAST);
+        frame.setPreferredSize(new Dimension(2500, 1300));
         frame.setResizable(true);
         frame.pack();
         frame.setVisible(true);
 
+    }
+
+    private boolean checkTileType(String type){
+        switch(type){
+            case "desert":{
+                return true;
+            }
+            case "pasture":{
+                return true;
+            }
+            case "woods":{
+                return true;
+            }
+            case "rock":{
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -59,11 +80,14 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
                     AffineTransform old = g2.getTransform();
-                    hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j), g2);
+                    hex.fillHex(i, j, board.getTileOrientation(i, j), board.getTileType(i, j),
+                            board.getTileNumberOfRivers(i,j) , g2);
+                    hex.drawCursor(hoverP.x,hoverP.y,g2);
                     g2.setTransform(old);
             }
         }
     }
+    
 
 
     public void paintComponent(Graphics g)
@@ -74,23 +98,32 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
         //draws GameBoard
         drawGameBoard(g2);
-        //Fills In Hexes with Tile Images
+        //Fills In Hexes with Tile Images from the Board
         fillInHex(g2);
-        if(hoverP.x >= 0 || hoverP.y >= 0 || hoverP.x < BSIZE || hoverP.y < BSIZE)
-        hex.drawCursor(hoverP.x, hoverP.y,g2);
+        //Drawing the cursor
+
+
 
     }
 
     public void mouseClicked(MouseEvent e) {
-
         Point p = new Point( hex.pxtoHex(e.getX(),e.getY()) );
-        if (p.x < 0 || p.y < 0 || p.x >= BSIZE || p.y >= BSIZE){
-            System.out.println("OUTSIDE"); //IF USER CLICKS OUT OF THE MAP
-            return;
+        if(SwingUtilities.isRightMouseButton(e)){
+            ctrl.onRightClick(p.x,p.y);
+            this.repaint();
         }
-        System.out.println(p.x + " " + p.y);
-        ctrl.onLeftClick(p.x,p.y);
-        this.repaint();
+        else {
+            if (p.x < 0 || p.y < 0 || p.x >= BSIZE || p.y >= BSIZE) {
+                System.out.println("OUTSIDE"); //IF USER CLICKS OUT OF THE MAP
+                return;
+            }
+            System.out.println(p.x + " " + p.y);
+            ctrl.onLeftClick(p.x, p.y);
+            tile.setState("Select Tile Type");
+            count = 0;
+            this.repaint();
+            tile.repaint();
+        }
 
 
 
@@ -101,6 +134,7 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         if (hoverP.x < 0 || hoverP.y < 0 || hoverP.x >= BSIZE || hoverP.y >= BSIZE){
             return;
         }
+
         this.repaint();
     }
     public void mouseDragged(MouseEvent e){
@@ -123,18 +157,34 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
 
 
         if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
             ctrl.nextState();
-            dash.repaint();
+            tile.repaint();
 
         } if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_LEFT) {
           ctrl.previousState();
+          tile.repaint();
 
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_DOWN){
+            count++;
+            if(count == 1 && checkTileType(ctrl.getType())) tile.setState("Select River Type");
+            else if(count == 2 && ctrl.getNumberOfRivers() > 0) tile.setState("Select Rotation");
+            else count =1;
             ctrl.forward();
+            tile.repaint();
         }
         if(e.isControlDown() && e.getKeyCode() == KeyEvent.VK_UP){
+            count --;
+            if(count < 0 ) count = 0;
+            if(count == 1)tile.setState("Select River Type");
+            else if(count == 2) tile.setState("Select Rotation");
+            else{count = 0; tile.setState("Select Tile Type");}
             ctrl.back();
+            tile.repaint();
+        }
+        if(e.isControlDown() && e.getKeyCode()==KeyEvent.VK_E){
+            exportManager.export();
         }
     }
     @Override
@@ -151,7 +201,9 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
     {
         board = map;
         ctrl = controller;
-        setBackground(Color.blue);
+        tile = new tileForDashboard(ctrl);
+        exportManager=new ExportManager(board);
+        setBackground(Color.BLACK);
         addMouseListener(this);
         addKeyListener(this);
         addMouseMotionListener(this);

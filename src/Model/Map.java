@@ -1,35 +1,23 @@
 package Model;
 
-import Model.Tile.FeatureTypes.River.NormalRiver;
-import Model.Tile.Tile;
-import Model.Tile.TileEdge;
-import Model.Tile.TileOrientation;
-import javafx.geometry.Orientation;
 
-import java.util.ArrayList;
+import Model.Tile.Tile;
+
+
 
 /**
  * Created by Trevor on 3/25/2017.
  */
 public class Map {
-    TilePlacementManager tilePlacementManager;
-    MapObserver mapObserver;
-    RiverConnectionManager riverConnectionManager;
+
     final int BSIZE = 10;
     protected Tile[][] map;
 
 
     //CREATING THE GAME MAP
     public Map(){
-
-
-        //this.mapObserver=mapObserver;
-
         map = new Tile[BSIZE][BSIZE];
-
-
     }
-
 
     public String getTileType(int x, int y){
         if(map[x][y] != null)
@@ -37,35 +25,51 @@ public class Map {
     else
         return null;
     }
+    public Tile getTile(int x,int y){
+        return map[x][y];
+    }
     public int getTileOrientation(int x, int y){
         if(map[x][y]!=null) {
             return map[x][y].getTileOrientation();
         }
         return 0;
     }
+    public int getTileNumberOfRivers(int x, int y){
+        if(map[x][y]!=null) {
+            return map[x][y].getNumberOfRivers();
+        }
+        return 0;
+    }
 
     public boolean checkcoordinates(int x, int y){
-        if(x < 0 || x >= map[0].length)
+        if(x < 0 || x >= map.length)
             return false;
-        else if(y < 0 || y >= map[1].length)
+        else if(y < 0 || y >= map.length)
             return false;
         else
             return true;
     }
 
     public void insertTile(Tile tile, Location location) {
+
         if(checkTileInsertionEligibilty(tile,location)){
             map[location.getX()][location.getY()]=tile;
         }
-    // mapObserver.notify(this);
+        else
+            System.out.println("INVALID PLACEMENT");
     }
     private boolean checkTileInsertionEligibilty(Tile tile, Location location){
         Tile[] tilesToBeChecked=getNeighbors(location);
         for(int i=0;i<tilesToBeChecked.length;i++) {
             Tile tileToBeCheckedBasedOnTileInserted = tilesToBeChecked[i];
             if(!(tileToBeCheckedBasedOnTileInserted==null)) {
-                if (!tile.getTileEdge(i).equalTileEdgeFeatureType(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3) % 6).getFeatureType())) {
-                    System.out.println(i);
+                if(i<3) {
+                    if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3)).getFeatureType())) {
+                        return false;
+                    }
+                }
+                else
+                if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i - 3)).getFeatureType())) {
                     return false;
                 }
             }
@@ -73,7 +77,10 @@ public class Map {
         }
         return true;
     }
-    private Tile[] getNeighbors(Location location){
+
+
+    public Tile[] getNeighbors(Location location){
+
         //This is bad need to change eventually.  TDA but I havent figured a better way
         Tile[] tileToBeReturned=new Tile[6];
         Location northLocation=location.getNorth();
@@ -82,18 +89,22 @@ public class Map {
         Location southWestLocation=location.getSouthWest();
         Location northEastLocation=location.getNorthEast();
         Location northWestLocation=location.getNorthWest();
+
         if(checkcoordinates(northLocation.getX(),northLocation.getY())){
             tileToBeReturned[0]=map[northLocation.getX()][northLocation.getY()];
             
         } else {
             tileToBeReturned[0]=null;
         }
+
+
         if(checkcoordinates(northEastLocation.getX(),northEastLocation.getY())){
             tileToBeReturned[1]=map[northEastLocation.getX()][northEastLocation.getY()];
 
         } else {
             tileToBeReturned[1]=(null);
         }
+
         if(checkcoordinates(southEastLocation.getX(),southEastLocation.getY())){
             tileToBeReturned[2]=map[southEastLocation.getX()][southEastLocation.getY()];
 
@@ -107,12 +118,14 @@ public class Map {
         } else {
             tileToBeReturned[3]=null;
         }
+
         if(checkcoordinates(southWestLocation.getX(),southWestLocation.getY())){
             tileToBeReturned[4]=map[southWestLocation.getX()][southWestLocation.getY()];
 
         } else {
             tileToBeReturned[4]=null;
         }
+
         if(checkcoordinates(northWestLocation.getX(),northWestLocation.getY())){
             tileToBeReturned[5]=map[northWestLocation.getX()][northWestLocation.getY()];
 

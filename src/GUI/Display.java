@@ -14,21 +14,20 @@ import java.awt.geom.AffineTransform;
  */
 public class Display extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
 
-    final   int BSIZE = 10; //board size.
+    final   int BSIZE = 5; //board size.
     private PaintHex hex = new PaintHex();
     private Point hoverP = new Point(0,0);
     private Map board ;
     private int count = 0;
     private Controller ctrl;
     private tileForDashboard tile;
-    private ExportManager exportManager;
 
 
 
     private void createAndShowGUI()
     {
 
-        dashboard dash = new dashboard();
+        dashboard dash = new dashboard(board);
         dash.add(tile, BorderLayout.CENTER);
         JFrame frame = new JFrame("Phase 01");
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -183,9 +182,6 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
             ctrl.back();
             tile.repaint();
         }
-        if(e.isControlDown() && e.getKeyCode()==KeyEvent.VK_E){
-            exportManager.export();
-        }
     }
     @Override
     public void keyReleased(KeyEvent e){
@@ -202,7 +198,6 @@ public class Display extends JPanel implements KeyListener, MouseListener, Mouse
         board = map;
         ctrl = controller;
         tile = new tileForDashboard(ctrl);
-        exportManager=new ExportManager(board);
         setBackground(Color.BLACK);
         addMouseListener(this);
         addKeyListener(this);

@@ -9,11 +9,12 @@ public abstract class FeatureType {
         public void addType(String type){
             this.featureType= type;
         }
-
-
         public String getType(){
             return this.featureType;
         }
+
         abstract public void print();
+
+
 
 }

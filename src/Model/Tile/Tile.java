@@ -1,11 +1,8 @@
 package Model.Tile;
-
-
-
-
 import Model.Tile.FeatureTypes.FeatureType;
 import Model.Tile.FeatureTypes.River.NormalRiver;
 import Model.Tile.FeatureTypes.River.SourceRiver;
+
 
 
 public class Tile {

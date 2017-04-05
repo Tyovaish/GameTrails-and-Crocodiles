@@ -2,6 +2,7 @@ package GUI;
 
 
 import GUI.dashButtons.buttonPanel;
+import Model.Map;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,8 +16,8 @@ public class dashboard extends JPanel {
 
 
 
-    dashboard(){
-        buttonPanel btnPnl = new buttonPanel();
+    dashboard(Map board){
+        buttonPanel btnPnl = new buttonPanel(board);
 
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(600, 1300));

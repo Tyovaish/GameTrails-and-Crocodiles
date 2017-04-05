@@ -15,7 +15,7 @@ public class ExportManager {
     }
     public void export(){
         try{
-            File ExFile = new File("c:\\ExFile.txt");
+            File ExFile = new File("./src/newFile.txt");
             PrintWriter writer = new PrintWriter(ExFile, "UTF-8");
             writer.println("Tile::=( ");
             for(int i=0;i<map.BSIZE;i++){
@@ -28,18 +28,7 @@ public class ExportManager {
                     }
                 }
             }
-            for(int i=0;i<map.BSIZE;i++){
-                for (int j=0;j<map.BSIZE;j++){
-                    if(map.getTile(i,j)!=null){
-                        int xPosition=i;
-                        int yPosition=j;
-                        int zPosition=-1*(i+j);
-                        writer.println("("+xPosition+" "+yPosition+" "+zPosition+") "+map.getTile(i,j).printForExport());
-                    }
-                }
-            }
             writer.close();
-
         } catch (IOException e) {
             System.out.println("Error");
         }

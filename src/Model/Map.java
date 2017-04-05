@@ -10,7 +10,7 @@ import Model.Tile.Tile;
  */
 public class Map {
 
-    final int BSIZE = 10;
+    final int BSIZE = 5;
     protected Tile[][] map;
 
 

@@ -57,20 +57,16 @@ public class Map {
         }
         else
             System.out.println("INVALID PLACEMENT");
+        print();
     }
     private boolean checkTileInsertionEligibilty(Tile tile, Location location){
         Tile[] tilesToBeChecked=getNeighbors(location);
-        for(int i=0;i<tilesToBeChecked.length;i++) {
+        for(int i=0;i<6;i++) {
             Tile tileToBeCheckedBasedOnTileInserted = tilesToBeChecked[i];
             if(!(tileToBeCheckedBasedOnTileInserted==null)) {
-                if(i<3) {
-                    if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i + 3)).getFeatureType())) {
-                        return false;
-                    }
-                }
-                else
-                if (!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdge((i - 3)).getFeatureType())) {
-                    return false;
+                System.out.println("Source: "+i+" Destination: "+(i+3)%6);
+              if(!tile.getTileEdge(i).tileEdgeFeatureEqual(tileToBeCheckedBasedOnTileInserted.getTileEdgeFeature((i+3)%6))){
+                  return false;
                 }
             }
 

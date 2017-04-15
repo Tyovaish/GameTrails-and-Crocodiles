@@ -42,6 +42,7 @@ public class Tile {
         return tileEdges[tileEdgePositionToCheck].equals(otherTilesFeature);
     }
     public void print(){
+        System.out.println("Orientation: "+orientation.getRotations());
         for(int i=0;i<tileEdges.length;i++){
             System.out.print(i);
             tileEdges[i].print();
